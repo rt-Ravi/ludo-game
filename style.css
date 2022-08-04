@@ -1,0 +1,307 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --red: red;
+    --green : green;
+    --blue: blue;
+    --yellow: yellow;
+    --black : black;
+}
+
+div.ludo-con{
+    border: 1px solid rgb(198, 255, 12);
+    display: flex;
+    position: relative;
+}
+
+div.left-button{
+    border: 1px solid orangered;
+    display: flex;
+    flex-direction: column;
+   justify-content: space-between;
+   padding: 10px 10px;
+}
+
+div.left-button > div{
+    box-sizing: border-box;
+    background-color: beige;
+    /* border: 2px solid green; */
+    
+}
+
+div.left-button > div div{
+    border: 1px solid black;
+   /* border: 1px solid black; */
+   background-color: white;
+   padding: 10px;
+   cursor: pointer;
+   transform: rotateY(0);
+   transition: all 0.35s;
+   font-size: 2rem;
+   color: black;
+}
+
+div.left-button > div div#red-btn{
+   background-color: var(--red);
+}
+
+div.left-button > div div#blue-btn{
+    background-color: var(--blue);
+ }
+
+ div.left-button > div div#yellow-btn{
+    background-color: var(--yellow);
+ }
+
+ div.left-button > div div#green-btn{
+    background-color: var(--green);
+ }
+
+
+
+main{
+    /* border: 1px solid hotpink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+
+div.main_con{
+    border: 2px solid var(--black);
+    display: inline-block;
+    
+}
+
+div.upper{
+   display: grid;
+   grid-template-columns: auto auto auto;
+   /* border: 1px solid firebrick; */
+   width: 650px;
+}
+
+div.mid-r-g{
+   border : 1px solid var(--black);
+ }
+
+div.mid-r-g > div{
+   /* border: 1px solid aliceblue; */
+   display: grid;
+   grid-template-columns: auto auto auto;
+}
+
+div.mid-r-g > div div{
+    width: 51px;    
+    height:40px;
+    border: 1px solid var(--black);
+
+    transition: all 1s;
+}
+
+div.upper div.red-player{
+    background-color:  var(--red);
+    padding: 20px;
+    border: 1px solid var(--black);
+}
+
+div.upper div.green-player{
+    background-color: var(--green);
+    padding: 20px;
+    border: 1px solid var(--black);
+}
+
+div.red-player > div, div.green-player > div{
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid var(--black);
+
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    padding: 20px;
+
+}
+
+div.red-player > div span, div.green-player > div span{
+   /* border: 1px solid gray; */
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+
+}
+
+div.red-player > div span div{
+   width: 40px;
+   height:40px;
+   background-color: var(--red);
+    border-radius: 50%;
+    border: 1px solid var(--black);
+    transition: all 1s;
+ 
+ }
+
+ div.green-player > div span div{
+    width: 40px;
+    height: 40px;
+    background-color: var(--green);
+     border-radius: 50%;
+     border: 1px solid var(--black);
+ }
+
+
+
+
+
+
+
+
+
+ div.middle{
+    border: 1px solid var(--black);
+    display: grid;
+    grid-template-columns: auto auto auto;
+ }
+
+ div.m-r-b > div{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    /* border: 1px solid yel?lowgreen; */
+ }
+
+ div.m-r-b > div div{
+   width: 40px;
+   height: 52px;
+   border: 1px solid var(--black);
+
+   transition: all 1s;
+ }
+
+ div.middle div.win-box{
+    border: 1px solid var(--black);
+    width: 160px;
+    padding-left: 1px;
+ }
+
+ div.win-box div.top-tri{
+    width: 0;
+	height: 0;
+	border-top: 77px solid green;
+    border-left: 77px solid red;
+    border-right: 77px solid blue;
+}
+
+
+div.win-box div.top-tri{
+    width: 0;
+	height: 0;
+	border-bottom: 77px solid blue;
+    border-left: 77px solid red;
+    border-right: 77px solid yellow;
+}
+
+
+
+
+
+
+
+ div.lower{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    border: 1px solid var(--black);
+    width: 650px;
+ }
+ 
+ div.mid-b-y > div{
+    /* border: 1px solid aliceblue; */
+    display: grid;
+    grid-template-columns: auto auto auto;
+ }
+ 
+ div.mid-b-y > div div{
+     width: 51px;    
+     height: 40px;
+     border: 1px solid var(--black);
+
+     transition: all 1s;
+ }
+ 
+ div.lower div.blue-player{
+     background-color: var(--blue);
+     padding: 20px;
+     /* border: 2px solid green; */
+ }
+ 
+ div.lower div.yellow-player{
+     background-color: var(--yellow);
+     padding: 20px;
+     /* border: 2px solid rgb(17, 10, 150); */
+ }
+ 
+ div.blue-player > div, div.yellow-player > div{
+     width: 200px;
+     height: 200px;
+     background-color: white;
+     border: 1px solid var(--black);
+ 
+     display: flex;
+     flex-direction: column;
+     box-sizing: border-box;
+ 
+     padding: 20px;
+ 
+ }
+ 
+ div.blue-player > div span, div.yellow-player > div span{
+    /* border: 1px solid gray; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+ 
+ }
+ 
+ div.blue-player > div span div{
+    width: 40px;
+    height:40px;
+    background-color: var(--blue);
+     border-radius: 50%;
+     border: 1px solid var(--black);
+  
+  }
+ 
+  div.yellow-player > div span div{
+     width: 40px;
+     height: 40px;
+     background-color: var(--yellow);
+      border-radius: 50%;
+      border: 1px solid var(--black);
+  }
+
+  div.red-col{
+    background-color: var(--red);
+  }
+
+  div.blue-col{
+    background-color: var(--blue);
+  }
+
+  div.yellow-col{
+    background-color: var(--yellow);
+  }
+
+  div.green-col{
+    background-color: var(--green);
+  }
+
+
