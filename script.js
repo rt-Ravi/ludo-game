@@ -8,6 +8,8 @@ const blue_circle = [];
 const yellow_circle = [];
 const green_circle = [];
 
+const red_player = new red_rotate(red_btn);
+
 const reds = [true, true, true, true];
 const blues = [true, true, true, true];
 const yellows = [true, true, true, true];
@@ -84,47 +86,228 @@ for (let i = 1; i <= 52; i++) {
 }
 
 
-var red_turn = false, blue_turn = true;
+var red_turn = true, blue_turn = true, yellow_turn = false, green_turn = false;
+
+if (blue_turn) {
+    blue_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+}
 
 function red() {
-    if (red_turn == true) {
-        red_rotate(red_btn);
-        red_turn = false;
-        blue_turn = true;
-    }
+
+    if(red_turn)
+        red_rotate();
+
+
 }
 
 function blue() {
-    if (blue_turn == true) {
-        blue_rotate(blue_btn);
-        blue_turn = false;
-        red_turn = true;
-    }
+
+    
+    blue_rotate();
+
+
 }
 
 function yellow() {
-    yellow_rotate(yellow_btn);
+
+
+    yellow_rotate();
+
+
 }
 
 function green() {
-    green_rotate(green_btn);
+
+    if(green_turn)
+        green_rotate();
+
+
 }
 
 function red_rotate(btn) {
     // intervali = null;
     mon = true;
+    var animation = "animation: red-animation 1s ease 0s infinite reverse;";
+    var btn_animation = "background-color:red; box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: red-animation 1s ease 0s infinite reverse;";
+    var btn_without_ani = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
     btn.style = "transform: rotateY(360deg);";
     setTimeout(() => {
-        btn.style = "transform: rotateY(0deg);";
+        btn.style = "transform: rotateY(0deg); ";
         setTimeout(() => {
             num = Math.round(Math.random() * 6);
             if (num == 0)
                 num = 6;
+            if (num == 3)
+                num = 6;
             btn.textContent = num;
+
+            if(num == 6)
+            {
+                red_turn = true;
+            }
+
+            else{
+                red_turn = false;
+            }
+
+            if ((num == 6) && reds[0] && reds[1] && reds[2] && reds[3]) {
+                btn.style = animation;
+            }
+
+            else if ((num == 6 && !reds[0]) || (num == 6 && !reds[1]) || (num == 6 && !reds[2]) || (num == 6 && !reds[3])) {
+
+                if (reds[0] && !red_win[0]) {
+                    red_circle[0].style = animation;
+                }
+                else {
+                    if (!red_in[0] && !red_win[0])
+                        boxes[red_current[0]].style = btn_animation;
+                }
+                if (reds[1] && !red_win[1]) {
+                    red_circle[1].style = animation;
+                }
+                else {
+                    if (!red_in[1] && !red_win[1])
+                        boxes[red_current[1]].style = btn_animation;
+                }
+                if (reds[2] && !red_win[2]) {
+                    red_circle[2].style = animation;
+                }
+                else {
+                    if (!red_in[2] && !red_win[2])
+                        boxes[red_current[2]].style = btn_animation;
+                }
+                if (reds[3] && !red_win[3]) {
+                    red_circle[3].style = animation;
+                }
+                else {
+                    if (!red_in[3] && !red_win[3])
+                        boxes[red_current[3]].style = btn_animation;
+                }
+            }
+
+            else if ((num != 6 && !reds[0] && !reds[1]) || (num != 6 && !reds[0] && !reds[2]) || (num != 6 && !reds[0] && !reds[3]) || (num != 6 && !reds[1] && !reds[2]) || (num != 6 && !reds[1] && !reds[3]) || (num != 6 && !reds[2] && !reds[3])) {
+
+
+                btn.style = "animation:none;";
+
+                if (!reds[0] && !red_in[0]) {
+                    boxes[red_current[0]].style = btn_animation;
+                }
+
+                if (!reds[1] && !red_in[1]) {
+                    boxes[red_current[1]].style = btn_animation;
+                }
+
+                if (!reds[2] && !red_in[2]) {
+                    boxes[red_current[2]].style = btn_animation;
+                }
+
+                if (!reds[3] && !red_in[3]) {
+                    boxes[red_current[3]].style = btn_animation;
+                }
+
+                if (num == 1) {
+                    if (red_in[0]) {
+                        red_boxes[red_inside[0]].style = btn_animation;
+                    }
+
+                    if (red_in[1]) {
+                        red_boxes[red_inside[1]].style = btn_animation;
+                    }
+
+                    if (red_in[2]) {
+                        red_boxes[red_inside[2]].style = btn_animation;
+                    }
+
+                    if (red_in[3]) {
+                        red_boxes[red_inside[3]].style = btn_animation;
+                    }
+                }
+
+                else if (num == 2) {
+                    if (red_in[0] && (red_inside[0] < 5)) {
+                        red_boxes[red_inside[0]].style = btn_animation;
+                    }
+
+                    if (red_in[1] && (red_inside[1] < 5)) {
+                        red_boxes[red_inside[1]].style = btn_animation;
+                    }
+
+                    if (red_in[2] && (red_inside[2] < 5)) {
+                        red_boxes[red_inside[2]].style = btn_animation;
+                    }
+
+                    if (red_in[3] && (red_inside[3] < 5)) {
+                        red_boxes[red_inside[3]].style = btn_animation;
+                    }
+                }
+
+                else if (num == 3) {
+                    if (red_in[0] && (red_inside[0] < 4)) {
+                        red_boxes[red_inside[0]].style = btn_animation;
+                    }
+
+                    if (red_in[1] && (red_inside[1] < 4)) {
+                        red_boxes[red_inside[1]].style = btn_animation;
+                    }
+
+                    if (red_in[2] && (red_inside[2] < 4)) {
+                        red_boxes[red_inside[2]].style = btn_animation;
+                    }
+
+                    if (red_in[3] && (red_inside[3] < 4)) {
+                        red_boxes[red_inside[3]].style = btn_animation;
+                    }
+                }
+
+                else if (num == 4) {
+                    if (red_in[0] && (red_inside[0] < 3)) {
+                        red_boxes[red_inside[0]].style = btn_animation;
+                    }
+
+                    if (red_in[1] && (red_inside[1] < 3)) {
+                        red_boxes[red_inside[1]].style = btn_animation;
+                    }
+
+                    if (red_in[2] && (red_inside[2] < 3)) {
+                        red_boxes[red_inside[2]].style = btn_animation;
+                    }
+
+                    if (red_in[3] && (red_inside[3] < 3)) {
+                        red_boxes[red_inside[3]].style = btn_animation;
+                    }
+                }
+
+                else if (num == 5) {
+                    if (red_in[0] && (red_inside[0] < 2)) {
+                        red_boxes[red_inside[0]].style = btn_animation;
+                    }
+
+                    if (red_in[1] && (red_inside[1] < 2)) {
+                        red_boxes[red_inside[1]].style = btn_animation;
+                    }
+
+                    if (red_in[2] && (red_inside[2] < 2)) {
+                        red_boxes[red_inside[2]].style = btn_animation;
+                    }
+
+                    if (red_in[3] && (red_inside[3] < 2)) {
+                        red_boxes[red_inside[3]].style = btn_animation;
+                    }
+                }
+
+            }
+
+            // else if (num != 6 && reds[0] && reds[1] && reds[2] && reds[3]) {
+            //     red_turn = false;
+            //     green_turn = true;
+            //     green_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+            // }
+
 
             if ((num == 6 && !reds[0] && reds[1]) || (num == 6 && !reds[0] && reds[2]) || (num == 6 && !reds[0] && reds[3]) || (num == 6 && !reds[1] && reds[0]) || (num == 6 && !reds[1] && reds[2]) || (num == 6 && !reds[1] && reds[3]) || (num == 6 && !reds[2] && reds[0]) || (num == 6 && !reds[2] && reds[1]) || (num == 6 && !reds[2] && reds[3]) || (num == 6 && !reds[3] && reds[0]) || (num == 6 && !reds[3] && reds[1]) || (num == 6 && !reds[3] && reds[2])) {
                 if ((btn.id) == "red-btn") {
-
                     let run = false;
 
                     if (!red_in[0] && !reds[0]) {
@@ -132,6 +315,39 @@ function red_rotate(btn) {
                             if (!run && !red_win[0]) {
                                 red_run(0);
                                 run = true;
+
+                                if (reds[0] && !red_win[0]) {
+                                    red_circle[0].style = "animation: none";
+                                } else {
+                                    if (!red_in[0] && !red_win[0])
+                                        boxes[red_current[0]].style = btn_without_ani;
+                                }
+
+                                if (reds[1] && !red_win[1]) {
+                                    red_circle[1].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[1] && !red_win[1])
+                                        boxes[red_current[1]].style = btn_without_ani;
+                                }
+
+                                if (reds[2] && !red_win[2]) {
+                                    red_circle[2].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[2] && !red_win[2])
+                                        boxes[red_current[2]].style = btn_without_ani;
+                                }
+
+                                if (reds[3] && !red_win[3]) {
+                                    red_circle[3].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[3] && !red_win[3])
+                                        boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+                                red_btn.style = animation;
                             }
                         });
                     }
@@ -142,6 +358,40 @@ function red_rotate(btn) {
                             if (!run) {
                                 red_run(1);
                                 run = true;
+
+                                if (reds[0] && !red_win[0]) {
+                                    red_circle[0].style = "animation: none";
+                                } else {
+                                    if (!red_in[0] && !red_win[0])
+                                        boxes[red_current[0]].style = btn_without_ani;
+                                }
+
+                                if (reds[1] && !red_win[1]) {
+                                    red_circle[1].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[1] && !red_win[1])
+                                        boxes[red_current[1]].style = btn_without_ani;
+                                }
+
+                                if (reds[2] && !red_win[2]) {
+                                    red_circle[2].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[2] && !red_win[2])
+                                        boxes[red_current[2]].style = btn_without_ani;
+                                }
+
+                                if (reds[3] && !red_win[3]) {
+                                    red_circle[3].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[3] && !red_win[3])
+                                        boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+
+                                red_btn.style = animation;
                             }
 
                         });
@@ -153,6 +403,39 @@ function red_rotate(btn) {
                             if (!run) {
                                 red_run(2);
                                 run = true;
+
+                                if (reds[0] && !red_win[0]) {
+                                    red_circle[0].style = "animation: none";
+                                } else {
+                                    if (!red_in[0] && !red_win[0])
+                                        boxes[red_current[0]].style = btn_without_ani;
+                                }
+
+                                if (reds[1] && !red_win[1]) {
+                                    red_circle[1].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[1] && !red_win[1])
+                                        boxes[red_current[1]].style = btn_without_ani;
+                                }
+
+                                if (reds[2] && !red_win[2]) {
+                                    red_circle[2].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[2] && !red_win[2])
+                                        boxes[red_current[2]].style = btn_without_ani;
+                                }
+
+                                if (reds[3] && !red_win[3]) {
+                                    red_circle[3].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[3] && !red_win[3])
+                                        boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+                                red_btn.style = animation;
                             }
 
                         });
@@ -164,6 +447,39 @@ function red_rotate(btn) {
                             if (!run) {
                                 red_run(3);
                                 run = true;
+
+                                if (reds[0] && !red_win[0]) {
+                                    red_circle[0].style = "animation: none";
+                                } else {
+                                    if (!red_in[0] && !red_win[0])
+                                        boxes[red_current[0]].style = btn_without_ani;
+                                }
+
+                                if (reds[1] && !red_win[1]) {
+                                    red_circle[1].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[1] && !red_win[1])
+                                        boxes[red_current[1]].style = btn_without_ani;
+                                }
+
+                                if (reds[2] && !red_win[2]) {
+                                    red_circle[2].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[2] && !red_win[2])
+                                        boxes[red_current[2]].style = btn_without_ani;
+                                }
+
+                                if (reds[3] && !red_win[3]) {
+                                    red_circle[3].style = "animation: none";
+                                }
+                                else {
+                                    if (!red_in[3] && !red_win[3])
+                                        boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+                                red_btn.style = animation;
                             }
 
                         });
@@ -178,6 +494,40 @@ function red_rotate(btn) {
                             click++;
                             run = true;
                             red_current[1] = red_start;
+
+                            if (reds[0] && !red_win[0]) {
+                                red_circle[0].style = "animation: none";
+                            } else {
+                                if (!red_in[0] && !red_win[0])
+                                    boxes[red_current[0]].style = btn_without_ani;
+                            }
+
+                            if (reds[1] && !red_win[1]) {
+                                red_circle[1].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[1] && !red_win[1])
+                                    boxes[red_current[1]].style = btn_without_ani;
+                            }
+
+                            if (reds[2] && !red_win[2]) {
+                                red_circle[2].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[2] && !red_win[2])
+                                    boxes[red_current[2]].style = btn_without_ani;
+                            }
+
+                            if (reds[3] && !red_win[3]) {
+                                red_circle[3].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[3] && !red_win[3])
+                                    boxes[red_current[3]].style = btn_without_ani;
+                            }
+
+                            red_btn.style = animation;
+
                         }
                     });
 
@@ -190,6 +540,40 @@ function red_rotate(btn) {
                             click++;
                             run = true;
                             red_current[2] = red_start;
+
+                            if (reds[0] && !red_win[0]) {
+                                red_circle[0].style = "animation: none";
+                            } else {
+                                if (!red_in[0] && !red_win[0])
+                                    boxes[red_current[0]].style = btn_without_ani;
+                            }
+
+                            if (reds[1] && !red_win[1]) {
+                                red_circle[1].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[1] && !red_win[1])
+                                    boxes[red_current[1]].style = btn_without_ani;
+                            }
+
+                            if (reds[2] && !red_win[2]) {
+                                red_circle[2].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[2] && !red_win[2])
+                                    boxes[red_current[2]].style = btn_without_ani;
+                            }
+
+                            if (reds[3] && !red_win[3]) {
+                                red_circle[3].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[3] && !red_win[3])
+                                    boxes[red_current[3]].style = btn_without_ani;
+                            }
+
+                            red_btn.style = animation;
+
                         }
                     });
 
@@ -202,6 +586,40 @@ function red_rotate(btn) {
                             click++;
                             run = true;
                             red_current[3] = red_start;
+
+                            if (reds[0] && !red_win[0]) {
+                                red_circle[0].style = "animation: none";
+                            } else {
+                                if (!red_in[0] && !red_win[0])
+                                    boxes[red_current[0]].style = btn_without_ani;
+                            }
+
+                            if (reds[1] && !red_win[1]) {
+                                red_circle[1].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[1] && !red_win[1])
+                                    boxes[red_current[1]].style = btn_without_ani;
+                            }
+
+                            if (reds[2] && !red_win[2]) {
+                                red_circle[2].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[2] && !red_win[2])
+                                    boxes[red_current[2]].style = btn_without_ani;
+                            }
+
+                            if (reds[3] && !red_win[3]) {
+                                red_circle[3].style = "animation: none";
+                            }
+                            else {
+                                if (!red_in[3] && !red_win[3])
+                                    boxes[red_current[3]].style = btn_without_ani;
+                            }
+
+                            red_btn.style = animation;
+
                         }
                     });
                 }
@@ -210,6 +628,8 @@ function red_rotate(btn) {
 
             else if ((num <= 6 && !reds[0] && !reds[1]) || (num <= 6 && !reds[0] && !reds[2]) || (num <= 6 && !reds[0] && !reds[3]) || (num <= 6 && !reds[1] && !reds[2]) || (num <= 6 && !reds[1] && !reds[3]) || (num <= 6 && !reds[2] && !reds[3])) {
                 let gitti_mov = false;
+
+                // btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
 
                 if (red_in[0] && !reds[0]) {
                     red_boxes[red_inside[0]].addEventListener("click", () => {
@@ -220,6 +640,10 @@ function red_rotate(btn) {
                             else {
                                 red_run(0);
                                 gitti_mov = true;
+                                if (num != 6) {
+                                    btn.style = "animation: none;";
+
+                                }
                             }
                         }
                     })
@@ -234,6 +658,10 @@ function red_rotate(btn) {
                             else {
                                 red_run(1);
                                 gitti_mov = true;
+                                if (num != 6) {
+                                    btn.style = "animation: none;";
+
+                                }
                             }
                         }
                     })
@@ -248,6 +676,10 @@ function red_rotate(btn) {
                             else {
                                 red_run(2);
                                 gitti_mov = true;
+                                if (num != 6) {
+                                    btn.style = "animation: none;";
+
+                                }
                             }
                         }
                     })
@@ -262,6 +694,14 @@ function red_rotate(btn) {
                             else {
                                 red_run(3);
                                 gitti_mov = true;
+                                if (num != 6) {
+                                    btn.style = "animation: none;";
+                                    for (let h = 0; h <= 3; h++) {
+                                        if (!reds[h] && red_in[h] && !red_win[h]) {
+                                            red_boxes[red_inside[h]].style = btn_without_ani;
+                                        }
+                                    }
+                                }
                             }
                         }
                     })
@@ -274,6 +714,29 @@ function red_rotate(btn) {
                         if (!gitti_mov) {
                             red_run(0);
                             gitti_mov = true;
+                            if (num != 6) {
+
+                                btn.style = "animation: none;";
+                                if (!reds[0] && !red_in[0]) {
+                                    boxes[red_current[0]].style = btn_without_ani;
+                                }
+                                if (!reds[1] && !red_in[1]) {
+                                    boxes[red_current[1]].style = btn_without_ani;
+                                }
+                                if (!reds[2] && !red_in[2]) {
+                                    boxes[red_current[2]].style = btn_without_ani;
+                                }
+                                if (!reds[3] && !red_in[3]) {
+                                    boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+                                for (let h = 0; h <= 3; h++) {
+                                    if (!reds[h] && red_in[h] && !red_win[h]) {
+                                        red_boxes[red_inside[h]].style = btn_without_ani;
+                                    }
+                                }
+
+                            }
                         }
 
                     })
@@ -285,6 +748,28 @@ function red_rotate(btn) {
                         if (!gitti_mov) {
                             red_run(1);
                             gitti_mov = true;
+                            if (num != 6) {
+
+                                btn.style = "animation: none;";
+                                if (!reds[0] && !red_in[0]) {
+                                    boxes[red_current[0]].style = btn_without_ani;
+                                }
+                                if (!reds[1] && !red_in[1]) {
+                                    boxes[red_current[1]].style = btn_without_ani;
+                                }
+                                if (!reds[2] && !red_in[2]) {
+                                    boxes[red_current[2]].style = btn_without_ani;
+                                }
+                                if (!reds[3] && !red_in[3]) {
+                                    boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+                                for (let h = 0; h <= 3; h++) {
+                                    if (!reds[h] && red_in[h] && !red_win[h]) {
+                                        red_boxes[red_inside[h]].style = btn_without_ani;
+                                    }
+                                }
+                            }
                         }
 
                     })
@@ -296,6 +781,28 @@ function red_rotate(btn) {
                         if (!gitti_mov) {
                             red_run(2);
                             gitti_mov = true;
+                            if (num != 6) {
+
+                                btn.style = "animation: none;";
+                                if (!reds[0] && !red_in[0]) {
+                                    boxes[red_current[0]].style = btn_without_ani;
+                                }
+                                if (!reds[1] && !red_in[1]) {
+                                    boxes[red_current[1]].style = btn_without_ani;
+                                }
+                                if (!reds[2] && !red_in[2]) {
+                                    boxes[red_current[2]].style = btn_without_ani;
+                                }
+                                if (!reds[3] && !red_in[3]) {
+                                    boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+                                for (let h = 0; h <= 3; h++) {
+                                    if (!reds[h] && red_in[h] && !red_win[h]) {
+                                        red_boxes[red_inside[h]].style = btn_without_ani;
+                                    }
+                                }
+                            }
                         }
 
                     })
@@ -307,6 +814,28 @@ function red_rotate(btn) {
                         if (!gitti_mov) {
                             red_run(3);
                             gitti_mov = true;
+                            if (num != 6) {
+
+                                btn.style = "animation: none;";
+                                if (!reds[0] && !red_in[0]) {
+                                    boxes[red_current[0]].style = btn_without_ani;
+                                }
+                                if (!reds[1] && !red_in[1]) {
+                                    boxes[red_current[1]].style = btn_without_ani;
+                                }
+                                if (!reds[2] && !red_in[2]) {
+                                    boxes[red_current[2]].style = btn_without_ani;
+                                }
+                                if (!reds[3] && !red_in[3]) {
+                                    boxes[red_current[3]].style = btn_without_ani;
+                                }
+
+                                for (let h = 0; h <= 3; h++) {
+                                    if (!reds[h] && red_in[h] && !red_win[h]) {
+                                        red_boxes[red_inside[h]].style = btn_without_ani;
+                                    }
+                                }
+                            }
                         }
 
                     })
@@ -316,8 +845,9 @@ function red_rotate(btn) {
 
             else if (num == 6 && reds[0]) {
                 if ((btn.id) == "red-btn") {
-                    if (!red_win[0])
+                    if (!red_win[0]) {
                         red_out();
+                    }
                 }
             }
 
@@ -392,6 +922,11 @@ function red_rotate(btn) {
                 }
             }
 
+            else{
+                green_turn = true;
+                green_btn.style = animation;
+            }
+
         }, 350);
     }, 350);
 }
@@ -404,6 +939,12 @@ function red_out() {
 }
 
 function red_run(git) {
+
+    var runcount = 0;
+    var animation = "animation: red-animation 1s ease 0s infinite reverse;";
+    var btn_animation = "background-color:red; box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: red-animation 1s ease 0s infinite reverse;";
+    var btn_without_ani = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+
     if ((red_inside[git] == 1 && num == 6) || (red_inside[git] == 2 && num >= 5) || (red_inside[git] == 3 && num >= 4) || (red_inside[git] == 4 && num >= 3) || (red_inside[git] == 5 && num >= 2)) {
 
     }
@@ -420,12 +961,50 @@ function red_run(git) {
                 }
 
                 if (red_in[git]) {
+                    runcount++;
                     red_inside[git]++;
                     if (red_inside[git] >= 6) {
-                        red_boxes[red_inside[git] - 1].style = "background-color:red;";
-                        red_win[git] = true;
-                        reds[git] = true;
-                        red_in[git] = false;
+
+                        for (let k = 0; k <= 3; k++) {
+                            if (!reds[k] && !red_win[k] && !red_in[k]) {
+                                // console.log(red_current[k]);
+                                boxes[red_current[k]].style = btn_without_ani;
+                            }
+
+                            if (git == k)
+                                continue;
+
+                            else {
+                                if (!reds[k] && !red_win[k] && red_in[k]) {
+                                    console.log(red_inside[k]);
+                                    red_boxes[red_inside[k]].style = btn_without_ani;
+                                }
+                            }
+
+                            let gittiOn5 = false;
+
+                            for (let r = 0; r <= 3; r++) {
+                                if (git == r)
+                                    continue;
+
+                                else {
+                                    if ((red_inside[git] - 1) == red_inside[r]) {
+                                        red_boxes[red_inside[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                        gittiOn5 = true;
+                                        break;
+                                    }
+
+                                }
+                            }
+
+                            if (gittiOn5 == false) {
+                                red_boxes[red_inside[git] - 1].style = "background-color:red;";
+                            }
+
+                            red_win[git] = true;
+                            reds[git] = true;
+                            red_in[git] = false;
+                        }
                     }
                     else {
                         var gittiOnback = false;
@@ -436,6 +1015,7 @@ function red_run(git) {
                                 if ((red_inside[git] - 1) == red_inside[x]) {
                                     red_boxes[red_inside[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOnback = true;
+                                    break;
                                 }
                             }
                         }
@@ -443,6 +1023,20 @@ function red_run(git) {
                             red_boxes[red_inside[git] - 1].style = "background-color:red;";
 
                         red_boxes[red_inside[git]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+
+                        if (runcount < 2) {
+                            for (let p = 0; p <= 3; p++) {
+                                if (!reds[p] && !red_win[p] && !red_in[p]) {
+                                    // console.log(red_current[p]);
+                                    boxes[red_current[p]].style = btn_without_ani;
+                                }
+
+                                if (!reds[p] && !red_win[p] && red_in[p]) {
+                                    // console.log(red_current[p]);
+                                    red_boxes[red_inside[p]].style = btn_without_ani;
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -606,6 +1200,7 @@ function red_run(git) {
                 count++;
 
                 if (count >= num) {
+
                     if (red_in[git] == false && red_current[git] != 15 && red_current[git] != 28 && red_current[git] != 41 && red_current[git] != 2) {
                         for (let x = 0; x <= 3; x++) {
                             var blockrun = false;
@@ -708,7 +1303,7 @@ function red_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -817,6 +1412,15 @@ function red_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (yellow_current[x] == yellow_current[t]) {
+                                                        boxes[yellow_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
                                                 }
                                                 if (colorturn == false) {
                                                     if (yellow_current[x] == 41) {
@@ -853,7 +1457,7 @@ function red_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -963,6 +1567,15 @@ function red_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (green_current[x] == green_current[t]) {
+                                                        boxes[green_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
                                                 }
                                                 if (colorturn == false) {
                                                     if (green_current[x] == 41) {
@@ -999,7 +1612,7 @@ function red_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -1010,6 +1623,12 @@ function red_run(git) {
                     count = 0;
                     clearInterval(intervali);
                     console.log("stoped");
+
+                    if (num != 6) {
+                        red_turn = false;
+                        green_turn = true;
+                        green_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+                    }
                 }
             }, 300);
             mon = false;
@@ -1056,6 +1675,14 @@ function blue_rotate(btn) {
                 num = 6;
             btn.textContent = num;
 
+            if (num == 6) {
+                btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+            }
+
+            else if (num != 6 && blues[0] && blues[1] && blues[2] && blues[3]) {
+                red_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+            }
+
             if ((num == 6 && !blues[0] && blues[1]) || (num == 6 && !blues[0] && blues[2]) || (num == 6 && !blues[0] && blues[3]) || (num == 6 && !blues[1] && blues[0]) || (num == 6 && !blues[1] && blues[2]) || (num == 6 && !blues[1] && blues[3]) || (num == 6 && !blues[2] && blues[0]) || (num == 6 && !blues[2] && blues[1]) || (num == 6 && !blues[2] && blues[3]) || (num == 6 && !blues[3] && blues[0]) || (num == 6 && !blues[3] && blues[1]) || (num == 6 && !blues[3] && blues[2])) {
                 if ((btn.id) == "blue-btn") {
 
@@ -1064,6 +1691,7 @@ function blue_rotate(btn) {
                     if (!blue_in[0] && !blues[0]) {
                         boxes[blue_current[0]].addEventListener("click", () => {
                             if (!run && !blue_win[0]) {
+                                // btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
                                 blue_run(0);
                                 run = true;
                             }
@@ -1073,7 +1701,8 @@ function blue_rotate(btn) {
 
                     if (!blue_in[1] && !blues[1]) {
                         boxes[blue_current[1]].addEventListener("click", () => {
-                            if (!run) {
+                            if (!run && !blue_win[1]) {
+                                // btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
                                 blue_run(1);
                                 run = true;
                             }
@@ -1084,7 +1713,8 @@ function blue_rotate(btn) {
 
                     if (!blue_in[2] && !blues[2]) {
                         boxes[blue_current[2]].addEventListener("click", () => {
-                            if (!run) {
+                            if (!run && !blue_win[2]) {
+                                // btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
                                 blue_run(2);
                                 run = true;
                             }
@@ -1095,7 +1725,8 @@ function blue_rotate(btn) {
 
                     if (!blue_in[3] && !blues[3]) {
                         boxes[blue_current[3]].addEventListener("click", () => {
-                            if (!run) {
+                            if (!run && !blue_win[3]) {
+                                // btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
                                 blue_run(3);
                                 run = true;
                             }
@@ -1157,11 +1788,15 @@ function blue_rotate(btn) {
             else if ((num <= 6 && !blues[0] && !blues[1]) || (num <= 6 && !blues[0] && !blues[2]) || (num <= 6 && !blues[0] && !blues[3]) || (num <= 6 && !blues[1] && !blues[2]) || (num <= 6 && !blues[1] && !blues[3]) || (num <= 6 && !blues[2] && !blues[3])) {
                 let gitti_mov = false;
 
+                btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+
                 if (blue_in[0] && !blues[0]) {
                     blue_boxes[blue_inside[0]].addEventListener("click", () => {
                         if (!gitti_mov) {
                             blue_run(0);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
                     })
                 }
@@ -1171,6 +1806,8 @@ function blue_rotate(btn) {
                         if (!gitti_mov) {
                             blue_run(1);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
                     })
                 }
@@ -1180,6 +1817,8 @@ function blue_rotate(btn) {
                         if (!gitti_mov) {
                             blue_run(2);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
                     })
                 }
@@ -1189,6 +1828,8 @@ function blue_rotate(btn) {
                         if (!gitti_mov) {
                             blue_run(3);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
                     })
                 }
@@ -1200,6 +1841,8 @@ function blue_rotate(btn) {
                         if (!gitti_mov) {
                             blue_run(0);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -1211,6 +1854,8 @@ function blue_rotate(btn) {
                         if (!gitti_mov) {
                             blue_run(1);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -1222,6 +1867,8 @@ function blue_rotate(btn) {
                         if (!gitti_mov) {
                             blue_run(2);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -1233,6 +1880,8 @@ function blue_rotate(btn) {
                         if (!gitti_mov) {
                             blue_run(3);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -1242,15 +1891,15 @@ function blue_rotate(btn) {
 
             else if (num == 6 && blues[0]) {
                 if ((btn.id) == "blue-btn") {
-                    if (!blue_win[0])
+                    if (!blue_win[0]) {
                         blue_out();
+                    }
                 }
             }
 
             else if ((num == 6 && blues[0] && blues[1]) && blues[2] && blues[3]) {
                 let click = 0;
                 let run = false;
-
 
                 blue_circle[0].addEventListener("click", () => {
                     if (click == 0 && !run && !blue_win[0] && num == 6) {
@@ -1260,6 +1909,7 @@ function blue_rotate(btn) {
                         click++;
                         run = true;
                         blue_current[0] = blue_start;
+
                     }
                 });
 
@@ -1273,6 +1923,7 @@ function blue_rotate(btn) {
                         click++;
                         run = true;
                         blue_current[1] = blue_start;
+
                     }
                 });
 
@@ -1287,6 +1938,7 @@ function blue_rotate(btn) {
                         click++;
                         run = true;
                         blue_current[2] = blue_start;
+
                     }
                 });
 
@@ -1300,6 +1952,7 @@ function blue_rotate(btn) {
                         click++;
                         run = true;
                         blue_current[3] = blue_start;
+
                     }
                 });
 
@@ -1308,32 +1961,39 @@ function blue_rotate(btn) {
             else if (num <= 5 && !blues[0]) {
 
                 if ((btn.id) == "blue-btn") {
-                    if (!blue_win[0])
+                    if (!blue_win[0]) {
                         blue_run(0);
+
+                    }
                 }
             }
 
             else if (num <= 5 && !blues[1]) {
 
                 if ((btn.id) == "blue-btn") {
-                    if (!blue_win[1])
+                    if (!blue_win[1]) {
                         blue_run(1);
+
+                    }
                 }
             }
 
             else if (num <= 5 && !blues[2]) {
 
                 if ((btn.id) == "blue-btn") {
-                    if (!blue_win[2])
+                    if (!blue_win[2]) {
                         blue_run(2);
+
+                    }
                 }
             }
 
             else if (num <= 5 && !blues[3]) {
 
                 if ((btn.id) == "blue-btn") {
-                    if (!blue_win[3])
+                    if (!blue_win[3]) {
                         blue_run(3);
+                    }
                 }
             }
 
@@ -1603,6 +2263,16 @@ function blue_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (red_current[x] == red_current[t]) {
+                                                        boxes[red_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
+
                                                 }
                                                 if (colorturn == false) {
                                                     if (red_current[x] == 41) {
@@ -1639,7 +2309,7 @@ function blue_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -1749,6 +2419,15 @@ function blue_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (yellow_current[x] == yellow_current[t]) {
+                                                        boxes[yellow_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
                                                 }
                                                 if (colorturn == false) {
                                                     if (yellow_current[x] == 41) {
@@ -1785,7 +2464,7 @@ function blue_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -1896,6 +2575,15 @@ function blue_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (green_current[x] == green_current[t]) {
+                                                        boxes[green_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
                                                 }
                                                 if (colorturn == false) {
                                                     if (green_current[x] == 41) {
@@ -1932,7 +2620,7 @@ function blue_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -1982,9 +2670,22 @@ function yellow_rotate(btn) {
                 num = 6;
             btn.textContent = num;
 
+            if (num == 6) {
+                btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+            }
+
+            else if (num != 6 && yellows[0] && yellows[1] && yellows[2] && yellows[3]) {
+                yellow_turn = false;
+                blue_turn = true;
+                blue_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+            }
+
+            else {
+                yellow_turn = false;
+            }
+
             if ((num == 6 && !yellows[0] && yellows[1]) || (num == 6 && !yellows[0] && yellows[2]) || (num == 6 && !yellows[0] && yellows[3]) || (num == 6 && !yellows[1] && yellows[0]) || (num == 6 && !yellows[1] && yellows[2]) || (num == 6 && !yellows[1] && yellows[3]) || (num == 6 && !yellows[2] && yellows[0]) || (num == 6 && !yellows[2] && yellows[1]) || (num == 6 && !yellows[2] && yellows[3]) || (num == 6 && !yellows[3] && yellows[0]) || (num == 6 && !yellows[3] && yellows[1]) || (num == 6 && !yellows[3] && yellows[2])) {
                 if ((btn.id) == "yellow-btn") {
-
 
                     let run = false;
 
@@ -2003,6 +2704,7 @@ function yellow_rotate(btn) {
                             if (!run) {
                                 yellow_run(1);
                                 run = true;
+
                             }
 
                         });
@@ -2014,6 +2716,7 @@ function yellow_rotate(btn) {
                             if (!run) {
                                 yellow_run(2);
                                 run = true;
+
                             }
 
                         });
@@ -2025,6 +2728,7 @@ function yellow_rotate(btn) {
                             if (!run) {
                                 yellow_run(3);
                                 run = true;
+
                             }
 
                         });
@@ -2039,6 +2743,7 @@ function yellow_rotate(btn) {
                             click++;
                             run = true;
                             yellow_current[1] = yellow_start;
+
                         }
                     });
 
@@ -2051,6 +2756,7 @@ function yellow_rotate(btn) {
                             click++;
                             run = true;
                             yellow_current[2] = yellow_start;
+
                         }
                     });
 
@@ -2063,6 +2769,7 @@ function yellow_rotate(btn) {
                             click++;
                             run = true;
                             yellow_current[3] = yellow_start;
+
                         }
                     });
                 }
@@ -2071,6 +2778,8 @@ function yellow_rotate(btn) {
 
             else if ((num <= 6 && !yellows[0] && !yellows[1]) || (num <= 6 && !yellows[0] && !yellows[2]) || (num <= 6 && !yellows[0] && !yellows[3]) || (num <= 6 && !yellows[1] && !yellows[2]) || (num <= 6 && !yellows[1] && !yellows[3]) || (num <= 6 && !yellows[2] && !yellows[3])) {
                 let gitti_mov = false;
+
+                btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
 
                 if (yellow_in[0] && !yellows[0]) {
                     yellow_boxes[yellow_inside[0]].addEventListener("click", () => {
@@ -2081,6 +2790,9 @@ function yellow_rotate(btn) {
                             else {
                                 yellow_run(0);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
+
                             }
                         }
                     })
@@ -2095,6 +2807,9 @@ function yellow_rotate(btn) {
                             else {
                                 yellow_run(1);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
+
                             }
                         }
                     })
@@ -2109,6 +2824,9 @@ function yellow_rotate(btn) {
                             else {
                                 yellow_run(2);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
+
                             }
                         }
                     })
@@ -2123,6 +2841,8 @@ function yellow_rotate(btn) {
                             else {
                                 yellow_run(3);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
                             }
                         }
                     })
@@ -2135,6 +2855,8 @@ function yellow_rotate(btn) {
                         if (!gitti_mov) {
                             yellow_run(0);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -2146,6 +2868,8 @@ function yellow_rotate(btn) {
                         if (!gitti_mov) {
                             yellow_run(1);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -2157,6 +2881,8 @@ function yellow_rotate(btn) {
                         if (!gitti_mov) {
                             yellow_run(2);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -2168,6 +2894,8 @@ function yellow_rotate(btn) {
                         if (!gitti_mov) {
                             yellow_run(3);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -2177,14 +2905,16 @@ function yellow_rotate(btn) {
 
             else if (num == 6 && yellows[0]) {
                 if ((btn.id) == "yellow-btn") {
-                    if (!yellow_win[0])
+                    if (!yellow_win[0]) {
                         yellow_out();
+                    }
                 }
             }
 
             else if (num == 6 && yellows[0] && yellows[1] && yellows[2] && yellows[3]) {
                 let click = 0;
                 let run = false;
+
                 yellow_circle[1].addEventListener("click", () => {
                     if (click == 0 && !run && !yellow_win[1] && num == 6) {
                         yellow_circle[1].style = "background-color:transparent;";
@@ -2193,6 +2923,7 @@ function yellow_rotate(btn) {
                         click++;
                         run = true;
                         yellow_current[1] = yellow_start;
+
                     }
                 });
 
@@ -2205,6 +2936,7 @@ function yellow_rotate(btn) {
                         click++;
                         run = true;
                         yellow_current[2] = yellow_start;
+
                     }
                 });
 
@@ -2217,6 +2949,7 @@ function yellow_rotate(btn) {
                         click++;
                         run = true;
                         yellow_current[3] = yellow_start;
+
                     }
                 });
             }
@@ -2556,7 +3289,7 @@ function yellow_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -2631,6 +3364,7 @@ function yellow_run(git) {
 
                                                 if (x == j)
                                                     continue;
+
                                                 else {
                                                     if (red_current[j] == 1) {
                                                         boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
@@ -2667,6 +3401,17 @@ function yellow_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+
+                                                    else if (red_current[x] == red_current[t]) {
+                                                        boxes[red_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
+
                                                 }
                                                 if (colorturn == false) {
                                                     if (red_current[x] == 41) {
@@ -2703,14 +3448,14 @@ function yellow_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
                             }
 
 
-                            else if (green_current[git] == green_current[x]) {
+                            else if (yellow_current[git] == green_current[x]) {
                                 console.log("over");
                                 var cutInterval = setInterval(() => {
                                     if (green_current[x] == 28) {
@@ -2813,6 +3558,15 @@ function yellow_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (green_current[x] == green_current[t]) {
+                                                        boxes[green_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
                                                 }
                                                 if (colorturn == false) {
                                                     if (green_current[x] == 41) {
@@ -2849,7 +3603,7 @@ function yellow_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -2860,6 +3614,12 @@ function yellow_run(git) {
                     count = 0;
                     clearInterval(intervali);
                     console.log("stoped");
+
+                    if (num != 6) {
+                        yellow_turn = false;
+                        blue_turn = true;
+                        blue_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+                    }
                 }
             }, 300);
             mon = false;
@@ -2883,6 +3643,20 @@ function green_rotate(btn) {
                 num = 6;
             btn.textContent = num;
 
+            if (num == 6) {
+                btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+            }
+
+            else if (num != 6 && greens[0] && greens[1] && greens[2] && greens[3]) {
+                green_turn = false;
+                yellow_turn = true;
+                yellow_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+            }
+
+            else {
+                green_turn = false;
+            }
+
             if ((num == 6 && !greens[0] && greens[1]) || (num == 6 && !greens[0] && greens[2]) || (num == 6 && !greens[0] && greens[3]) || (num == 6 && !greens[1] && greens[0]) || (num == 6 && !greens[1] && greens[2]) || (num == 6 && !greens[1] && greens[3]) || (num == 6 && !greens[2] && greens[0]) || (num == 6 && !greens[2] && greens[1]) || (num == 6 && !greens[2] && greens[3]) || (num == 6 && !greens[3] && greens[0]) || (num == 6 && !greens[3] && greens[1]) || (num == 6 && !greens[3] && greens[2])) {
                 if ((btn.id) == "green-btn") {
 
@@ -2893,6 +3667,7 @@ function green_rotate(btn) {
                             if (!run && !green_win[0]) {
                                 green_run(0);
                                 run = true;
+
                             }
                         });
                     }
@@ -2903,6 +3678,7 @@ function green_rotate(btn) {
                             if (!run) {
                                 green_run(1);
                                 run = true;
+
                             }
 
                         });
@@ -2914,6 +3690,7 @@ function green_rotate(btn) {
                             if (!run) {
                                 green_run(2);
                                 run = true;
+
                             }
 
                         });
@@ -2925,6 +3702,7 @@ function green_rotate(btn) {
                             if (!run) {
                                 green_run(3);
                                 run = true;
+
                             }
 
                         });
@@ -2939,6 +3717,7 @@ function green_rotate(btn) {
                             click++;
                             run = true;
                             green_current[1] = green_start;
+
                         }
                     });
 
@@ -2951,6 +3730,7 @@ function green_rotate(btn) {
                             click++;
                             run = true;
                             green_current[2] = green_start;
+
                         }
                     });
 
@@ -2963,6 +3743,7 @@ function green_rotate(btn) {
                             click++;
                             run = true;
                             green_current[3] = green_start;
+
                         }
                     });
                 }
@@ -2970,7 +3751,10 @@ function green_rotate(btn) {
 
 
             else if ((num <= 6 && !greens[0] && !greens[1]) || (num <= 6 && !greens[0] && !greens[2]) || (num <= 6 && !greens[0] && !greens[3]) || (num <= 6 && !greens[1] && !greens[2]) || (num <= 6 && !greens[1] && !greens[3]) || (num <= 6 && !greens[2] && !greens[3])) {
+
                 let gitti_mov = false;
+
+                btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
 
                 if (green_in[0] && !greens[0]) {
                     green_boxes[green_inside[0]].addEventListener("click", () => {
@@ -2981,6 +3765,8 @@ function green_rotate(btn) {
                             else {
                                 green_run(0);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
                             }
                         }
                     })
@@ -2995,6 +3781,8 @@ function green_rotate(btn) {
                             else {
                                 green_run(1);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
                             }
                         }
                     })
@@ -3009,6 +3797,8 @@ function green_rotate(btn) {
                             else {
                                 green_run(2);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
                             }
                         }
                     })
@@ -3023,6 +3813,8 @@ function green_rotate(btn) {
                             else {
                                 green_run(3);
                                 gitti_mov = true;
+                                if (num != 6)
+                                    btn.style = "animation: none;";
                             }
                         }
                     })
@@ -3035,6 +3827,8 @@ function green_rotate(btn) {
                         if (!gitti_mov) {
                             green_run(0);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -3046,6 +3840,8 @@ function green_rotate(btn) {
                         if (!gitti_mov) {
                             green_run(1);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -3057,6 +3853,8 @@ function green_rotate(btn) {
                         if (!gitti_mov) {
                             green_run(2);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -3068,6 +3866,8 @@ function green_rotate(btn) {
                         if (!gitti_mov) {
                             green_run(3);
                             gitti_mov = true;
+                            if (num != 6)
+                                btn.style = "animation: none;";
                         }
 
                     })
@@ -3077,14 +3877,17 @@ function green_rotate(btn) {
 
             else if (num == 6 && greens[0]) {
                 if ((btn.id) == "green-btn") {
-                    if (!green_win[0])
+                    if (!green_win[0]) {
                         green_out();
+
+                    }
                 }
             }
 
             else if (num == 6 && greens[0] && greens[1] && greens[2] && greens[3]) {
                 let click = 0;
                 let run = false;
+
                 green_circle[1].addEventListener("click", () => {
                     if (click == 0 && !run && !green_win[1] && num == 6) {
                         green_circle[1].style = "background-color:transparent;";
@@ -3093,6 +3896,7 @@ function green_rotate(btn) {
                         click++;
                         run = true;
                         green_current[1] = green_start;
+
                     }
                 });
 
@@ -3105,6 +3909,7 @@ function green_rotate(btn) {
                         click++;
                         run = true;
                         green_current[2] = green_start;
+
                     }
                 });
 
@@ -3117,6 +3922,7 @@ function green_rotate(btn) {
                         click++;
                         run = true;
                         green_current[3] = green_start;
+
                     }
                 });
             }
@@ -3456,7 +4262,7 @@ function green_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -3529,6 +4335,7 @@ function green_run(git) {
 
                                                 if (x == j)
                                                     continue;
+
                                                 else {
                                                     if (yellow_current[j] == 1) {
                                                         boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
@@ -3562,6 +4369,15 @@ function green_run(git) {
 
                                                     else if (yellow_current[x] == green_current[t]) {
                                                         boxes[yellow_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (yellow_current[x] == yellow_current[t]) {
+                                                        boxes[yellow_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
                                                         colorturn = true;
                                                         break;
                                                     }
@@ -3601,7 +4417,7 @@ function green_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -3713,6 +4529,15 @@ function green_run(git) {
                                                         colorturn = true;
                                                         break;
                                                     }
+
+                                                    if (x == t)
+                                                        continue;
+
+                                                    else if (red_current[x] == red_current[t]) {
+                                                        boxes[red_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                                        colorturn = true;
+                                                        break;
+                                                    }
                                                 }
                                                 if (colorturn == false) {
                                                     if (red_current[x] == 41) {
@@ -3749,7 +4574,7 @@ function green_run(git) {
                                         blockrun = true;
                                     }
 
-                                }, 400);
+                                }, 50);
 
                                 break;
 
@@ -3760,6 +4585,13 @@ function green_run(git) {
                     count = 0;
                     clearInterval(intervali);
                     console.log("stoped");
+
+                    if (num != 6) {
+                        green_turn = false;
+                        yellow_turn = true;
+
+                        yellow_btn.style = "animation: red-animation 1s ease 0s infinite reverse;";
+                    }
                 }
             }, 300);
             mon = false;

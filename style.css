@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    z-index: 1;
 }
 
 :root{
@@ -99,6 +100,7 @@ div.mid-r-g > div div{
     width: 51px;    
     height:40px;
     border: 1px solid var(--black);
+    
 
     transition: all 1s;
 }
@@ -181,6 +183,7 @@ div.red-player > div span div{
    width: 40px;
    height: 52px;
    border: 1px solid var(--black);
+   
 
    transition: all 1s;
  }
@@ -231,6 +234,7 @@ div.win-box div.top-tri{
      width: 51px;    
      height: 40px;
      border: 1px solid var(--black);
+     
 
      transition: all 1s;
  }
@@ -302,6 +306,26 @@ div.win-box div.top-tri{
 
   div.green-col{
     background-color: var(--green);
+  }
+
+
+  div#red-btn{
+    /* animation: red-animation 1s ease 0s infinite reverse; */
+  }
+
+
+  @keyframes red-animation {
+    0%{
+        outline: 0px solid pink;
+    }
+
+    50%{
+        outline: 10px solid pink;
+    }
+
+    100%{
+        outline: 0px solid pink;
+    }
   }
 
 
