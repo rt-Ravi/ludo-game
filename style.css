@@ -328,4 +328,46 @@ div.win-box div.top-tri{
     }
   }
 
+  @keyframes green-animation {
+    0%{
+        outline: 0px solid #6ae76a;
+    }
+
+    50%{
+        outline: 10px solid #6ae76a;
+    }
+
+    100%{
+        outline: 0px solid #6ae76a;
+    }
+  }
+
+  @keyframes blue-animation {
+    0%{
+        outline: 0px solid #137dc3;
+    }
+
+    50%{
+        outline: 10px solid #137dc3;
+    }
+
+    100%{
+        outline: 0px solid #137dc3;
+    }
+  }
+
+  @keyframes yellow-animation {
+    0%{
+        outline: 0px solid #f5f48d;
+    }
+
+    50%{
+        outline: 10px solid #f5f48d;
+    }
+
+    100%{
+        outline: 0px solid #f5f48d;
+    }
+  }
+
 
