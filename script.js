@@ -118,31 +118,31 @@ if (blue_turn) {
 
 function red() {
 
-    if (red_turn)
-        red_player.red_rotate(red_btn);
+    // if (red_turn)
+    red_player.red_rotate(red_btn);
 
 
 }
 
 function blue() {
 
-    if (blue_turn)
-        blue_player.blue_rotate(blue_btn);
+    // if (blue_turn)
+    blue_player.blue_rotate(blue_btn);
 
 
 }
 
 function yellow() {
 
-    if (yellow_turn)
-        yellow_player.yellow_rotate(yellow_btn);
+    // if (yellow_turn)
+    yellow_player.yellow_rotate(yellow_btn);
 
 
 }
 
 function green() {
 
-    if (green_turn)
+    // if (green_turn)
         green_player.green_rotate(green_btn);
 
 
@@ -1003,414 +1003,19 @@ function red_area(reed) {
                                 var blockrun = false;
 
                                 if (red_current[git] == blue_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (blue_current[x] == 2) {
-                                            var gittion2pos = false;
-                                            for (var u = 0; u <= 3; u++) {
-                                                if (red_current[u] == 2) {
-                                                    boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                else if (green_current[u] == 2) {
-                                                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                else if (yellow_current[u] == 2) {
-                                                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                if (x == u)
-                                                    continue;
-                                                else {
-                                                    if (blue_current[u] == 2) {
-                                                        boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittion2pos = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            if (gittion2pos == false) {
-                                                boxes[2].style = "background-color:blue;";
-                                            }
-                                            blue_circle[x].style = "background-color:blue;";
-
-                                            blue_current[x] = undefined;
-                                            blues[x] = true;
-                                            clearInterval(cutInterval);
-
-                                        }
-
-                                        else {
-                                            boxes[blue_current[x] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                            if (blockrun) {
-                                                var colorturn = false;
-                                                for (var t = 0; t <= 3; t++) {
-                                                    if (blue_current[x] == red_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-                                                    else if (blue_current[x] == yellow_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-
-                                                    else if (blue_current[x] == green_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-
-                                                    else if (x == t)
-                                                        continue;
-
-                                                    else if (blue_current[x] == blue_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-                                                }
-                                                if (colorturn == false) {
-                                                    if (blue_current[x] == 41) {
-                                                        boxes[blue_current[x]].style = "background-color:yellow;";
-
-                                                    }
-
-                                                    else if (blue_current[x] == 28) {
-                                                        boxes[blue_current[x]].style = "background-color:green;";
-
-                                                    }
-
-                                                    else if (blue_current[x] == 15) {
-                                                        boxes[blue_current[x]].style = "background-color:red;";
-
-                                                    }
-
-                                                    else
-                                                        boxes[blue_current[x]].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            blue_current[x]--;
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = blue_cut(x, blockrun);
                                     break;
-
                                 }
 
                                 else if (red_current[git] == yellow_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (yellow_current[x] == 41) {
-                                            var gittionyellowSt = false;
-                                            for (var u = 0; u <= 3; u++) {
-
-                                                if (blue_current[u] == 41) {
-                                                    boxes[41].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                else if (green_current[u] == 41) {
-                                                    boxes[41].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                else if (red_current[u] == 41) {
-                                                    boxes[41].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (yellow_current[u] == 41) {
-                                                        boxes[41].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittionyellowSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittionyellowSt == false) {
-                                                boxes[41].style = "background-color:yellow;";
-                                            }
-
-                                            yellow_circle[x].style = "background-color:yellow;";
-                                            yellows[x] = true;
-                                            yellow_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (yellow_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (green_current[j] == 1) {
-                                                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (red_current[j] == 1) {
-                                                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-                                                    else {
-                                                        if (yellow_current[j] == 1) {
-                                                            boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[yellow_current[x] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (yellow_current[x] == blue_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (yellow_current[x] == red_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (yellow_current[x] == green_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (yellow_current[x] == yellow_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (yellow_current[x] == 41) {
-                                                            boxes[yellow_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (yellow_current[x] == 2) {
-                                                            boxes[yellow_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (yellow_current[x] == 28) {
-                                                            boxes[yellow_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (yellow_current[x] == 15) {
-                                                            boxes[yellow_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[yellow_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            yellow_current[x]--;
-
-                                            if (yellow_current[x] == 0)
-                                                yellow_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = yellow_cut(x, blockrun);
                                     break;
-
 
                                 }
 
                                 else if (red_current[git] == green_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (green_current[x] == 28) {
-                                            var gittiongreenSt = false;
-                                            for (var u = 0; u <= 3; u++) {
 
-                                                if (blue_current[u] == 28) {
-                                                    boxes[28].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                else if (red_current[u] == 28) {
-                                                    boxes[28].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                else if (yellow_current[u] == 28) {
-                                                    boxes[28].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (green_current[u] == 28) {
-                                                        boxes[28].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittiongreenSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittiongreenSt == false) {
-                                                boxes[28].style = "background-color:green;";
-                                            }
-
-                                            green_circle[x].style = "background-color:green;";
-                                            greens[x] = true;
-                                            green_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (green_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (red_current[j] == 1) {
-                                                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (yellow_current[j] == 1) {
-                                                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-                                                    else {
-                                                        if (green_current[j] == 1) {
-                                                            boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[green_current[x] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (green_current[x] == blue_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (green_current[x] == yellow_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (green_current[x] == red_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (green_current[x] == green_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (green_current[x] == 41) {
-                                                            boxes[green_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (green_current[x] == 2) {
-                                                            boxes[green_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (green_current[x] == 28) {
-                                                            boxes[green_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (green_current[x] == 15) {
-                                                            boxes[green_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[green_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            green_current[x]--;
-
-                                            if (green_current[x] == 0)
-                                                green_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = green_cut(x, blockrun);
                                     break;
 
                                 }
@@ -2262,468 +1867,24 @@ function blue_area() {
                         if (blue_in[git] == false && blue_current[git] != 15 && blue_current[git] != 28 && blue_current[git] != 41 && blue_current[git] != 2) {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
-                                var gittionredSt = false;
                                 if (blue_current[git] == red_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (red_current[x] == 15) {
-                                            for (var u = 0; u <= 3; u++) {
 
-                                                if (blue_current[u] == 15) {
-                                                    boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                else if (green_current[u] == 15) {
-                                                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                else if (yellow_current[u] == 15) {
-                                                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (red_current[u] == 15) {
-                                                        boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittionredSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittionredSt == false) {
-                                                boxes[15].style = "background-color:red;";
-                                            }
-
-                                            red_circle[x].style = "background-color:red;";
-                                            reds[x] = true;
-                                            red_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (red_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (green_current[j] == 1) {
-                                                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (yellow_current[j] == 1) {
-                                                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-                                                    else {
-                                                        if (red_current[j] == 1) {
-                                                            boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[red_current[x] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (red_current[x] == blue_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (red_current[x] == yellow_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (red_current[x] == green_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (red_current[x] == red_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (red_current[x] == 41) {
-                                                            boxes[red_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (red_current[x] == 2) {
-                                                            boxes[red_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (red_current[x] == 28) {
-                                                            boxes[red_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (red_current[x] == 15) {
-                                                            boxes[red_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[red_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            red_current[x]--;
-
-                                            if (red_current[x] == 0)
-                                                red_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = red_cut(x,blockrun);
                                     break;
 
                                 }
 
 
                                 else if (blue_current[git] == yellow_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (yellow_current[x] == 41) {
-                                            var gittionyellowSt = false;
-                                            for (var u = 0; u <= 3; u++) {
 
-                                                if (blue_current[u] == 41) {
-                                                    boxes[41].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                else if (green_current[u] == 41) {
-                                                    boxes[41].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                else if (red_current[u] == 41) {
-                                                    boxes[41].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (yellow_current[u] == 41) {
-                                                        boxes[41].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittionyellowSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittionyellowSt == false) {
-                                                boxes[41].style = "background-color:yellow;";
-                                            }
-
-                                            yellow_circle[x].style = "background-color:yellow;";
-                                            yellows[x] = true;
-                                            yellow_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (yellow_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (green_current[j] == 1) {
-                                                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (red_current[j] == 1) {
-                                                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-                                                    else {
-                                                        if (yellow_current[j] == 1) {
-                                                            boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[yellow_current[x] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (yellow_current[x] == blue_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (yellow_current[x] == red_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (yellow_current[x] == green_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (yellow_current[x] == yellow_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (yellow_current[x] == 41) {
-                                                            boxes[yellow_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (yellow_current[x] == 2) {
-                                                            boxes[yellow_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (yellow_current[x] == 28) {
-                                                            boxes[yellow_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (yellow_current[x] == 15) {
-                                                            boxes[yellow_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[yellow_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            yellow_current[x]--;
-
-                                            if (yellow_current[x] == 0)
-                                                yellow_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = yellow_cut(x,blockrun);
                                     break;
-
-
                                 }
 
 
                                 else if (blue_current[git] == green_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (green_current[x] == 28) {
-                                            var gittiongreenSt = false;
-                                            for (var u = 0; u <= 3; u++) {
-
-                                                if (blue_current[u] == 28) {
-                                                    boxes[28].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                else if (red_current[u] == 28) {
-                                                    boxes[28].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                else if (yellow_current[u] == 28) {
-                                                    boxes[28].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (green_current[u] == 28) {
-                                                        boxes[28].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittiongreenSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittiongreenSt == false) {
-                                                boxes[28].style = "background-color:green;";
-                                            }
-
-                                            green_circle[x].style = "background-color:green;";
-                                            greens[x] = true;
-                                            green_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (green_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (red_current[j] == 1) {
-                                                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (yellow_current[j] == 1) {
-                                                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-                                                    else {
-                                                        if (green_current[j] == 1) {
-                                                            boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[green_current[x] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (green_current[x] == blue_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (green_current[x] == yellow_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (green_current[x] == red_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (green_current[x] == green_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (green_current[x] == 41) {
-                                                            boxes[green_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (green_current[x] == 2) {
-                                                            boxes[green_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (green_current[x] == 28) {
-                                                            boxes[green_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (green_current[x] == 15) {
-                                                            boxes[green_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[green_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            green_current[x]--;
-
-                                            if (green_current[x] == 0)
-                                                green_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    
+                                    blockrun = green_cut(x,blockrun);
                                     break;
 
                                 }
@@ -3602,419 +2763,23 @@ function yellow_area() {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
                                 if (yellow_current[git] == blue_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (blue_current[x] == 2) {
-                                            var gittion2pos = false;
-                                            for (var u = 0; u <= 3; u++) {
-                                                if (yellow_current[u] == 2) {
-                                                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                else if (green_current[u] == 2) {
-                                                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                else if (yellow_current[u] == 2) {
-                                                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                if (x == u)
-                                                    continue;
-                                                else {
-                                                    if (blue_current[u] == 2) {
-                                                        boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittion2pos = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            if (gittion2pos == false) {
-                                                boxes[2].style = "background-color:blue;";
-                                            }
-                                            blue_circle[x].style = "background-color:blue;";
 
-                                            blue_current[x] = undefined;
-                                            blues[x] = true;
-                                            clearInterval(cutInterval);
-
-                                        }
-
-                                        else {
-                                            boxes[blue_current[x] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                            if (blockrun) {
-                                                var colorturn = false;
-                                                for (var t = 0; t <= 3; t++) {
-                                                    if (blue_current[x] == yellow_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-                                                    else if (blue_current[x] == yellow_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-
-                                                    else if (blue_current[x] == green_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-
-                                                    else if (x == t)
-                                                        continue;
-
-                                                    else if (blue_current[x] == blue_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-                                                }
-                                                if (colorturn == false) {
-                                                    if (blue_current[x] == 41) {
-                                                        boxes[blue_current[x]].style = "background-color:yellow;";
-
-                                                    }
-
-                                                    else if (blue_current[x] == 28) {
-                                                        boxes[blue_current[x]].style = "background-color:green;";
-
-                                                    }
-
-                                                    else if (blue_current[x] == 15) {
-                                                        boxes[blue_current[x]].style = "background-color:red;";
-
-                                                    }
-
-                                                    else
-                                                        boxes[blue_current[x]].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            blue_current[x]--;
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = blue_cut(x, blockrun);
                                     break;
 
                                 }
 
-
-
                                 else if (yellow_current[git] == red_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (red_current[x] == 15) {
-                                            var gittionredSt = false;
-                                            for (var u = 0; u <= 3; u++) {
 
-                                                if (blue_current[u] == 15) {
-                                                    boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                else if (green_current[u] == 15) {
-                                                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                else if (yellow_current[u] == 15) {
-                                                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (red_current[u] == 15) {
-                                                        boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittionredSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittionredSt == false) {
-                                                boxes[15].style = "background-color:red;";
-                                            }
-
-                                            red_circle[x].style = "background-color:red;";
-                                            reds[x] = true;
-                                            red_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (red_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (green_current[j] == 1) {
-                                                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (yellow_current[j] == 1) {
-                                                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-
-                                                    else {
-                                                        if (red_current[j] == 1) {
-                                                            boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[red_current[x] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (red_current[x] == blue_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (red_current[x] == yellow_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (red_current[x] == green_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-
-                                                        else if (red_current[x] == red_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (red_current[x] == 41) {
-                                                            boxes[red_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (red_current[x] == 2) {
-                                                            boxes[red_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (red_current[x] == 28) {
-                                                            boxes[red_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (red_current[x] == 15) {
-                                                            boxes[red_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[red_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            red_current[x]--;
-
-                                            if (red_current[x] == 0)
-                                                red_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = red_cut(x, blockrun);
                                     break;
 
                                 }
 
 
                                 else if (yellow_current[git] == green_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (green_current[x] == 28) {
-                                            var gittiongreenSt = false;
-                                            for (var u = 0; u <= 3; u++) {
-
-                                                if (blue_current[u] == 28) {
-                                                    boxes[28].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                else if (red_current[u] == 28) {
-                                                    boxes[28].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                else if (yellow_current[u] == 28) {
-                                                    boxes[28].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittiongreenSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (green_current[u] == 28) {
-                                                        boxes[28].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittiongreenSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittiongreenSt == false) {
-                                                boxes[28].style = "background-color:green;";
-                                            }
-
-                                            green_circle[x].style = "background-color:green;";
-                                            greens[x] = true;
-                                            green_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (green_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (red_current[j] == 1) {
-                                                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (yellow_current[j] == 1) {
-                                                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-                                                    else {
-                                                        if (green_current[j] == 1) {
-                                                            boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[green_current[x] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (green_current[x] == blue_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (green_current[x] == yellow_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (green_current[x] == red_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (green_current[x] == green_current[t]) {
-                                                            boxes[green_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (green_current[x] == 41) {
-                                                            boxes[green_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (green_current[x] == 2) {
-                                                            boxes[green_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (green_current[x] == 28) {
-                                                            boxes[green_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (green_current[x] == 15) {
-                                                            boxes[green_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[green_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            green_current[x]--;
-
-                                            if (green_current[x] == 0)
-                                                green_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                            
+                                    blockrun = green_cut(x, blockrun);
                                     break;
 
                                 }
@@ -4622,7 +3387,7 @@ function green_area() {
 
 
 
-    this.green_out = function() {
+    this.green_out = function () {
         greens[0] = false;
         green_circle[0].style = "background-color:transparent;";
         boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
@@ -4631,7 +3396,7 @@ function green_area() {
 
 
 
-    this.green_run = function(git) {
+    this.green_run = function (git) {
 
 
         var runcount = 0;
@@ -4877,417 +3642,24 @@ function green_area() {
                                 var blockrun = false;
 
                                 if (green_current[git] == blue_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (blue_current[x] == 2) {
-                                            var gittion2pos = false;
-                                            for (var u = 0; u <= 3; u++) {
-                                                if (green_current[u] == 2) {
-                                                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                else if (green_current[u] == 2) {
-                                                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                else if (yellow_current[u] == 2) {
-                                                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittion2pos = true;
-                                                    break;
-                                                }
-                                                if (x == u)
-                                                    continue;
-                                                else {
-                                                    if (blue_current[u] == 2) {
-                                                        boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittion2pos = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                            if (gittion2pos == false) {
-                                                boxes[2].style = "background-color:blue;";
-                                            }
-                                            blue_circle[x].style = "background-color:blue;";
-
-                                            blue_current[x] = undefined;
-                                            blues[x] = true;
-                                            clearInterval(cutInterval);
-
-                                        }
-
-                                        else {
-                                            boxes[blue_current[x] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                            if (blockrun) {
-                                                var colorturn = false;
-                                                for (var t = 0; t <= 3; t++) {
-                                                    if (blue_current[x] == green_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-                                                    else if (blue_current[x] == yellow_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-
-                                                    else if (blue_current[x] == green_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-
-                                                    else if (x == t)
-                                                        continue;
-
-                                                    else if (blue_current[x] == blue_current[t]) {
-                                                        boxes[blue_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                        colorturn = true;
-                                                        break;
-                                                    }
-                                                }
-                                                if (colorturn == false) {
-                                                    if (blue_current[x] == 41) {
-                                                        boxes[blue_current[x]].style = "background-color:yellow;";
-
-                                                    }
-
-                                                    else if (blue_current[x] == 28) {
-                                                        boxes[blue_current[x]].style = "background-color:green;";
-
-                                                    }
-
-                                                    else if (blue_current[x] == 15) {
-                                                        boxes[blue_current[x]].style = "background-color:green;";
-
-                                                    }
-
-                                                    else
-                                                        boxes[blue_current[x]].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            blue_current[x]--;
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                   
+                                    blockrun = blue_cut(x,blockrun);
                                     break;
 
                                 }
 
                                 else if (green_current[git] == yellow_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (yellow_current[x] == 41) {
-                                            var gittionyellowSt = false;
-                                            for (var u = 0; u <= 3; u++) {
-
-                                                if (blue_current[u] == 41) {
-                                                    boxes[41].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                else if (green_current[u] == 41) {
-                                                    boxes[41].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                else if (green_current[u] == 41) {
-                                                    boxes[41].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionyellowSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (yellow_current[u] == 41) {
-                                                        boxes[41].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittionyellowSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittionyellowSt == false) {
-                                                boxes[41].style = "background-color:yellow;";
-                                            }
-
-                                            yellow_circle[x].style = "background-color:yellow;";
-                                            yellows[x] = true;
-                                            yellow_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (yellow_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (green_current[j] == 1) {
-                                                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (green_current[j] == 1) {
-                                                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-
-                                                    else {
-                                                        if (yellow_current[j] == 1) {
-                                                            boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[yellow_current[x] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (yellow_current[x] == blue_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (yellow_current[x] == green_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (yellow_current[x] == green_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (yellow_current[x] == yellow_current[t]) {
-                                                            boxes[yellow_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (yellow_current[x] == 41) {
-                                                            boxes[yellow_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (yellow_current[x] == 2) {
-                                                            boxes[yellow_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (yellow_current[x] == 28) {
-                                                            boxes[yellow_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (yellow_current[x] == 15) {
-                                                            boxes[yellow_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[yellow_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            yellow_current[x]--;
-
-                                            if (yellow_current[x] == 0)
-                                                yellow_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    
+                                    blockrun = yellow_cut(x,blockrun);
                                     break;
-
 
                                 }
 
 
 
                                 else if (green_current[git] == red_current[x]) {
-                                    console.log("over");
-                                    var cutInterval = setInterval(() => {
-                                        if (red_current[x] == 15) {
-                                            var gittionredSt = false;
-                                            for (var u = 0; u <= 3; u++) {
 
-                                                if (blue_current[u] == 15) {
-                                                    boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                else if (green_current[u] == 15) {
-                                                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                else if (yellow_current[u] == 15) {
-                                                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                    gittionredSt = true;
-                                                    break;
-                                                }
-
-                                                if (x == u)
-                                                    continue;
-
-                                                else {
-                                                    if (red_current[u] == 15) {
-                                                        boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                        gittionredSt = true;
-                                                        break;
-                                                    }
-                                                }
-                                            }
-
-                                            if (gittionredSt == false) {
-                                                boxes[15].style = "background-color:red;";
-                                            }
-
-                                            red_circle[x].style = "background-color:red;";
-                                            reds[x] = true;
-                                            red_current[x] = undefined;
-                                            clearInterval(cutInterval);
-                                        }
-
-                                        else {
-
-                                            if (red_current[x] == 1) {
-                                                var nogittion1 = false;
-                                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                for (var j = 0; j <= 3; j++) {
-                                                    if (green_current[j] == 1) {
-                                                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    else if (yellow_current[j] == 1) {
-                                                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                        nogittion1 = true;
-                                                        break;
-                                                    }
-
-                                                    if (x == j)
-                                                        continue;
-                                                    else {
-                                                        if (red_current[j] == 1) {
-                                                            boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            nogittion1 = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                }
-                                                if (nogittion1 == false) {
-                                                    boxes[1].style = "background-color:transparent;";
-                                                }
-                                            }
-
-                                            else {
-
-                                                boxes[red_current[x] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-
-                                                if (blockrun) {
-                                                    var colorturn = false;
-                                                    for (var t = 0; t <= 3; t++) {
-                                                        if (red_current[x] == blue_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                        else if (red_current[x] == yellow_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        else if (red_current[x] == green_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-
-                                                        if (x == t)
-                                                            continue;
-
-                                                        else if (red_current[x] == red_current[t]) {
-                                                            boxes[red_current[x]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
-                                                            colorturn = true;
-                                                            break;
-                                                        }
-                                                    }
-                                                    if (colorturn == false) {
-                                                        if (red_current[x] == 41) {
-                                                            boxes[red_current[x]].style = "background-color:yellow;";
-
-                                                        }
-
-
-                                                        else if (red_current[x] == 2) {
-                                                            boxes[red_current[x]].style = "background-color:blue;";
-                                                        }
-
-                                                        else if (red_current[x] == 28) {
-                                                            boxes[red_current[x]].style = "background-color:green;";
-
-                                                        }
-
-                                                        else if (red_current[x] == 15) {
-                                                            boxes[red_current[x]].style = "background-color:red;";
-
-                                                        }
-
-                                                        else
-                                                            boxes[red_current[x]].style = "background-color:transparent;";
-                                                    }
-                                                }
-                                            }
-
-                                            red_current[x]--;
-
-                                            if (red_current[x] == 0)
-                                                red_current[x] = 52;
-
-                                            blockrun = true;
-                                        }
-
-                                    }, 120);
-
+                                    blockrun = red_cut(x,blockrun);
                                     break;
 
                                 }
@@ -5309,4 +3681,570 @@ function green_area() {
             }
         }
     }
+}
+
+
+function blue_cut(val, blockrun) {
+    console.log("over");
+    var cutInterval = setInterval(() => {
+        if (blue_current[val] == 2) {
+            var gittion2pos = false;
+            for (var u = 0; u <= 3; u++) {
+                if (red_current[u] == 2) {
+                    boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                    gittion2pos = true;
+                    break;
+                }
+                else if (green_current[u] == 2) {
+                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                    gittion2pos = true;
+                    break;
+                }
+                else if (yellow_current[u] == 2) {
+                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                    gittion2pos = true;
+                    break;
+                }
+                if (val == u)
+                    continue;
+                else {
+                    if (blue_current[u] == 2) {
+                        boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                        gittion2pos = true;
+                        break;
+                    }
+                }
+            }
+            if (gittion2pos == false) {
+                boxes[2].style = "background-color:blue;";
+            }
+            blue_circle[val].style = "background-color:blue;";
+
+            blue_current[val] = undefined;
+            blues[val] = true;
+            clearInterval(cutInterval);
+
+        }
+
+        else {
+            boxes[blue_current[val] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+            if (blockrun) {
+                var colorturn = false;
+                for (var t = 0; t <= 3; t++) {
+                    if (blue_current[val] == red_current[t]) {
+                        boxes[blue_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        colorturn = true;
+                        break;
+                    }
+                    else if (blue_current[val] == yellow_current[t]) {
+                        boxes[blue_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        colorturn = true;
+                        break;
+                    }
+
+                    else if (blue_current[val] == green_current[t]) {
+                        boxes[blue_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        colorturn = true;
+                        break;
+                    }
+
+                    else if (val == t)
+                        continue;
+
+                    else if (blue_current[val] == blue_current[t]) {
+                        boxes[blue_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                        colorturn = true;
+                        break;
+                    }
+                }
+                if (colorturn == false) {
+                    if (blue_current[val] == 41) {
+                        boxes[blue_current[val]].style = "background-color:yellow;";
+
+                    }
+
+                    else if (blue_current[val] == 28) {
+                        boxes[blue_current[val]].style = "background-color:green;";
+
+                    }
+
+                    else if (blue_current[val] == 15) {
+                        boxes[blue_current[val]].style = "background-color:red;";
+
+                    }
+
+                    else
+                        boxes[blue_current[val]].style = "background-color:transparent;";
+                }
+            }
+
+            blue_current[val]--;
+            blockrun = true;
+            return blockrun;
+        }
+
+    }, 120);
+}
+
+
+
+function yellow_cut(val, blockrun) {
+    console.log("over");
+    var cutInterval = setInterval(() => {
+        if (yellow_current[val] == 41) {
+            var gittionyellowSt = false;
+            for (var u = 0; u <= 3; u++) {
+
+                if (blue_current[u] == 41) {
+                    boxes[41].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                    gittionyellowSt = true;
+                    break;
+                }
+
+                else if (green_current[u] == 41) {
+                    boxes[41].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                    gittionyellowSt = true;
+                    break;
+                }
+
+                else if (red_current[u] == 41) {
+                    boxes[41].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                    gittionyellowSt = true;
+                    break;
+                }
+
+                if (val == u)
+                    continue;
+
+                else {
+                    if (yellow_current[u] == 41) {
+                        boxes[41].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        gittionyellowSt = true;
+                        break;
+                    }
+                }
+            }
+
+            if (gittionyellowSt == false) {
+                boxes[41].style = "background-color:yellow;";
+            }
+
+            yellow_circle[val].style = "background-color:yellow;";
+            yellows[val] = true;
+            yellow_current[val] = undefined;
+            clearInterval(cutInterval);
+        }
+
+        else {
+
+            if (yellow_current[val] == 1) {
+                var nogittion1 = false;
+                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                for (var j = 0; j <= 3; j++) {
+                    if (green_current[j] == 1) {
+                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        nogittion1 = true;
+                        break;
+                    }
+
+                    else if (red_current[j] == 1) {
+                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        nogittion1 = true;
+                        break;
+                    }
+
+                    if (val == j)
+                        continue;
+                    else {
+                        if (yellow_current[j] == 1) {
+                            boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            nogittion1 = true;
+                            break;
+                        }
+                    }
+                }
+                if (nogittion1 == false) {
+                    boxes[1].style = "background-color:transparent;";
+                }
+            }
+
+            else {
+
+                boxes[yellow_current[val] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+
+                if (blockrun) {
+                    var colorturn = false;
+                    for (var t = 0; t <= 3; t++) {
+                        if (yellow_current[val] == blue_current[t]) {
+                            boxes[yellow_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+                        else if (yellow_current[val] == red_current[t]) {
+                            boxes[yellow_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+
+                        else if (yellow_current[val] == green_current[t]) {
+                            boxes[yellow_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+
+                        if (val == t)
+                            continue;
+
+                        else if (yellow_current[val] == yellow_current[t]) {
+                            boxes[yellow_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+                    }
+                    if (colorturn == false) {
+                        if (yellow_current[val] == 41) {
+                            boxes[yellow_current[val]].style = "background-color:yellow;";
+
+                        }
+
+
+                        else if (yellow_current[val] == 2) {
+                            boxes[yellow_current[val]].style = "background-color:blue;";
+                        }
+
+                        else if (yellow_current[val] == 28) {
+                            boxes[yellow_current[val]].style = "background-color:green;";
+
+                        }
+
+                        else if (yellow_current[val] == 15) {
+                            boxes[yellow_current[val]].style = "background-color:red;";
+
+                        }
+
+                        else
+                            boxes[yellow_current[val]].style = "background-color:transparent;";
+                    }
+                }
+            }
+
+            yellow_current[val]--;
+
+            if (yellow_current[val] == 0)
+                yellow_current[val] = 52;
+
+            blockrun = true;
+            return blockrun;
+        }
+
+    }, 120);
+
+}
+
+
+
+function green_cut(val, blockrun) {
+    console.log("over");
+    var cutInterval = setInterval(() => {
+        if (green_current[val] == 28) {
+            var gittiongreenSt = false;
+            for (var u = 0; u <= 3; u++) {
+
+                if (blue_current[u] == 28) {
+                    boxes[28].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                    gittiongreenSt = true;
+                    break;
+                }
+
+                else if (red_current[u] == 28) {
+                    boxes[28].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                    gittiongreenSt = true;
+                    break;
+                }
+
+                else if (yellow_current[u] == 28) {
+                    boxes[28].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                    gittiongreenSt = true;
+                    break;
+                }
+
+                if (val == u)
+                    continue;
+
+                else {
+                    if (green_current[u] == 28) {
+                        boxes[28].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        gittiongreenSt = true;
+                        break;
+                    }
+                }
+            }
+
+            if (gittiongreenSt == false) {
+                boxes[28].style = "background-color:green;";
+            }
+
+            green_circle[val].style = "background-color:green;";
+            greens[val] = true;
+            green_current[val] = undefined;
+            clearInterval(cutInterval);
+        }
+
+        else {
+
+            if (green_current[val] == 1) {
+                var nogittion1 = false;
+                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                for (var j = 0; j <= 3; j++) {
+                    if (red_current[j] == 1) {
+                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        nogittion1 = true;
+                        break;
+                    }
+
+                    else if (yellow_current[j] == 1) {
+                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        nogittion1 = true;
+                        break;
+                    }
+
+                    if (val == j)
+                        continue;
+                    else {
+                        if (green_current[j] == 1) {
+                            boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            nogittion1 = true;
+                            break;
+                        }
+                    }
+                }
+                if (nogittion1 == false) {
+                    boxes[1].style = "background-color:transparent;";
+                }
+            }
+
+            else {
+
+                boxes[green_current[val] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+
+                if (blockrun) {
+                    var colorturn = false;
+                    for (var t = 0; t <= 3; t++) {
+                        if (green_current[val] == blue_current[t]) {
+                            boxes[green_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+                        else if (green_current[val] == yellow_current[t]) {
+                            boxes[green_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+
+                        else if (green_current[val] == red_current[t]) {
+                            boxes[green_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+
+                        if (val == t)
+                            continue;
+
+                        else if (green_current[val] == green_current[t]) {
+                            boxes[green_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+                    }
+                    if (colorturn == false) {
+                        if (green_current[val] == 41) {
+                            boxes[green_current[val]].style = "background-color:yellow;";
+
+                        }
+
+
+                        else if (green_current[val] == 2) {
+                            boxes[green_current[val]].style = "background-color:blue;";
+                        }
+
+                        else if (green_current[val] == 28) {
+                            boxes[green_current[val]].style = "background-color:green;";
+
+                        }
+
+                        else if (green_current[val] == 15) {
+                            boxes[green_current[val]].style = "background-color:red;";
+
+                        }
+
+                        else
+                            boxes[green_current[val]].style = "background-color:transparent;";
+                    }
+                }
+            }
+
+            green_current[val]--;
+
+            if (green_current[val] == 0)
+                green_current[val] = 52;
+
+            blockrun = true;
+            return blockrun;
+        }
+
+    }, 120);
+}
+
+
+function red_cut(val, blockrun) {
+    console.log("over");
+    var cutInterval = setInterval(() => {
+        if (red_current[val] == 15) {
+        var gittionredSt = false;
+            for (var u = 0; u <= 3; u++) {
+
+                if (blue_current[u] == 15) {
+                    boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                    gittionredSt = true;
+                    break;
+                }
+
+                else if (green_current[u] == 15) {
+                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                    gittionredSt = true;
+                    break;
+                }
+
+                else if (yellow_current[u] == 15) {
+                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                    gittionredSt = true;
+                    break;
+                }
+
+                if (val == u)
+                    continue;
+
+                else {
+                    if (red_current[u] == 15) {
+                        boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        gittionredSt = true;
+                        break;
+                    }
+                }
+            }
+
+            if (gittionredSt == false) {
+                boxes[15].style = "background-color:red;";
+            }
+
+            red_circle[val].style = "background-color:red;";
+            reds[val] = true;
+            red_current[val] = undefined;
+            clearInterval(cutInterval);
+        }
+
+        else {
+
+            if (red_current[val] == 1) {
+                var nogittion1 = false;
+                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                for (var j = 0; j <= 3; j++) {
+                    if (green_current[j] == 1) {
+                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        nogittion1 = true;
+                        break;
+                    }
+
+                    else if (yellow_current[j] == 1) {
+                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        nogittion1 = true;
+                        break;
+                    }
+
+                    if (val == j)
+                        continue;
+                    else {
+                        if (red_current[j] == 1) {
+                            boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            nogittion1 = true;
+                            break;
+                        }
+                    }
+                }
+                if (nogittion1 == false) {
+                    boxes[1].style = "background-color:transparent;";
+                }
+            }
+
+            else {
+
+                boxes[red_current[val] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+
+                if (blockrun) {
+                    var colorturn = false;
+                    for (var t = 0; t <= 3; t++) {
+                        if (red_current[val] == blue_current[t]) {
+                            boxes[red_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+                        else if (red_current[val] == yellow_current[t]) {
+                            boxes[red_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+
+                        else if (red_current[val] == green_current[t]) {
+                            boxes[red_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+
+                        if (val == t)
+                            continue;
+
+                        else if (red_current[val] == red_current[t]) {
+                            boxes[red_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            colorturn = true;
+                            break;
+                        }
+
+                    }
+                    if (colorturn == false) {
+                        if (red_current[val] == 41) {
+                            boxes[red_current[val]].style = "background-color:yellow;";
+
+                        }
+
+
+                        else if (red_current[val] == 2) {
+                            boxes[red_current[val]].style = "background-color:blue;";
+                        }
+
+                        else if (red_current[val] == 28) {
+                            boxes[red_current[val]].style = "background-color:green;";
+
+                        }
+
+                        else if (red_current[val] == 15) {
+                            boxes[red_current[val]].style = "background-color:red;";
+
+                        }
+
+                        else
+                            boxes[red_current[val]].style = "background-color:transparent;";
+                    }
+                }
+            }
+
+            red_current[val]--;
+
+            if (red_current[val] == 0)
+                red_current[val] = 52;
+
+            blockrun = true;
+            return blockrun;
+        }
+
+    }, 120);
 }
