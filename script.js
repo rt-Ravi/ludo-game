@@ -842,6 +842,14 @@ function red_area(reed) {
                             red_win[git] = true;
                             reds[git] = true;
                             red_in[git] = false;
+                            if(red_win[0] && red_win[1] && red_win[2] && red_win[3])
+                            {
+                                alert("red win");
+                                red_turn = false;
+                                blue_turn = false;
+                                yellow_turn = false;
+                                green_turn = false;
+                            }
                         }
                         else {
                             var gittiOnback = false;
@@ -1063,7 +1071,7 @@ function red_area(reed) {
 
                     setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    }, 100);
+                    }, 150);
 
                 }, 300);
                 mon = false;
@@ -1108,7 +1116,7 @@ function blue_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                
+
                 btn.textContent = num;
 
                 if (num == 6) {
@@ -1797,6 +1805,15 @@ function blue_area() {
                             blue_win[git] = true;
                             blues[git] = true;
                             blue_in[git] = false;
+
+                            if(blue_win[0] && blue_win[1] && blue_win[2] && blue_win[3])
+                            {
+                                alert("blue win");
+                                red_turn = false;
+                                blue_turn = false;
+                                yellow_turn = false;
+                                green_turn = false;
+                            }
                         }
                         else {
                             var gittiOnback = false;
@@ -1946,7 +1963,7 @@ function blue_area() {
 
                     setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    }, 100);
+                    }, 150);
 
                 }, 300);
                 mon = false;
@@ -1982,7 +1999,7 @@ function yellow_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                
+
                 btn.textContent = num;
 
                 if (num == 6) {
@@ -2630,6 +2647,15 @@ function yellow_area() {
                             yellow_win[git] = true;
                             yellows[git] = true;
                             yellow_in[git] = false;
+
+                            if(yellow_win[0] && yellow_win[1] && yellow_win[2] && yellow_win[3])
+                            {
+                                alert("yellow win");
+                                red_turn = false;
+                                blue_turn = false;
+                                yellow_turn = false;
+                                green_turn = false;
+                            }
                         }
                         else {
                             var gittiOnback = false;
@@ -2851,7 +2877,7 @@ function yellow_area() {
 
                     setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    }, 100);
+                    }, 150);
 
                 }, 300);
                 mon = false;
@@ -2874,7 +2900,7 @@ function green_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-    
+
                 btn.textContent = num;
 
                 if (num == 6) {
@@ -3521,6 +3547,15 @@ function green_area() {
                             green_win[git] = true;
                             greens[git] = true;
                             green_in[git] = false;
+
+                            if(green_win[0] && green_win[1] && green_win[2] && green_win[3])
+                            {
+                                alert("green win");
+                                red_turn = false;
+                                blue_turn = false;
+                                yellow_turn = false;
+                                green_turn = false;
+                            }
                         }
                         else {
                             var gittiOnback = false;
@@ -3743,7 +3778,7 @@ function green_area() {
 
                     setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    }, 100);
+                    }, 150);
 
                 }, 300);
                 mon = false;
@@ -4652,6 +4687,7 @@ function mutlicolor(main_current, first_col, second_col, third_col, git, col) {
 
     }
 }
+
 
 // sound section
 
