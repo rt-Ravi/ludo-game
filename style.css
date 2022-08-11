@@ -371,3 +371,19 @@ div.win-box div.top-tri{
   }
 
 
+  /* div.try-new-css{
+    width: 300px;
+    height: 200px;
+    box-sizing: border-box;
+    padding: 40px 0 0 130px;
+    background: linear-gradient(180deg, red 50%, rgb(34, 32, 31) 0%);
+    border: 1px solid black;
+
+
+    background: linear-gradient(180deg, red 25%, rgb(237, 84, 7,0) 0%), linear-gradient(180deg, yellow 50%, rgb(62, 152, 62,0) 0%),linear-gradient(180deg, blue 75%, rgba(57, 237, 7) 50%);
+
+      background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);
+
+    font-size: 60px;
+  } */
+

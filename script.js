@@ -1,17 +1,22 @@
-const red_btn = document.getElementById("red-btn");
-const blue_btn = document.getElementById("blue-btn");
-const yellow_btn = document.getElementById("yellow-btn");
-const green_btn = document.getElementById("green-btn");
+let red_btn;
+let blue_btn;
+let yellow_btn;
+let green_btn;
 const boxes = [];
 const red_circle = [];
 const blue_circle = [];
 const yellow_circle = [];
 const green_circle = [];
 
-const red_player = new red_area("bro");
-const blue_player = new blue_area("bro");
-const yellow_player = new yellow_area("bro");
-const green_player = new green_area("bro");
+let red_player;
+let blue_player;
+let yellow_player;
+let green_player;
+
+let dice;
+let gitti_run_s;
+let gitti_cut_s;
+let gitti_pass_s;
 
 const reds = [true, true, true, true];
 const blues = [true, true, true, true];
@@ -23,10 +28,10 @@ const blue_start = 2;
 const yellow_start = 41;
 const green_start = 28;
 
-const red_boxes = [document.getElementById("15"),];
-const blue_boxes = [document.getElementById("2"),];
-const yellow_boxes = [document.getElementById("41"),];
-const green_boxes = [document.getElementById("28"),];
+let red_boxes;
+let blue_boxes;
+let yellow_boxes;
+let green_boxes;
 
 var count = 0;
 
@@ -34,16 +39,6 @@ var intervali;
 
 var mon = false;
 
-for (let i = 1; i <= 5; i++) {
-    let va = "r" + i;
-    red_boxes[i] = document.getElementById(va);
-    va = "b" + i;
-    blue_boxes[i] = document.getElementById(va);
-    va = "y" + i;
-    yellow_boxes[i] = document.getElementById(va);
-    va = "g" + i;
-    green_boxes[i] = document.getElementById(va);
-}
 
 var num = 0;
 var red_current = new Array(3);
@@ -51,21 +46,21 @@ var blue_current = new Array(3);
 var yellow_current = new Array(3);
 var green_current = new Array(3);
 
-var red_inside = [];
-var red_in = [false, false, false, false];
-var red_win = [false, false, false, false];
+const red_inside = [];
+const red_in = [false, false, false, false];
+const red_win = [false, false, false, false];
 
-var blue_inside = [];
-var blue_in = [false, false, false, false];
-var blue_win = [false, false, false, false];
+const blue_inside = [];
+const blue_in = [false, false, false, false];
+const blue_win = [false, false, false, false];
 
-var yellow_inside = [];
-var yellow_in = [false, false, false, false];
+const yellow_inside = [];
+const yellow_in = [false, false, false, false];
 var yellow_win = [false, false, false, false];
 
-var green_inside = [];
-var green_in = [false, false, false, false];
-var green_win = [false, false, false, false];
+const green_inside = [];
+const green_in = [false, false, false, false];
+const green_win = [false, false, false, false];
 
 
 // red animation
@@ -89,37 +84,73 @@ var yellow_btn_animation = "background-color:yellow; box-shadow: 2px 4px 2px 5px
 var yellow_btn_without_ani = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
 
 
-
-for (let i = 0; i <= 3; i++) {
-    let valid;
-    valid = "red-gitti" + i;
-    red_circle[i] = document.getElementById(valid);
-
-    valid = "blue-gitti" + i;
-    blue_circle[i] = document.getElementById(valid);
-
-    valid = "yellow-gitti" + i;
-    yellow_circle[i] = document.getElementById(valid);
-
-    valid = "green-gitti" + i;
-    green_circle[i] = document.getElementById(valid);
-}
-
-for (let i = 1; i <= 52; i++) {
-    boxes[i] = document.getElementById(i);
-}
-
-
 var red_turn = true, blue_turn = true, yellow_turn = false, green_turn = false;
 
-if (blue_turn) {
-    blue_btn.style = blue_animation;
+
+function load() {
+
+    red_btn = document.getElementById("red-btn");
+    blue_btn = document.getElementById("blue-btn");
+    yellow_btn = document.getElementById("yellow-btn");
+    green_btn = document.getElementById("green-btn");
+
+    red_player = new red_area("bro");
+    blue_player = new blue_area("bro");
+    yellow_player = new yellow_area("bro");
+    green_player = new green_area("bro");
+
+    dice = new dice_click();
+    gitti_run_s = new gitti_run_sound();
+    gitti_cut_s = new gitti_cut_sound();
+    gitti_pass_s = new gitti_pass_sound();
+
+   
+    red_boxes = [document.getElementById("15"),];
+    blue_boxes = [document.getElementById("2"),];
+    yellow_boxes = [document.getElementById("41"),];
+    green_boxes = [document.getElementById("28"),];
+
+    for (let i = 1; i <= 5; i++) {
+        let va = "r" + i;
+        red_boxes[i] = document.getElementById(va);
+        va = "b" + i;
+        blue_boxes[i] = document.getElementById(va);
+        va = "y" + i;
+        yellow_boxes[i] = document.getElementById(va);
+        va = "g" + i;
+        green_boxes[i] = document.getElementById(va);
+    }
+
+    for (let i = 0; i <= 3; i++) {
+        let valid;
+        valid = "red-gitti" + i;
+        red_circle[i] = document.getElementById(valid);
+
+        valid = "blue-gitti" + i;
+        blue_circle[i] = document.getElementById(valid);
+
+        valid = "yellow-gitti" + i;
+        yellow_circle[i] = document.getElementById(valid);
+
+        valid = "green-gitti" + i;
+        green_circle[i] = document.getElementById(valid);
+    }
+
+    for (let i = 1; i <= 52; i++) {
+        boxes[i] = document.getElementById(i);
+    }
+
+    if (blue_turn) {
+        blue_btn.style = blue_animation;
+    }
 }
 
 function red() {
 
     // if (red_turn)
     red_player.red_rotate(red_btn);
+    dice.diceplay();
+    // dice.dicestop();
 
 
 }
@@ -128,6 +159,7 @@ function blue() {
 
     // if (blue_turn)
     blue_player.blue_rotate(blue_btn);
+    dice.diceplay();
 
 
 }
@@ -136,6 +168,7 @@ function yellow() {
 
     // if (yellow_turn)
     yellow_player.yellow_rotate(yellow_btn);
+    dice.diceplay();
 
 
 }
@@ -143,7 +176,8 @@ function yellow() {
 function green() {
 
     // if (green_turn)
-        green_player.green_rotate(green_btn);
+    green_player.green_rotate(green_btn);
+    dice.diceplay();
 
 
 }
@@ -749,6 +783,7 @@ function red_area(reed) {
             if (mon) {
                 console.log("bro i ran");
                 intervali = setInterval(() => {
+                    gitti_run_s.gittirunplay();
                     if (!red_in[git])
                         red_current[git] += 1;
 
@@ -760,6 +795,8 @@ function red_area(reed) {
                         runcount++;
                         red_inside[git]++;
                         if (red_inside[git] >= 6) {
+
+                            gitti_pass_s.gittipassplay();
 
                             for (let k = 0; k <= 3; k++) {
                                 if (!reds[k] && !red_win[k] && !red_in[k]) {
@@ -938,24 +975,6 @@ function red_area(reed) {
                                 break;
                             }
 
-                            if ((red_current[git] - 1) == blue_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((red_current[git] - 1) == yellow_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((red_current[git] - 1) == green_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
                             else if (git == x)
                                 continue;
 
@@ -1003,24 +1022,30 @@ function red_area(reed) {
                                 var blockrun = false;
 
                                 if (red_current[git] == blue_current[x]) {
+                                    gitti_cut_s.gitticutplay();
                                     blockrun = blue_cut(x, blockrun);
                                     break;
                                 }
 
                                 else if (red_current[git] == yellow_current[x]) {
+                                    gitti_cut_s.gitticutplay();
                                     blockrun = yellow_cut(x, blockrun);
                                     break;
 
                                 }
 
                                 else if (red_current[git] == green_current[x]) {
-
+                                    gitti_cut_s.gitticutplay();
                                     blockrun = green_cut(x, blockrun);
                                     break;
 
                                 }
 
                             }
+                        }
+
+                        else if ((red_in[git] == false) && (red_current[git] == 15 || red_current[git] == 28 || red_current[git] == 41 || red_current[git] == 2)) {
+                            mutlicolor(red_current, blue_current, yellow_current, green_current, git, "red");
                         }
 
                         if (num != 6) {
@@ -1032,6 +1057,11 @@ function red_area(reed) {
                         clearInterval(intervali);
                         console.log("stoped");
                     }
+
+                    setTimeout(()=>{
+                        gitti_run_s.gittirunstop();
+                    },100);
+
                 }, 300);
                 mon = false;
             }
@@ -1671,6 +1701,7 @@ function blue_area() {
             if (mon) {
                 console.log("blue i ran");
                 intervali = setInterval(() => {
+                    gitti_run_s.gittirunplay();
                     if (!blue_in[git])
                         blue_current[git] += 1;
 
@@ -1718,6 +1749,9 @@ function blue_area() {
                     if (blue_in[git]) {
                         blue_inside[git]++;
                         if (blue_inside[git] >= 6) {
+
+                            gitti_pass_s.gittipassplay();
+
                             for (let k = 0; k <= 3; k++) {
                                 if (!blues[k] && !blue_win[k] && !blue_in[k]) {
                                     // console.log(blue_current[k]);
@@ -1868,23 +1902,23 @@ function blue_area() {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
                                 if (blue_current[git] == red_current[x]) {
-
-                                    blockrun = red_cut(x,blockrun);
+                                    gitti_cut_s.gitticutplay();
+                                    blockrun = red_cut(x, blockrun);
                                     break;
 
                                 }
 
 
                                 else if (blue_current[git] == yellow_current[x]) {
-
-                                    blockrun = yellow_cut(x,blockrun);
+                                    gitti_cut_s.gitticutplay();
+                                    blockrun = yellow_cut(x, blockrun);
                                     break;
                                 }
 
 
                                 else if (blue_current[git] == green_current[x]) {
-                                    
-                                    blockrun = green_cut(x,blockrun);
+                                    gitti_cut_s.gitticutplay();
+                                    blockrun = green_cut(x, blockrun);
                                     break;
 
                                 }
@@ -1892,6 +1926,10 @@ function blue_area() {
 
 
                             }
+                        }
+
+                        else if ((blue_in[git] == false) && (blue_current[git] == 15 || blue_current[git] == 28 || blue_current[git] == 41 || blue_current[git] == 2)) {
+                            mutlicolor(blue_current, red_current, yellow_current, green_current, git, "blue");
                         }
 
                         if (num != 6) {
@@ -1903,6 +1941,11 @@ function blue_area() {
                         clearInterval(intervali);
                         console.log("stoped");
                     }
+
+                    setTimeout(()=>{
+                        gitti_run_s.gittirunstop();
+                    },100);
+
                 }, 300);
                 mon = false;
             }
@@ -2531,6 +2574,7 @@ function yellow_area() {
             if (mon) {
                 console.log("bro i ran");
                 intervali = setInterval(() => {
+                    gitti_run_s.gittirunplay();
                     if (!yellow_in[git])
                         yellow_current[git] += 1;
 
@@ -2541,6 +2585,9 @@ function yellow_area() {
                     if (yellow_in[git]) {
                         yellow_inside[git]++;
                         if (yellow_inside[git] >= 6) {
+
+                            gitti_pass_s.gittipassplay();
+
                             for (let k = 0; k <= 3; k++) {
                                 if (!yellows[k] && !yellow_win[k] && !yellow_in[k]) {
                                     // console.log(yellow_current[k]);
@@ -2763,14 +2810,14 @@ function yellow_area() {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
                                 if (yellow_current[git] == blue_current[x]) {
-
+                                    gitti_cut_s.gitticutplay();
                                     blockrun = blue_cut(x, blockrun);
                                     break;
 
                                 }
 
                                 else if (yellow_current[git] == red_current[x]) {
-
+                                    gitti_cut_s.gitticutplay();
                                     blockrun = red_cut(x, blockrun);
                                     break;
 
@@ -2778,13 +2825,17 @@ function yellow_area() {
 
 
                                 else if (yellow_current[git] == green_current[x]) {
-                            
+                                    gitti_cut_s.gitticutplay();
                                     blockrun = green_cut(x, blockrun);
                                     break;
 
                                 }
 
                             }
+                        }
+
+                        else if ((yellow_in[git] == false) && (yellow_current[git] == 15 || yellow_current[git] == 28 || yellow_current[git] == 41 || yellow_current[git] == 2)) {
+                            mutlicolor(yellow_current, red_current, blue_current, green_current, git, "yellow");
                         }
 
                         if (num != 6) {
@@ -2796,6 +2847,11 @@ function yellow_area() {
                         clearInterval(intervali);
                         console.log("stoped");
                     }
+
+                    setTimeout(()=>{
+                        gitti_run_s.gittirunstop();
+                    },100);
+
                 }, 300);
                 mon = false;
             }
@@ -3410,6 +3466,7 @@ function green_area() {
             if (mon) {
                 console.log("bro i ran");
                 intervali = setInterval(() => {
+                    gitti_run_s.gittirunplay();
                     if (!green_in[git])
                         green_current[git] += 1;
 
@@ -3420,6 +3477,9 @@ function green_area() {
                     if (green_in[git]) {
                         green_inside[git]++;
                         if (green_inside[git] >= 6) {
+
+                            gitti_pass_s.gittipassplay();
+
                             for (let k = 0; k <= 3; k++) {
                                 if (!greens[k] && !green_win[k] && !green_in[k]) {
                                     // console.log(green_current[k]);
@@ -3642,15 +3702,15 @@ function green_area() {
                                 var blockrun = false;
 
                                 if (green_current[git] == blue_current[x]) {
-                                   
-                                    blockrun = blue_cut(x,blockrun);
+                                    gitti_cut_s.gitticutplay();
+                                    blockrun = blue_cut(x, blockrun);
                                     break;
 
                                 }
 
                                 else if (green_current[git] == yellow_current[x]) {
-                                    
-                                    blockrun = yellow_cut(x,blockrun);
+                                    gitti_cut_s.gitticutplay();
+                                    blockrun = yellow_cut(x, blockrun);
                                     break;
 
                                 }
@@ -3658,13 +3718,17 @@ function green_area() {
 
 
                                 else if (green_current[git] == red_current[x]) {
-
-                                    blockrun = red_cut(x,blockrun);
+                                    gitti_cut_s.gitticutplay();
+                                    blockrun = red_cut(x, blockrun);
                                     break;
 
                                 }
 
                             }
+                        }
+
+                        else if ((green_in[git] == false) && (green_current[git] == 15 || green_current[git] == 28 || green_current[git] == 41 || green_current[git] == 2)) {
+                            mutlicolor(green_current, red_current, yellow_current, blue_current, git, "green");
                         }
 
                         if (num != 6) {
@@ -3676,6 +3740,11 @@ function green_area() {
                         clearInterval(intervali);
                         console.log("stoped");
                     }
+
+                    setTimeout(()=>{
+                        gitti_run_s.gittirunstop();
+                    },100);
+
                 }, 300);
                 mon = false;
             }
@@ -3783,7 +3852,7 @@ function blue_cut(val, blockrun) {
             return blockrun;
         }
 
-    }, 120);
+    }, 200);
 }
 
 
@@ -3937,7 +4006,7 @@ function yellow_cut(val, blockrun) {
             return blockrun;
         }
 
-    }, 120);
+    }, 200);
 
 }
 
@@ -4092,7 +4161,7 @@ function green_cut(val, blockrun) {
             return blockrun;
         }
 
-    }, 120);
+    }, 200);
 }
 
 
@@ -4100,7 +4169,7 @@ function red_cut(val, blockrun) {
     console.log("over");
     var cutInterval = setInterval(() => {
         if (red_current[val] == 15) {
-        var gittionredSt = false;
+            var gittionredSt = false;
             for (var u = 0; u <= 3; u++) {
 
                 if (blue_current[u] == 15) {
@@ -4246,5 +4315,418 @@ function red_cut(val, blockrun) {
             return blockrun;
         }
 
-    }, 120);
+    }, 200);
+}
+
+
+
+// multi color on boxes
+
+function mutlicolor(main_current, first_col, second_col, third_col, git, col) {
+    var runchut = false;
+
+    for (let x = 0; x <= 3; x++) {
+
+        if (runchut == false) {
+            for (let k = 0; k <= 3; k++) {
+                if (main_current[git] == first_col[k]) {
+                    for (let j = 0; j <= 3; j++) {
+                        if (first_col[k] == second_col[j]) {
+                            for (let r = 0; r <= 3; r++) {
+                                if (second_col[k] == third_col[j]) {
+                                    boxes[main_current[git]].style = "background: linear-gradient(180deg, red 25%, rgb(237, 84, 7,0) 0%), linear-gradient(180deg, yellow 50%, rgb(62, 152, 62,0) 0%),linear-gradient(180deg, blue 75%, rgba(57, 237, 7) 50%);";
+                                    runchut = true;
+                                    break;
+
+                                }
+                            }
+                            break;
+
+                        }
+                    }
+                    break;
+
+                }
+            }
+        }
+
+
+        if (runchut == false) {
+            if (main_current == red_current) {
+                var overgitti = false;
+                for (let k = 0; k <= 3; k++) {
+                    if (red_current[git] == green_current[k]) {
+                        for (let j = 0; j <= 3; j++) {
+                            if (red_current[git] == yellow_current[j]) {
+                                boxes[red_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
+                                overgitti = true;
+                                runchut = true;
+                                break;
+
+                            }
+                        }
+                        break;
+
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (red_current[git] == blue_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (red_current[git] == yellow_current[j]) {
+                                    boxes[red_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, blue 66%);";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+
+                                }
+                            }
+                            break;
+
+                        }
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (red_current[git] == green_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (red_current[git] == blue_current[j]) {
+                                    boxes[red_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (runchut == false) {
+            if (main_current == green_current) {
+                var overgitti = false;
+                for (let k = 0; k <= 3; k++) {
+                    if (green_current[git] == yellow_current[k]) {
+                        for (let j = 0; j <= 3; j++) {
+                            if (green_current[git] == blue_current[j]) {
+                                boxes[green_current[git]].style = "background: linear-gradient(180deg, blue 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
+                                overgitti = true;
+                                runchut = true;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (green_current[git] == red_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (green_current[git] == blue_current[j]) {
+                                    boxes[green_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (green_current[git] == red_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (green_current[git] == yellow_current[j]) {
+                                    boxes[green_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (runchut == false) {
+            if (main_current == blue_current) {
+                var overgitti = false;
+                for (let k = 0; k <= 3; k++) {
+                    if (blue_current[git] == yellow_current[k]) {
+                        for (let j = 0; j <= 3; j++) {
+                            if (blue_current[git] == green_current[j]) {
+                                boxes[blue_current[git]].style = "background: linear-gradient(180deg, blue 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
+                                overgitti = true;
+                                runchut = true;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (blue_current[git] == red_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (blue_current[git] == green_current[j]) {
+                                    boxes[blue_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (blue_current[git] == red_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (blue_current[git] == yellow_current[j]) {
+                                    boxes[blue_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, blue 66%);";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (runchut == false) {
+            if (main_current == yellow_current) {
+                var overgitti = false;
+                for (let k = 0; k <= 3; k++) {
+                    if (yellow_current[git] == red_current[k]) {
+                        for (let j = 0; j <= 3; j++) {
+                            if (yellow_current[git] == green_current[j]) {
+                                boxes[yellow_current[git]].style = "background: linear-gradient(180deg, yellow 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, red 66%, rgb(62, 152, 62) 66%);";
+                                overgitti = true;
+                                runchut = true;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (yellow_current[git] == red_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (yellow_current[git] == blue_current[j]) {
+                                    boxes[yellow_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, yellow 66%;";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                if (overgitti == false) {
+                    for (let k = 0; k <= 3; k++) {
+                        if (yellow_current[git] == blue_current[k]) {
+                            for (let j = 0; j <= 3; j++) {
+                                if (yellow_current[git] == green_current[j]) {
+                                    boxes[yellow_current[git]].style = "background: linear-gradient(180deg, yellow 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
+                                    overgitti = true;
+                                    runchut = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (main_current == blue_current) {
+            if (main_current[git] == red_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, blue 50%, red 0%);";
+                console.log("double color");
+
+                break;
+            }
+            else if (main_current[git] == yellow_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, blue 50%, yellow 0%);";
+                console.log("double color");
+
+                break;
+            }
+
+            else if (main_current[git] == green_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, blue 50%, green 0%);";
+                console.log("double color");
+
+                break;
+            }
+        }
+
+        else if (main_current == red_current) {
+            if (main_current[git] == blue_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, red 50%, blue 0%);";
+                console.log("double color");
+
+                break;
+            }
+            else if (main_current[git] == yellow_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, red 50%, yellow 0%);";
+                console.log("double color");
+
+                break;
+            }
+
+            else if (main_current[git] == green_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, red 50%, green 0%);";
+                console.log("double color");
+
+                break;
+            }
+        }
+
+        else if (main_current == yellow_current) {
+            if (main_current[git] == red_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + "50%, red 0%);";
+                console.log("double color");
+
+                break;
+            }
+            else if (main_current[git] == blue_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, blue 0%);";
+                console.log("double color");
+
+                break;
+            }
+
+            else if (main_current[git] == green_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, green 0%);";
+                console.log("double color");
+
+                break;
+            }
+        }
+
+
+        else if (main_current == green_current) {
+            if (main_current[git] == red_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + "50%, red 0%);";
+                console.log("double color");
+
+                break;
+            }
+            else if (main_current[git] == blue_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, blue 0%);";
+                console.log("double color");
+
+                break;
+            }
+
+            else if (main_current[git] == yellow_current[x]) {
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, yellow 0%);";
+                console.log("double color");
+
+                break;
+            }
+        }
+
+
+    }
+}
+
+// sound section
+
+function dice_click() {
+
+    this.backSound = document.createElement("audio");
+    this.backSound.src = "./sounds_effects/dice_click.mp3";
+    this.backSound.setAttribute("controls", "none");
+    this.backSound.setAttribute("preload", "auto");
+    this.backSound.style = "display:none;";
+
+    document.body.appendChild(this.backSound);
+
+    this.diceplay = function () {
+        this.backSound.play();
+    }
+
+    this.dicestop = function () {
+        this.backSound.pause();
+    }
+}
+
+function gitti_run_sound() {
+
+    this.backSound = document.createElement("audio");
+    this.backSound.src = "./sounds_effects/gitti_run.mp3";
+    this.backSound.setAttribute("controls", "none");
+    this.backSound.setAttribute("preload", "auto");
+    this.backSound.style = "display:none;";
+
+    document.body.appendChild(this.backSound);
+
+    this.gittirunplay = function () {
+        this.backSound.play();
+    }
+
+    this.gittirunstop = function () {
+        this.backSound.load();
+    }
+}
+
+function gitti_cut_sound() {
+
+    this.backSound = document.createElement("audio");
+    this.backSound.src = "./sounds_effects/gitt_cut.mp3";
+    this.backSound.setAttribute("controls", "none");
+    this.backSound.setAttribute("preload", "auto");
+    this.backSound.style = "display:none;";
+
+    document.body.appendChild(this.backSound);
+
+    this.gitticutplay = function () {
+        this.backSound.play();
+    }
+
+    this.gitticutstop = function () {
+        this.backSound.load();
+    }
+}
+
+function gitti_pass_sound() {
+
+    this.backSound = document.createElement("audio");
+    this.backSound.src = "./sounds_effects/gitti_pass.mp3";
+    this.backSound.setAttribute("controls", "none");
+    this.backSound.setAttribute("preload", "auto");
+    this.backSound.style = "display:none;";
+
+    document.body.appendChild(this.backSound);
+
+    this.gittipassplay = function () {
+        this.backSound.play();
+    }
+
+    this.gittipassstop = function () {
+        this.backSound.load();
+    }
 }
