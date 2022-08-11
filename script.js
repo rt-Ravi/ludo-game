@@ -65,23 +65,23 @@ const green_win = [false, false, false, false];
 
 // red animation
 var red_animation = "animation: red-animation 1s ease 0s infinite reverse;";
-var red_btn_animation = "background-color:red; box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: red-animation 1s ease 0s infinite reverse;";
-var red_btn_without_ani = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+var red_btn_animation = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: red-animation 1s ease 0s infinite reverse;";
+var red_btn_without_ani = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
 
 // green animation
 var green_animation = "animation: green-animation 1s ease 0s infinite reverse;";
-var green_btn_animation = "background-color:green; box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: green-animation 1s ease 0s infinite reverse;";
-var green_btn_without_ani = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+var green_btn_animation = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: green-animation 1s ease 0s infinite reverse;";
+var green_btn_without_ani = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
 
 // blue animation
 var blue_animation = "animation: blue-animation 1s ease 0s infinite reverse;";
-var blue_btn_animation = "background-color:blue; box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: blue-animation 1s ease 0s infinite reverse;";
-var blue_btn_without_ani = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+var blue_btn_animation = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: blue-animation 1s ease 0s infinite reverse;";
+var blue_btn_without_ani = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
 
 // yellow animation
 var yellow_animation = "animation: yellow-animation 1s ease 0s infinite reverse;";
-var yellow_btn_animation = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: yellow-animation 1s ease 0s infinite reverse;";
-var yellow_btn_without_ani = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+var yellow_btn_animation = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: yellow-animation 1s ease 0s infinite reverse;";
+var yellow_btn_without_ani = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
 
 
 var red_turn = true, blue_turn = true, yellow_turn = false, green_turn = false;
@@ -104,7 +104,7 @@ function load() {
     gitti_cut_s = new gitti_cut_sound();
     gitti_pass_s = new gitti_pass_sound();
 
-   
+
     red_boxes = [document.getElementById("15"),];
     blue_boxes = [document.getElementById("2"),];
     yellow_boxes = [document.getElementById("41"),];
@@ -147,9 +147,10 @@ function load() {
 
 function red() {
 
-    // if (red_turn)
-    red_player.red_rotate(red_btn);
-    dice.diceplay();
+    if (red_turn) {
+        red_player.red_rotate(red_btn);
+        dice.diceplay();
+    }
     // dice.dicestop();
 
 
@@ -157,27 +158,30 @@ function red() {
 
 function blue() {
 
-    // if (blue_turn)
-    blue_player.blue_rotate(blue_btn);
-    dice.diceplay();
+    if (blue_turn) {
+        blue_player.blue_rotate(blue_btn);
+        dice.diceplay();
+    }
 
 
 }
 
 function yellow() {
 
-    // if (yellow_turn)
-    yellow_player.yellow_rotate(yellow_btn);
-    dice.diceplay();
+    if (yellow_turn) {
+        yellow_player.yellow_rotate(yellow_btn);
+        dice.diceplay();
+    }
 
 
 }
 
 function green() {
 
-    // if (green_turn)
-    green_player.green_rotate(green_btn);
-    dice.diceplay();
+    if (green_turn) {
+        green_player.green_rotate(green_btn);
+        dice.diceplay();
+    }
 
 
 }
@@ -195,8 +199,7 @@ function red_area(reed) {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                if (num == 3)
-                    num = 6;
+
                 btn.textContent = num;
 
                 if (num == 6) {
@@ -421,7 +424,7 @@ function red_area(reed) {
                         red_circle[1].addEventListener("click", () => {
                             if (click == 0 && !run && !red_win[1] && num == 6) {
                                 red_circle[1].style = "background-color:transparent;";
-                                boxes[red_start].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 reds[1] = false;
                                 click++;
                                 run = true;
@@ -435,7 +438,7 @@ function red_area(reed) {
                         red_circle[2].addEventListener("click", () => {
                             if (click == 0 && !run && !red_win[2] && num == 6) {
                                 red_circle[2].style = "background-color:transparent;";
-                                boxes[red_start].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 reds[2] = false;
                                 num = 0;
                                 click++;
@@ -450,7 +453,7 @@ function red_area(reed) {
                         red_circle[3].addEventListener("click", () => {
                             if (click == 0 && !run && !red_win[3] && num == 6) {
                                 red_circle[3].style = "background-color:transparent;";
-                                boxes[red_start].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 reds[3] = false;
                                 num = 0;
                                 click++;
@@ -626,7 +629,7 @@ function red_area(reed) {
                     red_circle[1].addEventListener("click", () => {
                         if (click == 0 && !run && !red_win[1] && num == 6) {
                             red_circle[1].style = "background-color:transparent;";
-                            boxes[red_start].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                             reds[1] = false;
                             click++;
                             run = true;
@@ -637,7 +640,7 @@ function red_area(reed) {
                     red_circle[2].addEventListener("click", () => {
                         if (click == 0 && !run && !red_win[2] && num == 6) {
                             red_circle[2].style = "background-color:transparent;";
-                            boxes[red_start].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                             reds[2] = false;
                             num = 0;
                             click++;
@@ -649,7 +652,7 @@ function red_area(reed) {
                     red_circle[3].addEventListener("click", () => {
                         if (click == 0 && !run && !red_win[3] && num == 6) {
                             red_circle[3].style = "background-color:transparent;";
-                            boxes[red_start].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                             reds[3] = false;
                             num = 0;
                             click++;
@@ -768,7 +771,7 @@ function red_area(reed) {
     this.red_out = function () {
         reds[0] = false;
         red_circle[0].style = "background-color:transparent;";
-        boxes[red_start].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+        boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
         red_current[0] = red_start;
     }
 
@@ -823,7 +826,7 @@ function red_area(reed) {
 
                                     else {
                                         if ((red_inside[git] - 1) == red_inside[r]) {
-                                            red_boxes[red_inside[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                            red_boxes[red_inside[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                             gittiOn5 = true;
                                             break;
                                         }
@@ -832,7 +835,7 @@ function red_area(reed) {
                                 }
 
                                 if (gittiOn5 == false) {
-                                    red_boxes[red_inside[git] - 1].style = "background-color:red;";
+                                    red_boxes[red_inside[git] - 1].style = "background-color:rgb(247, 40, 40);";
                                 }
                             }
 
@@ -847,16 +850,16 @@ function red_area(reed) {
                                     continue;
                                 else {
                                     if ((red_inside[git] - 1) == red_inside[x]) {
-                                        red_boxes[red_inside[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                        red_boxes[red_inside[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                         gittiOnback = true;
                                         break;
                                     }
                                 }
                             }
                             if (gittiOnback == false)
-                                red_boxes[red_inside[git] - 1].style = "background-color:red;";
+                                red_boxes[red_inside[git] - 1].style = "background-color:rgb(247, 40, 40);";
 
-                            red_boxes[red_inside[git]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            red_boxes[red_inside[git]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
 
                             if (runcount < 2) {
                                 for (let p = 0; p <= 3; p++) {
@@ -879,19 +882,19 @@ function red_area(reed) {
                         for (let x = 0; x <= 3; x++) {
 
                             if (blue_current[x] == 52) {
-                                boxes[52].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
 
                             else if (green_current[x] == 52) {
-                                boxes[52].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
 
                             else if (yellow_current[x] == 52) {
-                                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
@@ -900,7 +903,7 @@ function red_area(reed) {
                                 continue;
                             else {
                                 if (red_current[x] == 52) {
-                                    boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[52].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOn52 = true;
                                     break;
                                 }
@@ -909,7 +912,7 @@ function red_area(reed) {
                         if (gittiOn52 == false)
                             boxes[52].style = "background-color:transparent;";
 
-                        boxes[red_current[git]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[red_current[git]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                     }
 
                     else if (red_current[git] == 14) {
@@ -919,19 +922,19 @@ function red_area(reed) {
                         for (let x = 0; x <= 3; x++) {
 
                             if (green_current[x] == 13) {
-                                boxes[13].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[13].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn13 = true;
                                 break;
                             }
 
                             else if (yellow_current[x] == 13) {
-                                boxes[13].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[13].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn13 = true;
                                 break;
                             }
 
                             else if (blue_current[x] == 13) {
-                                boxes[13].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[13].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn13 = true;
                                 break;
                             }
@@ -940,7 +943,7 @@ function red_area(reed) {
                                 continue;
                             else {
                                 if (red_current[x] == 13) {
-                                    boxes[13].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[13].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOn13 = true;
                                     break;
                                 }
@@ -949,7 +952,7 @@ function red_area(reed) {
                         if (gittiOn13 == false)
                             boxes[13].style = "background-color:transparent;";
 
-                        red_boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        red_boxes[1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                         red_current[git] = 0;
                     }
 
@@ -958,19 +961,19 @@ function red_area(reed) {
                         for (let x = 0; x <= 3; x++) {
 
                             if ((red_current[git] - 1) == blue_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[red_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((red_current[git] - 1) == yellow_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[red_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((red_current[git] - 1) == green_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[red_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
@@ -982,7 +985,7 @@ function red_area(reed) {
                                 if ((red_current[git] - 1) == red_current[x]) {
                                     console.log("red_current[git]-1 = " + red_current[git] - 1);
                                     console.log("red_current[x] = " + red_current[x]);
-                                    boxes[red_current[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[red_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiback = true;
                                     break;
                                 } else {
@@ -994,19 +997,19 @@ function red_area(reed) {
                         if (!gittiback) {
 
                             if ((red_current[git] - 1) == 15)
-                                boxes[red_current[git] - 1].style = "background-color:red;";
+                                boxes[red_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             else if ((red_current[git] - 1) == 28)
-                                boxes[red_current[git] - 1].style = "background-color:green;";
+                                boxes[red_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
                             else if ((red_current[git] - 1) == 41)
-                                boxes[red_current[git] - 1].style = "background-color:yellow;";
+                                boxes[red_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
                             else if ((red_current[git] - 1) == 2)
-                                boxes[red_current[git] - 1].style = "background-color:blue;";
+                                boxes[red_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
                             else {
                                 boxes[red_current[git] - 1].style = "background-color:transparent;";
                             }
                         }
 
-                        boxes[red_current[git]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[red_current[git]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                     }
 
 
@@ -1058,9 +1061,9 @@ function red_area(reed) {
                         console.log("stoped");
                     }
 
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    },100);
+                    }, 100);
 
                 }, 300);
                 mon = false;
@@ -1105,8 +1108,7 @@ function blue_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                if (num == 3)
-                    num = 6;
+                
                 btn.textContent = num;
 
                 if (num == 6) {
@@ -1330,7 +1332,7 @@ function blue_area() {
                         blue_circle[0].addEventListener("click", () => {
                             if (click == 0 && !run && !blue_win[0] && num == 6) {
                                 blue_circle[0].style = "background-color:transparent;";
-                                boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 blues[0] = false;
                                 click++;
                                 run = true;
@@ -1343,7 +1345,7 @@ function blue_area() {
                         blue_circle[1].addEventListener("click", () => {
                             if (click == 0 && !run && !blue_win[1] && num == 6) {
                                 blue_circle[1].style = "background-color:transparent;";
-                                boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 blues[1] = false;
                                 click++;
                                 run = true;
@@ -1356,7 +1358,7 @@ function blue_area() {
                         blue_circle[2].addEventListener("click", () => {
                             if (click == 0 && !run && !blue_win[2] && num == 6) {
                                 blue_circle[2].style = "background-color:transparent;";
-                                boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 blues[2] = false;
                                 num = 0;
                                 click++;
@@ -1370,7 +1372,7 @@ function blue_area() {
                         blue_circle[3].addEventListener("click", () => {
                             if (click == 0 && !run && !blue_win[3] && num == 6) {
                                 blue_circle[3].style = "background-color:transparent;";
-                                boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 blues[3] = false;
                                 num = 0;
                                 click++;
@@ -1545,7 +1547,7 @@ function blue_area() {
                     blue_circle[1].addEventListener("click", () => {
                         if (click == 0 && !run && !blue_win[1] && num == 6) {
                             blue_circle[1].style = "background-color:transparent;";
-                            boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                             blues[1] = false;
                             click++;
                             run = true;
@@ -1556,7 +1558,7 @@ function blue_area() {
                     blue_circle[2].addEventListener("click", () => {
                         if (click == 0 && !run && !blue_win[2] && num == 6) {
                             blue_circle[2].style = "background-color:transparent;";
-                            boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                             blues[2] = false;
                             num = 0;
                             click++;
@@ -1568,7 +1570,7 @@ function blue_area() {
                     blue_circle[3].addEventListener("click", () => {
                         if (click == 0 && !run && !blue_win[3] && num == 6) {
                             blue_circle[3].style = "background-color:transparent;";
-                            boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                             blues[3] = false;
                             num = 0;
                             click++;
@@ -1685,7 +1687,7 @@ function blue_area() {
     this.blue_out = function () {
         blues[0] = false;
         blue_circle[0].style = "background-color:transparent;";
-        boxes[blue_start].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+        boxes[blue_start].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
         blue_current[0] = blue_start;
     }
 
@@ -1714,17 +1716,17 @@ function blue_area() {
                         for (var x = 0; x <= 3; x++) {
 
                             if (red_current[x] == 52) {
-                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
                             else if (green_current[x] == 52) {
-                                boxes[52].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
                             else if (yellow_current[x] == 52) {
-                                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
@@ -1734,7 +1736,7 @@ function blue_area() {
 
                             else {
                                 if (blue_current[x] == 52) {
-                                    boxes[52].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[52].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOn52 = true;
                                     break;
                                 }
@@ -1778,7 +1780,7 @@ function blue_area() {
 
                                     else {
                                         if ((blue_inside[git] - 1) == blue_inside[r]) {
-                                            blue_boxes[blue_inside[git] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                            blue_boxes[blue_inside[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                             gittiOn5 = true;
                                             break;
                                         }
@@ -1787,7 +1789,7 @@ function blue_area() {
                                 }
 
                                 if (gittiOn5 == false) {
-                                    blue_boxes[blue_inside[git] - 1].style = "background-color:blue;";
+                                    blue_boxes[blue_inside[git] - 1].style = "background-color:rgb(75, 75, 228);";
                                 }
                             }
 
@@ -1803,20 +1805,20 @@ function blue_area() {
                                     continue;
                                 else {
                                     if ((blue_inside[git] - 1) == blue_inside[x]) {
-                                        blue_boxes[blue_inside[git] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                        blue_boxes[blue_inside[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                         gittiOnback = true;
                                     }
                                 }
                             }
                             if (gittiOnback == false) {
                                 if ((blue_inside[git] - 1) > 0) {
-                                    blue_boxes[blue_inside[git] - 1].style = "background-color:blue;";
+                                    blue_boxes[blue_inside[git] - 1].style = "background-color:rgb(75, 75, 228);";
                                     console.log("t ran");
                                 }
                             }
 
 
-                            blue_boxes[blue_inside[git]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            blue_boxes[blue_inside[git]].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
 
                             if (runcount < 2) {
                                 for (let p = 0; p <= 3; p++) {
@@ -1840,19 +1842,19 @@ function blue_area() {
                         for (let x = 0; x <= 3; x++) {
 
                             if ((blue_current[git] - 1) == red_current[x]) {
-                                boxes[blue_current[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((blue_current[git] - 1) == yellow_current[x]) {
-                                boxes[blue_current[git] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((blue_current[git] - 1) == green_current[x]) {
-                                boxes[blue_current[git] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
@@ -1863,7 +1865,7 @@ function blue_area() {
                                 if ((blue_current[git] - 1) == blue_current[x]) {
                                     console.log("blue_current[git]-1 = " + blue_current[git] - 1);
                                     console.log("blue_current[x] = " + blue_current[x]);
-                                    boxes[blue_current[git] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[blue_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiback = true;
                                     break;
                                 }
@@ -1877,19 +1879,19 @@ function blue_area() {
                         if (!gittiback) {
 
                             if ((blue_current[git] - 1) == 15)
-                                boxes[blue_current[git] - 1].style = "background-color:red;";
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             else if ((blue_current[git] - 1) == 28)
-                                boxes[blue_current[git] - 1].style = "background-color:green;";
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
                             else if ((blue_current[git] - 1) == 41)
-                                boxes[blue_current[git] - 1].style = "background-color:yellow;";
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
                             else if ((blue_current[git] - 1) == 2)
-                                boxes[blue_current[git] - 1].style = "background-color:blue;";
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
                             else {
                                 boxes[blue_current[git] - 1].style = "background-color:transparent;";
                             }
                         }
 
-                        boxes[blue_current[git]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[blue_current[git]].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                     }
 
                     // console.log("i = " + count);
@@ -1942,9 +1944,9 @@ function blue_area() {
                         console.log("stoped");
                     }
 
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    },100);
+                    }, 100);
 
                 }, 300);
                 mon = false;
@@ -1980,8 +1982,7 @@ function yellow_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                if (num == 3)
-                    num = 6;
+                
                 btn.textContent = num;
 
                 if (num == 6) {
@@ -2206,7 +2207,7 @@ function yellow_area() {
                         yellow_circle[1].addEventListener("click", () => {
                             if (click == 0 && !run && !yellow_win[1] && num == 6) {
                                 yellow_circle[1].style = "background-color:transparent;";
-                                boxes[yellow_start].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 yellows[1] = false;
                                 click++;
                                 run = true;
@@ -2220,7 +2221,7 @@ function yellow_area() {
                         yellow_circle[2].addEventListener("click", () => {
                             if (click == 0 && !run && !yellow_win[2] && num == 6) {
                                 yellow_circle[2].style = "background-color:transparent;";
-                                boxes[yellow_start].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 yellows[2] = false;
                                 num = 0;
                                 click++;
@@ -2235,7 +2236,7 @@ function yellow_area() {
                         yellow_circle[3].addEventListener("click", () => {
                             if (click == 0 && !run && !yellow_win[3] && num == 6) {
                                 yellow_circle[3].style = "background-color:transparent;";
-                                boxes[yellow_start].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 yellows[3] = false;
                                 num = 0;
                                 click++;
@@ -2411,7 +2412,7 @@ function yellow_area() {
                     yellow_circle[1].addEventListener("click", () => {
                         if (click == 0 && !run && !yellow_win[1] && num == 6) {
                             yellow_circle[1].style = "background-color:transparent;";
-                            boxes[yellow_start].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                             yellows[1] = false;
                             click++;
                             run = true;
@@ -2422,7 +2423,7 @@ function yellow_area() {
                     yellow_circle[2].addEventListener("click", () => {
                         if (click == 0 && !run && !yellow_win[2] && num == 6) {
                             yellow_circle[2].style = "background-color:transparent;";
-                            boxes[yellow_start].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                             yellows[2] = false;
                             num = 0;
                             click++;
@@ -2434,7 +2435,7 @@ function yellow_area() {
                     yellow_circle[3].addEventListener("click", () => {
                         if (click == 0 && !run && !yellow_win[3] && num == 6) {
                             yellow_circle[3].style = "background-color:transparent;";
-                            boxes[yellow_start].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                             yellows[3] = false;
                             num = 0;
                             click++;
@@ -2553,7 +2554,7 @@ function yellow_area() {
     this.yellow_out = function () {
         yellows[0] = false;
         yellow_circle[0].style = "background-color:transparent;";
-        boxes[yellow_start].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+        boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
         yellow_current[0] = yellow_start;
     }
 
@@ -2613,7 +2614,7 @@ function yellow_area() {
 
                                     else {
                                         if ((yellow_inside[git] - 1) == yellow_inside[r]) {
-                                            yellow_boxes[yellow_inside[git] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                            yellow_boxes[yellow_inside[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                             gittiOn5 = true;
                                             break;
                                         }
@@ -2622,7 +2623,7 @@ function yellow_area() {
                                 }
 
                                 if (gittiOn5 == false) {
-                                    yellow_boxes[yellow_inside[git] - 1].style = "background-color:yellow;";
+                                    yellow_boxes[yellow_inside[git] - 1].style = "background-color:rgb(241, 241, 115);";
                                 }
                             }
 
@@ -2637,15 +2638,15 @@ function yellow_area() {
                                     continue;
                                 else {
                                     if ((yellow_inside[git] - 1) == yellow_inside[x]) {
-                                        yellow_boxes[yellow_inside[git] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                        yellow_boxes[yellow_inside[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                         gittiOnback = true;
                                     }
                                 }
                             }
                             if (gittiOnback == false)
-                                yellow_boxes[yellow_inside[git] - 1].style = "background-color:yellow;";
+                                yellow_boxes[yellow_inside[git] - 1].style = "background-color:rgb(241, 241, 115);";
 
-                            yellow_boxes[yellow_inside[git]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            yellow_boxes[yellow_inside[git]].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
 
                             if (runcount < 2) {
                                 for (let p = 0; p <= 3; p++) {
@@ -2668,19 +2669,19 @@ function yellow_area() {
                         for (let x = 0; x <= 3; x++) {
 
                             if (blue_current[x] == 52) {
-                                boxes[52].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
 
                             else if (green_current[x] == 52) {
-                                boxes[52].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
 
                             else if (yellow_current[x] == 52) {
-                                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
@@ -2689,7 +2690,7 @@ function yellow_area() {
                                 continue;
                             else {
                                 if (yellow_current[x] == 52) {
-                                    boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[52].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOn52 = true;
                                     break;
                                 }
@@ -2698,7 +2699,7 @@ function yellow_area() {
                         if (gittiOn52 == false)
                             boxes[52].style = "background-color:transparent;";
 
-                        boxes[yellow_current[git]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[yellow_current[git]].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                     }
 
                     else if (yellow_current[git] == 40) {
@@ -2708,19 +2709,19 @@ function yellow_area() {
                         for (let x = 0; x <= 3; x++) {
 
                             if (red_current[x] == 39) {
-                                boxes[39].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[39].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn39 = true;
                                 break;
                             }
 
                             else if (green_current[x] == 39) {
-                                boxes[39].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[39].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn39 = true;
                                 break;
                             }
 
                             if (blue_current[x] == 39) {
-                                boxes[39].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[39].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn39 = true;
                                 break;
                             }
@@ -2729,7 +2730,7 @@ function yellow_area() {
                                 continue;
                             else {
                                 if (yellow_current[x] == 39) {
-                                    boxes[39].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[39].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOn39 = true;
                                     break;
                                 }
@@ -2738,7 +2739,7 @@ function yellow_area() {
                         if (gittiOn39 == false)
                             boxes[39].style = "background-color:transparent;";
 
-                        yellow_boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        yellow_boxes[1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                         yellow_current[git] = 0;
                     }
 
@@ -2747,19 +2748,19 @@ function yellow_area() {
                         for (let x = 0; x <= 3; x++) {
 
                             if ((yellow_current[git] - 1) == blue_current[x]) {
-                                boxes[yellow_current[git] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((yellow_current[git] - 1) == green_current[x]) {
-                                boxes[yellow_current[git] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((yellow_current[git] - 1) == red_current[x]) {
-                                boxes[yellow_current[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
@@ -2772,7 +2773,7 @@ function yellow_area() {
                                 if ((yellow_current[git] - 1) == yellow_current[x]) {
                                     console.log("yellow_current[git]-1 = " + yellow_current[git] - 1);
                                     console.log("yellow_current[x] = " + yellow_current[x]);
-                                    boxes[yellow_current[git] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[yellow_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiback = true;
                                     break;
                                 } else {
@@ -2784,19 +2785,19 @@ function yellow_area() {
                         if (!gittiback) {
 
                             if ((yellow_current[git] - 1) == 15)
-                                boxes[yellow_current[git] - 1].style = "background-color:red;";
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             else if ((yellow_current[git] - 1) == 28)
-                                boxes[yellow_current[git] - 1].style = "background-color:green;";
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
                             else if ((yellow_current[git] - 1) == 41)
-                                boxes[yellow_current[git] - 1].style = "background-color:yellow;";
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
                             else if ((yellow_current[git] - 1) == 2)
-                                boxes[yellow_current[git] - 1].style = "background-color:blue;";
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
                             else {
                                 boxes[yellow_current[git] - 1].style = "background-color:transparent;";
                             }
                         }
 
-                        boxes[yellow_current[git]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[yellow_current[git]].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                     }
 
 
@@ -2848,9 +2849,9 @@ function yellow_area() {
                         console.log("stoped");
                     }
 
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    },100);
+                    }, 100);
 
                 }, 300);
                 mon = false;
@@ -2873,8 +2874,7 @@ function green_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                if (num == 3)
-                    num = 6;
+    
                 btn.textContent = num;
 
                 if (num == 6) {
@@ -3099,7 +3099,7 @@ function green_area() {
                         green_circle[1].addEventListener("click", () => {
                             if (click == 0 && !run && !green_win[1] && num == 6) {
                                 green_circle[1].style = "background-color:transparent;";
-                                boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 greens[1] = false;
                                 click++;
                                 run = true;
@@ -3113,7 +3113,7 @@ function green_area() {
                         green_circle[2].addEventListener("click", () => {
                             if (click == 0 && !run && !green_win[2] && num == 6) {
                                 green_circle[2].style = "background-color:transparent;";
-                                boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 greens[2] = false;
                                 num = 0;
                                 click++;
@@ -3128,7 +3128,7 @@ function green_area() {
                         green_circle[3].addEventListener("click", () => {
                             if (click == 0 && !run && !green_win[3] && num == 6) {
                                 green_circle[3].style = "background-color:transparent;";
-                                boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 greens[3] = false;
                                 num = 0;
                                 click++;
@@ -3304,7 +3304,7 @@ function green_area() {
                     green_circle[1].addEventListener("click", () => {
                         if (click == 0 && !run && !green_win[1] && num == 6) {
                             green_circle[1].style = "background-color:transparent;";
-                            boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                             greens[1] = false;
                             click++;
                             run = true;
@@ -3315,7 +3315,7 @@ function green_area() {
                     green_circle[2].addEventListener("click", () => {
                         if (click == 0 && !run && !green_win[2] && num == 6) {
                             green_circle[2].style = "background-color:transparent;";
-                            boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                             greens[2] = false;
                             num = 0;
                             click++;
@@ -3327,7 +3327,7 @@ function green_area() {
                     green_circle[3].addEventListener("click", () => {
                         if (click == 0 && !run && !green_win[3] && num == 6) {
                             green_circle[3].style = "background-color:transparent;";
-                            boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                             greens[3] = false;
                             num = 0;
                             click++;
@@ -3446,7 +3446,7 @@ function green_area() {
     this.green_out = function () {
         greens[0] = false;
         green_circle[0].style = "background-color:transparent;";
-        boxes[green_start].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+        boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
         green_current[0] = green_start;
     }
 
@@ -3505,7 +3505,7 @@ function green_area() {
 
                                     else {
                                         if ((green_inside[git] - 1) == green_inside[r]) {
-                                            green_boxes[green_inside[git] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                            green_boxes[green_inside[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                             gittiOn5 = true;
                                             break;
                                         }
@@ -3514,7 +3514,7 @@ function green_area() {
                                 }
 
                                 if (gittiOn5 == false) {
-                                    green_boxes[green_inside[git] - 1].style = "background-color:green;";
+                                    green_boxes[green_inside[git] - 1].style = "background-color:rgb(65, 173, 65);";
                                 }
                             }
 
@@ -3529,15 +3529,15 @@ function green_area() {
                                     continue;
                                 else {
                                     if ((green_inside[git] - 1) == green_inside[x]) {
-                                        green_boxes[green_inside[git] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                        green_boxes[green_inside[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                         gittiOnback = true;
                                     }
                                 }
                             }
                             if (gittiOnback == false)
-                                green_boxes[green_inside[git] - 1].style = "background-color:green;";
+                                green_boxes[green_inside[git] - 1].style = "background-color:rgb(65, 173, 65);";
 
-                            green_boxes[green_inside[git]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            green_boxes[green_inside[git]].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
 
                             if (runcount < 2) {
                                 for (let p = 0; p <= 3; p++) {
@@ -3560,19 +3560,19 @@ function green_area() {
                         for (let x = 0; x <= 3; x++) {
 
                             if (blue_current[x] == 52) {
-                                boxes[52].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
 
                             else if (red_current[x] == 52) {
-                                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
 
                             else if (yellow_current[x] == 52) {
-                                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[52].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn52 = true;
                                 break;
                             }
@@ -3581,7 +3581,7 @@ function green_area() {
                                 continue;
                             else {
                                 if (green_current[x] == 52) {
-                                    boxes[52].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[52].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOn52 = true;
                                     break;
                                 }
@@ -3590,7 +3590,7 @@ function green_area() {
                         if (gittiOn52 == false)
                             boxes[52].style = "background-color:transparent;";
 
-                        boxes[green_current[git]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[green_current[git]].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                     }
 
                     else if (green_current[git] == 27) {
@@ -3600,19 +3600,19 @@ function green_area() {
                         for (let x = 0; x <= 3; x++) {
 
                             if (red_current[x] == 26) {
-                                boxes[26].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[26].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn26 = true;
                                 break;
                             }
 
                             else if (green_current[x] == 26) {
-                                boxes[26].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[26].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn26 = true;
                                 break;
                             }
 
                             else if (blue_current[x] == 26) {
-                                boxes[26].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[26].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiOn26 = true;
                                 break;
                             }
@@ -3621,7 +3621,7 @@ function green_area() {
                                 continue;
                             else {
                                 if (green_current[x] == 26) {
-                                    boxes[26].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[26].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiOn26 = true;
                                     break;
                                 }
@@ -3630,7 +3630,7 @@ function green_area() {
                         if (gittiOn26 == false)
                             boxes[26].style = "background-color:transparent;";
 
-                        green_boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        green_boxes[1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                         green_current[git] = 0;
                     }
 
@@ -3639,19 +3639,19 @@ function green_area() {
                         for (let x = 0; x <= 3; x++) {
 
                             if ((green_current[git] - 1) == blue_current[x]) {
-                                boxes[green_current[git] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[green_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((green_current[git] - 1) == yellow_current[x]) {
-                                boxes[green_current[git] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[green_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
 
                             else if ((green_current[git] - 1) == red_current[x]) {
-                                boxes[green_current[git] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                                boxes[green_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                                 gittiback = true;
                                 break;
                             }
@@ -3663,7 +3663,7 @@ function green_area() {
                                 if ((green_current[git] - 1) == green_current[x]) {
                                     console.log("green_current[git]-1 = " + green_current[git] - 1);
                                     console.log("green_current[x] = " + green_current[x]);
-                                    boxes[green_current[git] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                                    boxes[green_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                                     gittiback = true;
                                     break;
                                 } else {
@@ -3675,19 +3675,19 @@ function green_area() {
                         if (!gittiback) {
 
                             if ((green_current[git] - 1) == 15)
-                                boxes[green_current[git] - 1].style = "background-color:red;";
+                                boxes[green_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             else if ((green_current[git] - 1) == 28)
-                                boxes[green_current[git] - 1].style = "background-color:green;";
+                                boxes[green_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
                             else if ((green_current[git] - 1) == 41)
-                                boxes[green_current[git] - 1].style = "background-color:yellow;";
+                                boxes[green_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
                             else if ((green_current[git] - 1) == 2)
-                                boxes[green_current[git] - 1].style = "background-color:blue;";
+                                boxes[green_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
                             else {
                                 boxes[green_current[git] - 1].style = "background-color:transparent;";
                             }
                         }
 
-                        boxes[green_current[git]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[green_current[git]].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                     }
 
 
@@ -3741,9 +3741,9 @@ function green_area() {
                         console.log("stoped");
                     }
 
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         gitti_run_s.gittirunstop();
-                    },100);
+                    }, 100);
 
                 }, 300);
                 mon = false;
@@ -3760,17 +3760,17 @@ function blue_cut(val, blockrun) {
             var gittion2pos = false;
             for (var u = 0; u <= 3; u++) {
                 if (red_current[u] == 2) {
-                    boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[2].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                     gittion2pos = true;
                     break;
                 }
                 else if (green_current[u] == 2) {
-                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[2].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                     gittion2pos = true;
                     break;
                 }
                 else if (yellow_current[u] == 2) {
-                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[2].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                     gittion2pos = true;
                     break;
                 }
@@ -3778,16 +3778,16 @@ function blue_cut(val, blockrun) {
                     continue;
                 else {
                     if (blue_current[u] == 2) {
-                        boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[2].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                         gittion2pos = true;
                         break;
                     }
                 }
             }
             if (gittion2pos == false) {
-                boxes[2].style = "background-color:blue;";
+                boxes[2].style = "background-color:rgb(75, 75, 228);";
             }
-            blue_circle[val].style = "background-color:blue;";
+            blue_circle[val].style = "background-color:rgb(75, 75, 228);";
 
             blue_current[val] = undefined;
             blues[val] = true;
@@ -3796,23 +3796,23 @@ function blue_cut(val, blockrun) {
         }
 
         else {
-            boxes[blue_current[val] - 1].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+            boxes[blue_current[val] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
             if (blockrun) {
                 var colorturn = false;
                 for (var t = 0; t <= 3; t++) {
                     if (blue_current[val] == red_current[t]) {
-                        boxes[blue_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[blue_current[val]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                         colorturn = true;
                         break;
                     }
                     else if (blue_current[val] == yellow_current[t]) {
-                        boxes[blue_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[blue_current[val]].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                         colorturn = true;
                         break;
                     }
 
                     else if (blue_current[val] == green_current[t]) {
-                        boxes[blue_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[blue_current[val]].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                         colorturn = true;
                         break;
                     }
@@ -3821,24 +3821,24 @@ function blue_cut(val, blockrun) {
                         continue;
 
                     else if (blue_current[val] == blue_current[t]) {
-                        boxes[blue_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[blue_current[val]].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                         colorturn = true;
                         break;
                     }
                 }
                 if (colorturn == false) {
                     if (blue_current[val] == 41) {
-                        boxes[blue_current[val]].style = "background-color:yellow;";
+                        boxes[blue_current[val]].style = "background-color:rgb(241, 241, 115);";
 
                     }
 
                     else if (blue_current[val] == 28) {
-                        boxes[blue_current[val]].style = "background-color:green;";
+                        boxes[blue_current[val]].style = "background-color:rgb(65, 173, 65);";
 
                     }
 
                     else if (blue_current[val] == 15) {
-                        boxes[blue_current[val]].style = "background-color:red;";
+                        boxes[blue_current[val]].style = "background-color:rgb(247, 40, 40);";
 
                     }
 
@@ -3865,19 +3865,19 @@ function yellow_cut(val, blockrun) {
             for (var u = 0; u <= 3; u++) {
 
                 if (blue_current[u] == 41) {
-                    boxes[41].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[41].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                     gittionyellowSt = true;
                     break;
                 }
 
                 else if (green_current[u] == 41) {
-                    boxes[41].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[41].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                     gittionyellowSt = true;
                     break;
                 }
 
                 else if (red_current[u] == 41) {
-                    boxes[41].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[41].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                     gittionyellowSt = true;
                     break;
                 }
@@ -3887,7 +3887,7 @@ function yellow_cut(val, blockrun) {
 
                 else {
                     if (yellow_current[u] == 41) {
-                        boxes[41].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[41].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                         gittionyellowSt = true;
                         break;
                     }
@@ -3895,10 +3895,10 @@ function yellow_cut(val, blockrun) {
             }
 
             if (gittionyellowSt == false) {
-                boxes[41].style = "background-color:yellow;";
+                boxes[41].style = "background-color:rgb(241, 241, 115);";
             }
 
-            yellow_circle[val].style = "background-color:yellow;";
+            yellow_circle[val].style = "background-color:rgb(241, 241, 115);";
             yellows[val] = true;
             yellow_current[val] = undefined;
             clearInterval(cutInterval);
@@ -3908,16 +3908,16 @@ function yellow_cut(val, blockrun) {
 
             if (yellow_current[val] == 1) {
                 var nogittion1 = false;
-                boxes[52].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                boxes[52].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                 for (var j = 0; j <= 3; j++) {
                     if (green_current[j] == 1) {
-                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                         nogittion1 = true;
                         break;
                     }
 
                     else if (red_current[j] == 1) {
-                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                         nogittion1 = true;
                         break;
                     }
@@ -3926,7 +3926,7 @@ function yellow_cut(val, blockrun) {
                         continue;
                     else {
                         if (yellow_current[j] == 1) {
-                            boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                             nogittion1 = true;
                             break;
                         }
@@ -3939,24 +3939,24 @@ function yellow_cut(val, blockrun) {
 
             else {
 
-                boxes[yellow_current[val] - 1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                boxes[yellow_current[val] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
 
                 if (blockrun) {
                     var colorturn = false;
                     for (var t = 0; t <= 3; t++) {
                         if (yellow_current[val] == blue_current[t]) {
-                            boxes[yellow_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
                         else if (yellow_current[val] == red_current[t]) {
-                            boxes[yellow_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
 
                         else if (yellow_current[val] == green_current[t]) {
-                            boxes[yellow_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
@@ -3965,29 +3965,29 @@ function yellow_cut(val, blockrun) {
                             continue;
 
                         else if (yellow_current[val] == yellow_current[t]) {
-                            boxes[yellow_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
                     }
                     if (colorturn == false) {
                         if (yellow_current[val] == 41) {
-                            boxes[yellow_current[val]].style = "background-color:yellow;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(241, 241, 115);";
 
                         }
 
 
                         else if (yellow_current[val] == 2) {
-                            boxes[yellow_current[val]].style = "background-color:blue;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(75, 75, 228);";
                         }
 
                         else if (yellow_current[val] == 28) {
-                            boxes[yellow_current[val]].style = "background-color:green;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(65, 173, 65);";
 
                         }
 
                         else if (yellow_current[val] == 15) {
-                            boxes[yellow_current[val]].style = "background-color:red;";
+                            boxes[yellow_current[val]].style = "background-color:rgb(247, 40, 40);";
 
                         }
 
@@ -4020,19 +4020,19 @@ function green_cut(val, blockrun) {
             for (var u = 0; u <= 3; u++) {
 
                 if (blue_current[u] == 28) {
-                    boxes[28].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[28].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                     gittiongreenSt = true;
                     break;
                 }
 
                 else if (red_current[u] == 28) {
-                    boxes[28].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[28].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                     gittiongreenSt = true;
                     break;
                 }
 
                 else if (yellow_current[u] == 28) {
-                    boxes[28].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[28].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                     gittiongreenSt = true;
                     break;
                 }
@@ -4042,7 +4042,7 @@ function green_cut(val, blockrun) {
 
                 else {
                     if (green_current[u] == 28) {
-                        boxes[28].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[28].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                         gittiongreenSt = true;
                         break;
                     }
@@ -4050,10 +4050,10 @@ function green_cut(val, blockrun) {
             }
 
             if (gittiongreenSt == false) {
-                boxes[28].style = "background-color:green;";
+                boxes[28].style = "background-color:rgb(65, 173, 65);";
             }
 
-            green_circle[val].style = "background-color:green;";
+            green_circle[val].style = "background-color:rgb(65, 173, 65);";
             greens[val] = true;
             green_current[val] = undefined;
             clearInterval(cutInterval);
@@ -4063,16 +4063,16 @@ function green_cut(val, blockrun) {
 
             if (green_current[val] == 1) {
                 var nogittion1 = false;
-                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                boxes[52].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                 for (var j = 0; j <= 3; j++) {
                     if (red_current[j] == 1) {
-                        boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                         nogittion1 = true;
                         break;
                     }
 
                     else if (yellow_current[j] == 1) {
-                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                         nogittion1 = true;
                         break;
                     }
@@ -4081,7 +4081,7 @@ function green_cut(val, blockrun) {
                         continue;
                     else {
                         if (green_current[j] == 1) {
-                            boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                             nogittion1 = true;
                             break;
                         }
@@ -4094,24 +4094,24 @@ function green_cut(val, blockrun) {
 
             else {
 
-                boxes[green_current[val] - 1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                boxes[green_current[val] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
 
                 if (blockrun) {
                     var colorturn = false;
                     for (var t = 0; t <= 3; t++) {
                         if (green_current[val] == blue_current[t]) {
-                            boxes[green_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[green_current[val]].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
                         else if (green_current[val] == yellow_current[t]) {
-                            boxes[green_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[green_current[val]].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
 
                         else if (green_current[val] == red_current[t]) {
-                            boxes[green_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[green_current[val]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
@@ -4120,29 +4120,29 @@ function green_cut(val, blockrun) {
                             continue;
 
                         else if (green_current[val] == green_current[t]) {
-                            boxes[green_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[green_current[val]].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
                     }
                     if (colorturn == false) {
                         if (green_current[val] == 41) {
-                            boxes[green_current[val]].style = "background-color:yellow;";
+                            boxes[green_current[val]].style = "background-color:rgb(241, 241, 115);";
 
                         }
 
 
                         else if (green_current[val] == 2) {
-                            boxes[green_current[val]].style = "background-color:blue;";
+                            boxes[green_current[val]].style = "background-color:rgb(75, 75, 228);";
                         }
 
                         else if (green_current[val] == 28) {
-                            boxes[green_current[val]].style = "background-color:green;";
+                            boxes[green_current[val]].style = "background-color:rgb(65, 173, 65);";
 
                         }
 
                         else if (green_current[val] == 15) {
-                            boxes[green_current[val]].style = "background-color:red;";
+                            boxes[green_current[val]].style = "background-color:rgb(247, 40, 40);";
 
                         }
 
@@ -4173,19 +4173,19 @@ function red_cut(val, blockrun) {
             for (var u = 0; u <= 3; u++) {
 
                 if (blue_current[u] == 15) {
-                    boxes[2].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[2].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                     gittionredSt = true;
                     break;
                 }
 
                 else if (green_current[u] == 15) {
-                    boxes[2].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[2].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                     gittionredSt = true;
                     break;
                 }
 
                 else if (yellow_current[u] == 15) {
-                    boxes[2].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                    boxes[2].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                     gittionredSt = true;
                     break;
                 }
@@ -4195,7 +4195,7 @@ function red_cut(val, blockrun) {
 
                 else {
                     if (red_current[u] == 15) {
-                        boxes[2].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[2].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                         gittionredSt = true;
                         break;
                     }
@@ -4203,10 +4203,10 @@ function red_cut(val, blockrun) {
             }
 
             if (gittionredSt == false) {
-                boxes[15].style = "background-color:red;";
+                boxes[15].style = "background-color:rgb(247, 40, 40);";
             }
 
-            red_circle[val].style = "background-color:red;";
+            red_circle[val].style = "background-color:rgb(247, 40, 40);";
             reds[val] = true;
             red_current[val] = undefined;
             clearInterval(cutInterval);
@@ -4216,16 +4216,16 @@ function red_cut(val, blockrun) {
 
             if (red_current[val] == 1) {
                 var nogittion1 = false;
-                boxes[52].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                boxes[52].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                 for (var j = 0; j <= 3; j++) {
                     if (green_current[j] == 1) {
-                        boxes[1].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                         nogittion1 = true;
                         break;
                     }
 
                     else if (yellow_current[j] == 1) {
-                        boxes[1].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                        boxes[1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                         nogittion1 = true;
                         break;
                     }
@@ -4234,7 +4234,7 @@ function red_cut(val, blockrun) {
                         continue;
                     else {
                         if (red_current[j] == 1) {
-                            boxes[1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                             nogittion1 = true;
                             break;
                         }
@@ -4247,24 +4247,24 @@ function red_cut(val, blockrun) {
 
             else {
 
-                boxes[red_current[val] - 1].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                boxes[red_current[val] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
 
                 if (blockrun) {
                     var colorturn = false;
                     for (var t = 0; t <= 3; t++) {
                         if (red_current[val] == blue_current[t]) {
-                            boxes[red_current[val]].style = "background-color:blue; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[red_current[val]].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
                         else if (red_current[val] == yellow_current[t]) {
-                            boxes[red_current[val]].style = "background-color:yellow; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[red_current[val]].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
 
                         else if (red_current[val] == green_current[t]) {
-                            boxes[red_current[val]].style = "background-color:green; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[red_current[val]].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
@@ -4273,7 +4273,7 @@ function red_cut(val, blockrun) {
                             continue;
 
                         else if (red_current[val] == red_current[t]) {
-                            boxes[red_current[val]].style = "background-color:red; box-shadow: 2px 4px 2px 5px inset;";
+                            boxes[red_current[val]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                             colorturn = true;
                             break;
                         }
@@ -4281,22 +4281,22 @@ function red_cut(val, blockrun) {
                     }
                     if (colorturn == false) {
                         if (red_current[val] == 41) {
-                            boxes[red_current[val]].style = "background-color:yellow;";
+                            boxes[red_current[val]].style = "background-color:rgb(241, 241, 115);";
 
                         }
 
 
                         else if (red_current[val] == 2) {
-                            boxes[red_current[val]].style = "background-color:blue;";
+                            boxes[red_current[val]].style = "background-color:rgb(75, 75, 228);";
                         }
 
                         else if (red_current[val] == 28) {
-                            boxes[red_current[val]].style = "background-color:green;";
+                            boxes[red_current[val]].style = "background-color:rgb(65, 173, 65);";
 
                         }
 
                         else if (red_current[val] == 15) {
-                            boxes[red_current[val]].style = "background-color:red;";
+                            boxes[red_current[val]].style = "background-color:rgb(247, 40, 40);";
 
                         }
 
@@ -4606,20 +4606,20 @@ function mutlicolor(main_current, first_col, second_col, third_col, git, col) {
 
         else if (main_current == yellow_current) {
             if (main_current[git] == red_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + "50%, red 0%);";
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, yellow 50%, red 0%);";
                 console.log("double color");
 
                 break;
             }
             else if (main_current[git] == blue_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, blue 0%);";
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, yellow 50%, blue 0%);";
                 console.log("double color");
 
                 break;
             }
 
             else if (main_current[git] == green_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, green 0%);";
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, yellow 50%, green 0%);";
                 console.log("double color");
 
                 break;
@@ -4629,20 +4629,20 @@ function mutlicolor(main_current, first_col, second_col, third_col, git, col) {
 
         else if (main_current == green_current) {
             if (main_current[git] == red_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + "50%, red 0%);";
+                boxes[main_current[git]].style = "background: linear-gradient(180deg, green 50%, red 0%);";
                 console.log("double color");
 
                 break;
             }
             else if (main_current[git] == blue_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, blue 0%);";
+                boxes[main_current[git]].style = "background: linear-gradient(180deg,, green 50%, blue 0%);";
                 console.log("double color");
 
                 break;
             }
 
             else if (main_current[git] == yellow_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, " + col + " 50%, yellow 0%);";
+                boxes[main_current[git]].style = "background: linear-gradient(180deg,, green 50%, yellow 0%);";
                 console.log("double color");
 
                 break;

@@ -6,21 +6,19 @@
 }
 
 :root{
-    --red: red;
-    --green : green;
-    --blue: blue;
-    --yellow: yellow;
+    --red: rgb(247, 40, 40);
+    --green : rgb(65, 173, 65);
+    --blue: rgb(75, 75, 228);
+    --yellow: rgb(241, 241, 115);
     --black : black;
 }
 
 div.ludo-con{
-    border: 1px solid rgb(198, 255, 12);
     display: flex;
     position: relative;
 }
 
 div.left-button{
-    border: 1px solid orangered;
     display: flex;
     flex-direction: column;
    justify-content: space-between;
@@ -83,6 +81,7 @@ div.upper{
    display: grid;
    grid-template-columns: auto auto auto;
    /* border: 1px solid firebrick; */
+   
    width: 650px;
 }
 
@@ -158,13 +157,6 @@ div.red-player > div span div{
      border-radius: 50%;
      border: 1px solid var(--black);
  }
-
-
-
-
-
-
-
 
 
  div.middle{
@@ -313,6 +305,12 @@ div.win-box div.top-tri{
     /* animation: red-animation 1s ease 0s infinite reverse; */
   }
 
+  div.star{
+    font-size: 25px;
+    text-align: center;
+  }
+
+
 
   @keyframes red-animation {
     0%{
@@ -387,3 +385,7 @@ div.win-box div.top-tri{
     font-size: 60px;
   } */
 
+
+  @media screen and (max-width:820px) {
+    
+  }
