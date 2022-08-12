@@ -16,6 +16,7 @@
 div.ludo-con{
     display: flex;
     position: relative;
+    /* border: 2px solid red; */
 }
 
 div.left-button{
@@ -33,7 +34,7 @@ div.left-button > div{
 }
 
 div.left-button > div div{
-    border: 1px solid black;
+    /* border: 1px solid black; */
    /* border: 1px solid black; */
    background-color: white;
    padding: 10px;
@@ -64,6 +65,8 @@ div.left-button > div div#blue-btn{
 
 main{
     /* border: 1px solid hotpink; */
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -387,5 +390,332 @@ div.win-box div.top-tri{
 
 
   @media screen and (max-width:820px) {
+
+    div.left-button{
+       padding: 7px 10px;
+    }
     
+    div.left-button > div div{
+       padding: 7px;
+       font-size: 1.5rem;
+    }
+
+    div.upper{
+        width: 560px;
+     }
+
+     div.lower{
+        width: 560px;
+     }
+
+     /* div.mid-r-g > div{
+        width:150px;
+     } */
+
+     div.mid-r-g > div div{
+        width: 51px;    
+        height:33px;
+    }
+
+    div.red-player > div, div.green-player > div{
+        width: 150px;
+        height: 150px;
+        padding: 10px;
+    
+    }
+
+    div.m-r-b > div div{
+        width: 33px;
+        height: 52px;
+      }
+
+    div.lower{
+        width: 560px;
+     }
+
+     div.mid-b-y > div div{
+        width: 51px;    
+        height: 33px;
+    }
+
+    div.blue-player > div, div.yellow-player > div{
+        width: 150px;
+        height: 150px;
+        padding: 10px;
+    
+    }
+
+    div.red-player > div span div, div.green-player > div span div, div.blue-player > div span div, div.yellow-player > div span div{
+        width: 30px;
+        height:30px;
+      }
+
+    div.star{
+        font-size: 18px;
+        text-align: center;
+      }
+
+  }
+
+
+   @media screen and (max-width:720px) {
+
+
+    div.left-button{
+        padding: 7px 8px;
+     }
+     
+     div.left-button > div div{
+        padding: 7px;
+        font-size: 1.2rem;
+     }
+
+    div.upper{
+        width: 500px;
+     }
+
+     div.lower{
+        width: 500px;
+     }
+
+     /* div.mid-r-g > div{
+        width:150px;
+     } */
+
+     div.mid-r-g > div div{
+        width: 44px;    
+        height:30px;
+    }
+
+    div.red-player > div, div.green-player > div{
+        width: 130px;
+        height: 130px;
+        padding: 10px;
+    
+    }
+
+    div.m-r-b > div div{
+        width: 30px;
+        height: 44px;
+      }
+
+
+      div.middle div.win-box{
+        border: 1px solid var(--black);
+        width: 135px;
+        /* padding-left: 1px; */
+     }
+    
+     div.win-box div.top-tri{
+        width: 0;
+        height: 0;
+        border-top: 65px solid green;
+        border-left: 65px solid red;
+        border-right: 65px solid blue;
+    }
+    
+    
+    div.win-box div.top-tri{
+        width: 0;
+        height: 0;
+        border-bottom: 65px solid blue;
+        border-left: 65px solid red;
+        border-right: 65px solid yellow;
+    }
+
+
+    div.lower{
+        width: 500px;
+     }
+
+     div.mid-b-y > div div{
+        width: 44px;    
+        height: 30px;
+    }
+
+    div.blue-player > div, div.yellow-player > div{
+        width: 130px;
+        height: 130px;
+        padding: 10px;
+    
+    }
+
+    div.star{
+        font-size: 15px;
+        text-align: center;
+      }
+  }
+
+
+  @media screen and (max-width:620px) {
+
+
+    div.left-button{
+        padding: 7px 8px;
+     }
+     
+     div.left-button > div div{
+        padding: 7px;
+        font-size: 1.2rem;
+     }
+
+    div.upper{
+        width: 390px;
+     }
+
+     /* div.mid-r-g > div{
+        width:150px;
+     } */
+
+     div.mid-r-g > div div{
+        width: 33px;    
+        height:24px;
+    }
+
+    div.red-player > div, div.green-player > div{
+        width: 100px;
+        height: 100px;
+        padding: 6px;
+    
+    }
+
+    div.m-r-b > div div{
+        width: 24px;
+        height: 34px;
+      }
+
+
+      div.middle div.win-box{
+        border: 1px solid var(--black);
+        width: 100px;
+        /* padding-left: 1px; */
+     }
+    
+     div.win-box div.top-tri{
+        width: 0;
+        height: 0;
+        border-top: 50px solid green;
+        border-left: 50px solid red;
+        border-right: 50px solid blue;
+    }
+    
+    
+    div.win-box div.top-tri{
+        width: 0;
+        height: 0;
+        border-bottom: 50px solid blue;
+        border-left: 50px solid red;
+        border-right: 50px solid yellow;
+    }
+
+
+    div.lower{
+        width: 390px;
+     }
+
+     div.mid-b-y > div div{
+        width: 33px;    
+        height: 24px;
+    }
+
+    div.blue-player > div, div.yellow-player > div{
+        width: 100px;
+        height: 100px;
+        padding: 6px;
+    
+    }
+
+    div.star{
+        font-size: 15px;
+        text-align: center;
+      }
+  }
+
+  @media screen and (max-width:500px) {
+
+
+    div.left-button{
+        padding: 7px 8px;
+     }
+     
+     div.left-button > div div{
+        padding: 7px;
+        font-size: 1.2rem;
+     }
+
+    div.upper{
+        width: 300px;
+     }
+
+     /* div.mid-r-g > div{
+        width:150px;
+     } */
+
+     div.mid-r-g > div div{
+        width: 25px;    
+        height:19px;
+    }
+
+    div.red-player > div, div.green-player > div{
+        width: 70px;
+        height: 70px;
+        padding: 6px;
+    
+    }
+
+    div.m-r-b > div div{
+        width: 18px;
+        height: 25px;
+      }
+
+
+      div.middle div.win-box{
+        border: 1px solid var(--black);
+        width: 75px;
+        /* padding-left: 1px; */
+     }
+    
+     div.win-box div.top-tri{
+        width: 0;
+        height: 0;
+        border-top: 37px solid green;
+        border-left: 37px solid red;
+        border-right: 37px solid blue;
+    }
+    
+    
+    div.win-box div.top-tri{
+        width: 0;
+        height: 0;
+        border-bottom: 37px solid blue;
+        border-left: 37px solid red;
+        border-right: 37px solid yellow;
+    }
+
+
+    div.lower{
+        width: 300px;
+     }
+
+     div.mid-b-y > div div{
+        width: 25px;    
+        height: 19px;
+    }
+
+    div.blue-player > div, div.yellow-player > div{
+        width: 70px;
+        height: 70px;
+        padding: 6px;
+    
+    }
+
+    div.red-player > div span div, div.green-player > div span div, div.blue-player > div span div, div.yellow-player > div span div{
+        width: 20px;
+        height:20px;
+      }
+
+    div.star{
+        font-size: 10px;
+        text-align: center;
+      }
   }
