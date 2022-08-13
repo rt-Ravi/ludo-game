@@ -13,9 +13,41 @@
     --black : black;
 }
 
+
+h1{
+    text-align: center;
+    padding: 5px;
+    font-family:'Courier New', Courier, monospace;
+    background-color: rgb(196, 196, 196);
+}
+
+
+main{
+    /* border: 1px solid hotpink; */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+
+    position: relative;
+}
+
+button#start_btn{
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    padding: 5px;
+    z-index: 50;
+}
+
 div.ludo-con{
     display: flex;
     position: relative;
+    opacity: 0.4;
     /* border: 2px solid red; */
 }
 
@@ -62,20 +94,8 @@ div.left-button > div div#blue-btn{
  }
 
 
-
-main{
-    /* border: 1px solid hotpink; */
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0px;
-}
-
-
 div.main_con{
-    border: 2px solid var(--black);
+    border: 1px solid var(--black);
     display: inline-block;
     
 }
@@ -311,6 +331,13 @@ div.win-box div.top-tri{
   div.star{
     font-size: 25px;
     text-align: center;
+  }
+
+  footer{
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+    background-color: rgb(196, 196, 196);
+    padding: 5px;
   }
 
 
@@ -635,16 +662,16 @@ div.win-box div.top-tri{
 
 
     div.left-button{
-        padding: 7px 8px;
+        padding: 7px 7px;
      }
      
      div.left-button > div div{
-        padding: 7px;
-        font-size: 1.2rem;
+        padding: 5px;
+        font-size: 1rem;
      }
 
     div.upper{
-        width: 300px;
+        width: 280px;
      }
 
      /* div.mid-r-g > div{
@@ -652,19 +679,19 @@ div.win-box div.top-tri{
      } */
 
      div.mid-r-g > div div{
-        width: 25px;    
-        height:19px;
+        width: 22px;    
+        height:18px;
     }
 
     div.red-player > div, div.green-player > div{
-        width: 70px;
-        height: 70px;
-        padding: 6px;
+        width: 65px;
+        height: 65px;
+        padding: 2px;
     
     }
 
     div.m-r-b > div div{
-        width: 18px;
+        width: 17px;
         height: 25px;
       }
 
@@ -694,24 +721,24 @@ div.win-box div.top-tri{
 
 
     div.lower{
-        width: 300px;
+        width: 280px;
      }
 
      div.mid-b-y > div div{
-        width: 25px;    
-        height: 19px;
+        width: 23px;    
+        height: 18px;
     }
 
     div.blue-player > div, div.yellow-player > div{
-        width: 70px;
-        height: 70px;
-        padding: 6px;
+        width: 65px;
+        height: 65px;
+        padding: 2px;
     
     }
 
     div.red-player > div span div, div.green-player > div span div, div.blue-player > div span div, div.yellow-player > div span div{
-        width: 20px;
-        height:20px;
+        width: 15px;
+        height:15px;
       }
 
     div.star{

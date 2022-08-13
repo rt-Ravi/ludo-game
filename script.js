@@ -2,6 +2,8 @@ let red_btn;
 let blue_btn;
 let yellow_btn;
 let green_btn;
+let ludo;
+let start_btn;
 const boxes = [];
 const red_circle = [];
 const blue_circle = [];
@@ -87,7 +89,13 @@ var yellow_btn_without_ani = "background-color:rgb(241, 241, 115); box-shadow: 2
 var red_turn = true, blue_turn = true, yellow_turn = false, green_turn = false;
 
 
-function load() {
+function game_start() {
+
+    start_btn = document.getElementById("start_btn");
+    start_btn.style = "display:none;";
+
+    ludo = document.getElementById("ludo");
+    ludo.style = "opacity: 1";
 
     red_btn = document.getElementById("red-btn");
     blue_btn = document.getElementById("blue-btn");
@@ -143,14 +151,21 @@ function load() {
     if (blue_turn) {
         blue_btn.style = blue_animation;
     }
+
+    dice.diceplay();
+    gitti_cut_s.gitticutplay();
+    gitti_pass_s.gittipassplay();
+    gitti_run_s.gittirunplay();
 }
 
 function red() {
 
-    if (red_turn) {
-        red_player.red_rotate(red_btn);
+    // if (red_turn) {
+    //     red_player.red_rotate(red_btn);
+    //     dice.diceplay();
+    // }
+    red_player.red_rotate(red_btn);
         dice.diceplay();
-    }
     // dice.dicestop();
 
 
@@ -158,30 +173,38 @@ function red() {
 
 function blue() {
 
-    if (blue_turn) {
-        blue_player.blue_rotate(blue_btn);
+    // if (blue_turn) {
+    //     blue_player.blue_rotate(blue_btn);
+    //     dice.diceplay();
+    // }
+    blue_player.blue_rotate(blue_btn);
         dice.diceplay();
-    }
 
 
 }
 
 function yellow() {
 
-    if (yellow_turn) {
-        yellow_player.yellow_rotate(yellow_btn);
+    // if (yellow_turn) {
+    //     yellow_player.yellow_rotate(yellow_btn);
+    //     dice.diceplay();
+    // }
+
+    yellow_player.yellow_rotate(yellow_btn);
         dice.diceplay();
-    }
 
 
 }
 
 function green() {
 
-    if (green_turn) {
-        green_player.green_rotate(green_btn);
+    // if (green_turn) {
+    //     green_player.green_rotate(green_btn);
+    //     dice.diceplay();
+    // }
+
+    green_player.green_rotate(green_btn);
         dice.diceplay();
-    }
 
 
 }
@@ -198,6 +221,8 @@ function red_area(reed) {
             setTimeout(() => {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
+                    num = 6;
+                else if (num == 3)
                     num = 6;
 
                 btn.textContent = num;
@@ -779,7 +804,8 @@ function red_area(reed) {
 
         var runcount = 0;
         if ((red_inside[git] == 1 && num == 6) || (red_inside[git] == 2 && num >= 5) || (red_inside[git] == 3 && num >= 4) || (red_inside[git] == 4 && num >= 3) || (red_inside[git] == 5 && num >= 2)) {
-
+            green_turn = true;
+            green_btn.style = green_animation;
         }
 
         else {
@@ -842,8 +868,7 @@ function red_area(reed) {
                             red_win[git] = true;
                             reds[git] = true;
                             red_in[git] = false;
-                            if(red_win[0] && red_win[1] && red_win[2] && red_win[3])
-                            {
+                            if (red_win[0] && red_win[1] && red_win[2] && red_win[3]) {
                                 alert("red win");
                                 red_turn = false;
                                 blue_turn = false;
@@ -851,6 +876,7 @@ function red_area(reed) {
                                 green_turn = false;
                             }
                         }
+                        
                         else {
                             var gittiOnback = false;
                             for (var x = 0; x <= 3; x++) {
@@ -1056,7 +1082,7 @@ function red_area(reed) {
                         }
 
                         else if ((red_in[git] == false) && (red_current[git] == 15 || red_current[git] == 28 || red_current[git] == 41 || red_current[git] == 2)) {
-                            mutlicolor(red_current, blue_current, yellow_current, green_current, git, "red");
+                            mutlicolor("redP", red_current[git]);
                         }
 
                         if (num != 6) {
@@ -1115,6 +1141,8 @@ function blue_area() {
             setTimeout(() => {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
+                    num = 6;
+                else if (num == 3)
                     num = 6;
 
                 btn.textContent = num;
@@ -1704,7 +1732,8 @@ function blue_area() {
         var runcount = 0;
 
         if ((blue_inside[git] == 1 && num == 6) || (blue_inside[git] == 2 && num >= 5) || (blue_inside[git] == 3 && num >= 4) || (blue_inside[git] == 4 && num >= 3) || (blue_inside[git] == 5 && num >= 2)) {
-
+            red_turn = true;
+            red_btn.style = red_animation;
         }
 
         else {
@@ -1806,8 +1835,7 @@ function blue_area() {
                             blues[git] = true;
                             blue_in[git] = false;
 
-                            if(blue_win[0] && blue_win[1] && blue_win[2] && blue_win[3])
-                            {
+                            if (blue_win[0] && blue_win[1] && blue_win[2] && blue_win[3]) {
                                 alert("blue win");
                                 red_turn = false;
                                 blue_turn = false;
@@ -1948,7 +1976,7 @@ function blue_area() {
                         }
 
                         else if ((blue_in[git] == false) && (blue_current[git] == 15 || blue_current[git] == 28 || blue_current[git] == 41 || blue_current[git] == 2)) {
-                            mutlicolor(blue_current, red_current, yellow_current, green_current, git, "blue");
+                            mutlicolor("blueP", blue_current[git]);
                         }
 
                         if (num != 6) {
@@ -1998,6 +2026,8 @@ function yellow_area() {
             setTimeout(() => {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
+                    num = 6;
+                else if (num == 3)
                     num = 6;
 
                 btn.textContent = num;
@@ -2586,6 +2616,8 @@ function yellow_area() {
 
         if ((yellow_inside[git] == 1 && num == 6) || (yellow_inside[git] == 2 && num >= 5) || (yellow_inside[git] == 3 && num >= 4) || (yellow_inside[git] == 4 && num >= 3) || (yellow_inside[git] == 5 && num >= 2)) {
 
+            blue_turn = true;
+            blue_btn.style = blue_animation;
         }
 
         else {
@@ -2648,8 +2680,7 @@ function yellow_area() {
                             yellows[git] = true;
                             yellow_in[git] = false;
 
-                            if(yellow_win[0] && yellow_win[1] && yellow_win[2] && yellow_win[3])
-                            {
+                            if (yellow_win[0] && yellow_win[1] && yellow_win[2] && yellow_win[3]) {
                                 alert("yellow win");
                                 red_turn = false;
                                 blue_turn = false;
@@ -2862,7 +2893,7 @@ function yellow_area() {
                         }
 
                         else if ((yellow_in[git] == false) && (yellow_current[git] == 15 || yellow_current[git] == 28 || yellow_current[git] == 41 || yellow_current[git] == 2)) {
-                            mutlicolor(yellow_current, red_current, blue_current, green_current, git, "yellow");
+                            mutlicolor("yellowP", yellow_current[git]);
                         }
 
                         if (num != 6) {
@@ -2899,6 +2930,8 @@ function green_area() {
             setTimeout(() => {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
+                    num = 6;
+                else if (num == 3)
                     num = 6;
 
                 btn.textContent = num;
@@ -3486,6 +3519,8 @@ function green_area() {
 
         if ((green_inside[git] == 1 && num == 6) || (green_inside[git] == 2 && num >= 5) || (green_inside[git] == 3 && num >= 4) || (green_inside[git] == 4 && num >= 3) || (green_inside[git] == 5 && num >= 2)) {
 
+            yellow_turn = true;
+            yellow_btn.style = yellow_animation;
         }
 
         else {
@@ -3548,8 +3583,7 @@ function green_area() {
                             greens[git] = true;
                             green_in[git] = false;
 
-                            if(green_win[0] && green_win[1] && green_win[2] && green_win[3])
-                            {
+                            if (green_win[0] && green_win[1] && green_win[2] && green_win[3]) {
                                 alert("green win");
                                 red_turn = false;
                                 blue_turn = false;
@@ -3763,7 +3797,7 @@ function green_area() {
                         }
 
                         else if ((green_in[git] == false) && (green_current[git] == 15 || green_current[git] == 28 || green_current[git] == 41 || green_current[git] == 2)) {
-                            mutlicolor(green_current, red_current, yellow_current, blue_current, git, "green");
+                            mutlicolor("greenP", green_current[git]);
                         }
 
                         if (num != 6) {
@@ -4357,335 +4391,95 @@ function red_cut(val, blockrun) {
 
 // multi color on boxes
 
-function mutlicolor(main_current, first_col, second_col, third_col, git, col) {
-    var runchut = false;
-
-    for (let x = 0; x <= 3; x++) {
-
-        if (runchut == false) {
-            for (let k = 0; k <= 3; k++) {
-                if (main_current[git] == first_col[k]) {
-                    for (let j = 0; j <= 3; j++) {
-                        if (first_col[k] == second_col[j]) {
-                            for (let r = 0; r <= 3; r++) {
-                                if (second_col[k] == third_col[j]) {
-                                    boxes[main_current[git]].style = "background: linear-gradient(180deg, red 25%, rgb(237, 84, 7,0) 0%), linear-gradient(180deg, yellow 50%, rgb(62, 152, 62,0) 0%),linear-gradient(180deg, blue 75%, rgba(57, 237, 7) 50%);";
-                                    runchut = true;
-                                    break;
-
-                                }
-                            }
-                            break;
-
-                        }
-                    }
+function mutlicolor(player_type, pos) {
+   var red_p = false, blue_p = false, yellow_p = false, green_p = false;
+   var colorcount = 0; 
+//    alert("ok");
+    switch (player_type) {
+        case "redP": red_p = true;
                     break;
 
-                }
-            }
-        }
+        case "blueP": blue_p = true;
+                    break;
 
+        case "yellowP": yellow_p = true;
+                    break;
 
-        if (runchut == false) {
-            if (main_current == red_current) {
-                var overgitti = false;
-                for (let k = 0; k <= 3; k++) {
-                    if (red_current[git] == green_current[k]) {
-                        for (let j = 0; j <= 3; j++) {
-                            if (red_current[git] == yellow_current[j]) {
-                                boxes[red_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
-                                overgitti = true;
-                                runchut = true;
-                                break;
-
-                            }
-                        }
-                        break;
-
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (red_current[git] == blue_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (red_current[git] == yellow_current[j]) {
-                                    boxes[red_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, blue 66%);";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-
-                                }
-                            }
-                            break;
-
-                        }
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (red_current[git] == green_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (red_current[git] == blue_current[j]) {
-                                    boxes[red_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (runchut == false) {
-            if (main_current == green_current) {
-                var overgitti = false;
-                for (let k = 0; k <= 3; k++) {
-                    if (green_current[git] == yellow_current[k]) {
-                        for (let j = 0; j <= 3; j++) {
-                            if (green_current[git] == blue_current[j]) {
-                                boxes[green_current[git]].style = "background: linear-gradient(180deg, blue 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
-                                overgitti = true;
-                                runchut = true;
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (green_current[git] == red_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (green_current[git] == blue_current[j]) {
-                                    boxes[green_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (green_current[git] == red_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (green_current[git] == yellow_current[j]) {
-                                    boxes[green_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (runchut == false) {
-            if (main_current == blue_current) {
-                var overgitti = false;
-                for (let k = 0; k <= 3; k++) {
-                    if (blue_current[git] == yellow_current[k]) {
-                        for (let j = 0; j <= 3; j++) {
-                            if (blue_current[git] == green_current[j]) {
-                                boxes[blue_current[git]].style = "background: linear-gradient(180deg, blue 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, rgb(62, 152, 62) 66%);";
-                                overgitti = true;
-                                runchut = true;
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (blue_current[git] == red_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (blue_current[git] == green_current[j]) {
-                                    boxes[blue_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (blue_current[git] == red_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (blue_current[git] == yellow_current[j]) {
-                                    boxes[blue_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, yellow 66%, blue 66%);";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (runchut == false) {
-            if (main_current == yellow_current) {
-                var overgitti = false;
-                for (let k = 0; k <= 3; k++) {
-                    if (yellow_current[git] == red_current[k]) {
-                        for (let j = 0; j <= 3; j++) {
-                            if (yellow_current[git] == green_current[j]) {
-                                boxes[yellow_current[git]].style = "background: linear-gradient(180deg, yellow 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, red 66%, rgb(62, 152, 62) 66%);";
-                                overgitti = true;
-                                runchut = true;
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (yellow_current[git] == red_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (yellow_current[git] == blue_current[j]) {
-                                    boxes[yellow_current[git]].style = "background: linear-gradient(180deg, red 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, yellow 66%;";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                if (overgitti == false) {
-                    for (let k = 0; k <= 3; k++) {
-                        if (yellow_current[git] == blue_current[k]) {
-                            for (let j = 0; j <= 3; j++) {
-                                if (yellow_current[git] == green_current[j]) {
-                                    boxes[yellow_current[git]].style = "background: linear-gradient(180deg, yellow 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, blue 66%, rgb(62, 152, 62) 66%);";
-                                    overgitti = true;
-                                    runchut = true;
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        if (main_current == blue_current) {
-            if (main_current[git] == red_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, blue 50%, red 0%);";
-                console.log("double color");
-
-                break;
-            }
-            else if (main_current[git] == yellow_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, blue 50%, yellow 0%);";
-                console.log("double color");
-
-                break;
-            }
-
-            else if (main_current[git] == green_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, blue 50%, green 0%);";
-                console.log("double color");
-
-                break;
-            }
-        }
-
-        else if (main_current == red_current) {
-            if (main_current[git] == blue_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, red 50%, blue 0%);";
-                console.log("double color");
-
-                break;
-            }
-            else if (main_current[git] == yellow_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, red 50%, yellow 0%);";
-                console.log("double color");
-
-                break;
-            }
-
-            else if (main_current[git] == green_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, red 50%, green 0%);";
-                console.log("double color");
-
-                break;
-            }
-        }
-
-        else if (main_current == yellow_current) {
-            if (main_current[git] == red_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, yellow 50%, red 0%);";
-                console.log("double color");
-
-                break;
-            }
-            else if (main_current[git] == blue_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, yellow 50%, blue 0%);";
-                console.log("double color");
-
-                break;
-            }
-
-            else if (main_current[git] == green_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, yellow 50%, green 0%);";
-                console.log("double color");
-
-                break;
-            }
-        }
-
-
-        else if (main_current == green_current) {
-            if (main_current[git] == red_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg, green 50%, red 0%);";
-                console.log("double color");
-
-                break;
-            }
-            else if (main_current[git] == blue_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg,, green 50%, blue 0%);";
-                console.log("double color");
-
-                break;
-            }
-
-            else if (main_current[git] == yellow_current[x]) {
-                boxes[main_current[git]].style = "background: linear-gradient(180deg,, green 50%, yellow 0%);";
-                console.log("double color");
-
-                break;
-            }
-        }
-
-
+        case "greenP": green_p = true;
+                    break;
     }
+
+    var obj = [red_p, blue_p, yellow_p, green_p];
+    var colo = ["red", "blue", "yellow", "green"];
+    var curr = [red_current,  blue_current, yellow_current, green_current];
+    var true_colors3 = [" ", " ", " "];
+    var true_colors2 = [" ", " "];
+
+    for(let len=0; len<=3; len++)
+    {
+        if(obj[len] == false)
+        {
+            for(let r=0; r<=3; r++)
+            {
+                if(curr[len][r] == pos)
+                {
+                    obj[len] = true;
+                    console.log(true);
+                    colorcount++;
+                    console.log(colorcount);
+                    break;
+                }
+            }
+        }
+    }
+
+    if(colorcount == 3)
+    {
+        boxes[pos].style = "background: linear-gradient(180deg, red 25%, rgb(237, 84, 7,0) 0%), linear-gradient(180deg, yellow 50%, rgb(62, 152, 62,0) 0%),linear-gradient(180deg, blue 75%, rgba(57, 237, 7) 50%);";
+    }
+
+    else if(colorcount == 2)
+    {
+
+        for(let c=0; c<=3; c++)
+        {
+            if(obj[c])
+            {
+                for(let l=0; l<=2; l++)
+                {
+                    if(true_colors3[l] == " ")
+                    {
+                        true_colors3[l] = colo[c];
+                        break;
+                    }
+                }
+            }
+        }
+        
+        boxes[pos].style = "background: linear-gradient(180deg, "+true_colors3[0]+" 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, "+true_colors3[1]+" 66%, "+true_colors3[2]+" 66%);";
+    }
+
+    else if(colorcount == 1)
+    {
+
+        for(let c=0; c<=3; c++)
+        {
+            if(obj[c])
+            {
+                for(let l=0; l<=1; l++)
+                {
+                    if(true_colors2[l] == " ")
+                    {
+                        true_colors2[l] = colo[c];
+                        break;
+                    }
+                }
+            }
+        }
+        
+        boxes[pos].style = "background: linear-gradient(180deg, "+true_colors2[0]+" 50%, "+true_colors2[1]+" 0%);";
+    }
+
 }
 
 
