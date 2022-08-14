@@ -66,24 +66,27 @@ const green_win = [false, false, false, false];
 
 
 // red animation
+var red_an = "red-animation 1s ease 0s infinite reverse";
 var red_animation = "animation: red-animation 1s ease 0s infinite reverse;";
 var red_btn_animation = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: red-animation 1s ease 0s infinite reverse;";
-var red_btn_without_ani = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
 
 // green animation
+var green_an = "green-animation 1s ease 0s infinite reverse";
 var green_animation = "animation: green-animation 1s ease 0s infinite reverse;";
 var green_btn_animation = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: green-animation 1s ease 0s infinite reverse;";
-var green_btn_without_ani = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
+
 
 // blue animation
+var blue_an = "blue-animation 1s ease 0s infinite reverse";
 var blue_animation = "animation: blue-animation 1s ease 0s infinite reverse;";
 var blue_btn_animation = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: blue-animation 1s ease 0s infinite reverse;";
-var blue_btn_without_ani = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
+
 
 // yellow animation
+var yellow_an = "yellow-animation 1s ease 0s infinite reverse";
 var yellow_animation = "animation: yellow-animation 1s ease 0s infinite reverse;";
 var yellow_btn_animation = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset; z-index:50; animation: yellow-animation 1s ease 0s infinite reverse;";
-var yellow_btn_without_ani = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
+
 
 
 var red_turn = true, blue_turn = true, yellow_turn = false, green_turn = false;
@@ -160,12 +163,12 @@ function game_start() {
 
 function red() {
 
-    // if (red_turn) {
-    //     red_player.red_rotate(red_btn);
-    //     dice.diceplay();
-    // }
-    red_player.red_rotate(red_btn);
+    if (red_turn) {
+        red_player.red_rotate(red_btn);
         dice.diceplay();
+    }
+    // red_player.red_rotate(red_btn);
+    // dice.diceplay();
     // dice.dicestop();
 
 
@@ -173,38 +176,38 @@ function red() {
 
 function blue() {
 
-    // if (blue_turn) {
-    //     blue_player.blue_rotate(blue_btn);
-    //     dice.diceplay();
-    // }
-    blue_player.blue_rotate(blue_btn);
+    if (blue_turn) {
+        blue_player.blue_rotate(blue_btn);
         dice.diceplay();
+    }
+    // blue_player.blue_rotate(blue_btn);
+    // dice.diceplay();
 
 
 }
 
 function yellow() {
 
-    // if (yellow_turn) {
-    //     yellow_player.yellow_rotate(yellow_btn);
-    //     dice.diceplay();
-    // }
-
-    yellow_player.yellow_rotate(yellow_btn);
+    if (yellow_turn) {
+        yellow_player.yellow_rotate(yellow_btn);
         dice.diceplay();
+    }
+
+    // yellow_player.yellow_rotate(yellow_btn);
+    // dice.diceplay();
 
 
 }
 
 function green() {
 
-    // if (green_turn) {
-    //     green_player.green_rotate(green_btn);
-    //     dice.diceplay();
-    // }
-
-    green_player.green_rotate(green_btn);
+    if (green_turn) {
+        green_player.green_rotate(green_btn);
         dice.diceplay();
+    }
+
+    // green_player.green_rotate(green_btn);
+    // dice.diceplay();
 
 
 }
@@ -221,8 +224,6 @@ function red_area(reed) {
             setTimeout(() => {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
-                    num = 6;
-                else if (num == 3)
                     num = 6;
 
                 btn.textContent = num;
@@ -245,29 +246,38 @@ function red_area(reed) {
                         red_circle[0].style = red_animation;
                     }
                     else {
-                        if (!red_in[0] && !red_win[0])
-                            boxes[red_current[0]].style = red_btn_animation;
+                        if (!red_in[0] && !red_win[0]){
+                           
+                            boxes[red_current[0]].style.animation = red_an;
+                            boxes[red_current[0]].style.zIndex = "50";
+                        }
                     }
                     if (reds[1] && !red_win[1]) {
                         red_circle[1].style = red_animation;
                     }
                     else {
-                        if (!red_in[1] && !red_win[1])
-                            boxes[red_current[1]].style = red_btn_animation;
+                        if (!red_in[1] && !red_win[1]){
+                            boxes[red_current[1]].style.animation = red_an;
+                            boxes[red_current[1]].style.zIndex = "50";
+                        }
                     }
                     if (reds[2] && !red_win[2]) {
                         red_circle[2].style = red_animation;
                     }
                     else {
-                        if (!red_in[2] && !red_win[2])
-                            boxes[red_current[2]].style = red_btn_animation;
+                        if (!red_in[2] && !red_win[2]){
+                            boxes[red_current[2]].style.animation = red_an;
+                            boxes[red_current[2]].style.zIndex = "50";
+                        }
                     }
                     if (reds[3] && !red_win[3]) {
                         red_circle[3].style = red_animation;
                     }
                     else {
-                        if (!red_in[3] && !red_win[3])
-                            boxes[red_current[3]].style = red_btn_animation;
+                        if (!red_in[3] && !red_win[3]){
+                            boxes[red_current[3]].style.animation = red_an;
+                            boxes[red_current[3]].style.zIndex = "50";
+                        }
                     }
                 }
 
@@ -277,108 +287,132 @@ function red_area(reed) {
                     btn.style = "animation:none;";
 
                     if (!reds[0] && !red_in[0]) {
-                        boxes[red_current[0]].style = red_btn_animation;
+                        boxes[red_current[0]].style.animation = red_an;
+                        boxes[red_current[0]].style.zIndex = "50";
                     }
 
                     if (!reds[1] && !red_in[1]) {
-                        boxes[red_current[1]].style = red_btn_animation;
+                        boxes[red_current[1]].style.animation = red_an;
+                        boxes[red_current[1]].style.zIndex = "50";
                     }
 
                     if (!reds[2] && !red_in[2]) {
-                        boxes[red_current[2]].style = red_btn_animation;
+                        boxes[red_current[2]].style.animation = red_an;
+                        boxes[red_current[2]].style.zIndex = "50";
                     }
 
                     if (!reds[3] && !red_in[3]) {
-                        boxes[red_current[3]].style = red_btn_animation;
+                        boxes[red_current[3]].style.animation = red_an;
+                        boxes[red_current[3]].style.zIndex = "50";
                     }
 
                     if (num == 1) {
                         if (red_in[0]) {
-                            red_boxes[red_inside[0]].style = red_btn_animation;
+                            red_boxes[red_inside[0]].style.animation = red_an;
+                            red_boxes[red_inside[0]].style.zIndex = "50";
                         }
 
                         if (red_in[1]) {
-                            red_boxes[red_inside[1]].style = red_btn_animation;
+                            red_boxes[red_inside[1]].style.animation = red_an;
+                            red_boxes[red_inside[1]].style.zIndex = "50";
                         }
 
                         if (red_in[2]) {
-                            red_boxes[red_inside[2]].style = red_btn_animation;
+                            red_boxes[red_inside[2]].style.animation = red_an;
+                            red_boxes[red_inside[2]].style.zIndex = "50";
                         }
 
                         if (red_in[3]) {
-                            red_boxes[red_inside[3]].style = red_btn_animation;
+                            red_boxes[red_inside[3]].style.animation = red_an;
+                            red_boxes[red_inside[3]].style.zIndex = "50";
                         }
                     }
 
                     else if (num == 2) {
                         if (red_in[0] && (red_inside[0] < 5)) {
-                            red_boxes[red_inside[0]].style = red_btn_animation;
+                            red_boxes[red_inside[0]].style.animation = red_an;
+                            red_boxes[red_inside[0]].style.zIndex = "50";
                         }
 
                         if (red_in[1] && (red_inside[1] < 5)) {
-                            red_boxes[red_inside[1]].style = red_btn_animation;
+                            red_boxes[red_inside[1]].style.animation = red_an;
+                            red_boxes[red_inside[1]].style.zIndex = "50";
                         }
 
                         if (red_in[2] && (red_inside[2] < 5)) {
-                            red_boxes[red_inside[2]].style = red_btn_animation;
+                            red_boxes[red_inside[2]].style.animation = red_an;
+                            red_boxes[red_inside[2]].style.zIndex = "50";
                         }
 
                         if (red_in[3] && (red_inside[3] < 5)) {
-                            red_boxes[red_inside[3]].style = red_btn_animation;
+                            red_boxes[red_inside[3]].style.animation = red_an;
+                            red_boxes[red_inside[3]].style.zIndex = "50";
                         }
                     }
 
                     else if (num == 3) {
                         if (red_in[0] && (red_inside[0] < 4)) {
-                            red_boxes[red_inside[0]].style = red_btn_animation;
+                            red_boxes[red_inside[0]].style.animation = red_an;
+                            red_boxes[red_inside[0]].style.zIndex = "50";
                         }
 
                         if (red_in[1] && (red_inside[1] < 4)) {
-                            red_boxes[red_inside[1]].style = red_btn_animation;
+                            red_boxes[red_inside[1]].style.animation = red_an;
+                            red_boxes[red_inside[1]].style.zIndex = "50";
                         }
 
                         if (red_in[2] && (red_inside[2] < 4)) {
-                            red_boxes[red_inside[2]].style = red_btn_animation;
+                            red_boxes[red_inside[2]].style.animation = red_an;
+                            red_boxes[red_inside[2]].style.zIndex = "50";
                         }
 
                         if (red_in[3] && (red_inside[3] < 4)) {
-                            red_boxes[red_inside[3]].style = red_btn_animation;
+                            red_boxes[red_inside[3]].style.animation = red_an;
+                            red_boxes[red_inside[3]].style.zIndex = "50";
                         }
                     }
 
                     else if (num == 4) {
                         if (red_in[0] && (red_inside[0] < 3)) {
-                            red_boxes[red_inside[0]].style = red_btn_animation;
+                            red_boxes[red_inside[0]].style.animation = red_an;
+                            red_boxes[red_inside[0]].style.zIndex = "50";
                         }
 
                         if (red_in[1] && (red_inside[1] < 3)) {
-                            red_boxes[red_inside[1]].style = red_btn_animation;
+                            red_boxes[red_inside[1]].style.animation = red_an;
+                            red_boxes[red_inside[1]].style.zIndex = "50";
                         }
 
                         if (red_in[2] && (red_inside[2] < 3)) {
-                            red_boxes[red_inside[2]].style = red_btn_animation;
+                            red_boxes[red_inside[2]].style.animation = red_an;
+                            red_boxes[red_inside[2]].style.zIndex = "50";
                         }
 
                         if (red_in[3] && (red_inside[3] < 3)) {
-                            red_boxes[red_inside[3]].style = red_btn_animation;
+                            red_boxes[red_inside[3]].style.animation = red_an;
+                            red_boxes[red_inside[3]].style.zIndex = "50";
                         }
                     }
 
                     else if (num == 5) {
                         if (red_in[0] && (red_inside[0] < 2)) {
-                            red_boxes[red_inside[0]].style = red_btn_animation;
+                            red_boxes[red_inside[0]].style.animation = red_an;
+                            red_boxes[red_inside[0]].style.zIndex = "50";
                         }
 
                         if (red_in[1] && (red_inside[1] < 2)) {
-                            red_boxes[red_inside[1]].style = red_btn_animation;
+                            red_boxes[red_inside[1]].style.animation = red_an;
+                            red_boxes[red_inside[1]].style.zIndex = "50";
                         }
 
                         if (red_in[2] && (red_inside[2] < 2)) {
-                            red_boxes[red_inside[2]].style = red_btn_animation;
+                            red_boxes[red_inside[2]].style.animation = red_an;
+                            red_boxes[red_inside[2]].style.zIndex = "50";
                         }
 
                         if (red_in[3] && (red_inside[3] < 2)) {
-                            red_boxes[red_inside[3]].style = red_btn_animation;
+                            red_boxes[red_inside[3]].style.animation = red_an;
+                            red_boxes[red_inside[3]].style.zIndex = "50";
                         }
                     }
 
@@ -511,7 +545,7 @@ function red_area(reed) {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!reds[h] && red_in[h] && !red_win[h]) {
-                                                red_boxes[red_inside[h]].style = red_btn_without_ani;
+                                                red_boxes[red_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -534,7 +568,7 @@ function red_area(reed) {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!reds[h] && red_in[h] && !red_win[h]) {
-                                                red_boxes[red_inside[h]].style = red_btn_without_ani;
+                                                red_boxes[red_inside[h]].style.animation = "";;
                                             }
                                         }
 
@@ -557,7 +591,7 @@ function red_area(reed) {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!reds[h] && red_in[h] && !red_win[h]) {
-                                                red_boxes[red_inside[h]].style = red_btn_without_ani;
+                                                red_boxes[red_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -580,7 +614,7 @@ function red_area(reed) {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!reds[h] && red_in[h] && !red_win[h]) {
-                                                red_boxes[red_inside[h]].style = red_btn_without_ani;
+                                                red_boxes[red_inside[h]].style.animation = "";
                                             }
                                         }
                                     }
@@ -735,7 +769,7 @@ function red_area(reed) {
             red_circle[0].style = "animation: none";
         } else {
             if (!red_in[0] && !red_win[0])
-                boxes[red_current[0]].style = red_btn_without_ani;
+                boxes[red_current[0]].style.animation = "";
         }
 
         if (reds[1] && !red_win[1]) {
@@ -743,7 +777,7 @@ function red_area(reed) {
         }
         else {
             if (!red_in[1] && !red_win[1])
-                boxes[red_current[1]].style = red_btn_without_ani;
+                boxes[red_current[1]].style.animation = "";
         }
 
         if (reds[2] && !red_win[2]) {
@@ -751,7 +785,7 @@ function red_area(reed) {
         }
         else {
             if (!red_in[2] && !red_win[2])
-                boxes[red_current[2]].style = red_btn_without_ani;
+                boxes[red_current[2]].style.animation = "";
         }
 
         if (reds[3] && !red_win[3]) {
@@ -759,7 +793,7 @@ function red_area(reed) {
         }
         else {
             if (!red_in[3] && !red_win[3])
-                boxes[red_current[3]].style = red_btn_without_ani;
+                boxes[red_current[3]].style.animation = "";
         }
 
         red_btn.style = red_animation;
@@ -771,21 +805,21 @@ function red_area(reed) {
 
             btn.style = "animation: none;";
             if (!reds[0] && !red_in[0]) {
-                boxes[red_current[0]].style = red_btn_without_ani;
+                boxes[red_current[0]].style.animation = "";
             }
             if (!reds[1] && !red_in[1]) {
-                boxes[red_current[1]].style = red_btn_without_ani;
+                boxes[red_current[1]].style.animation = "";
             }
             if (!reds[2] && !red_in[2]) {
-                boxes[red_current[2]].style = red_btn_without_ani;
+                boxes[red_current[2]].style.animation = "";
             }
             if (!reds[3] && !red_in[3]) {
-                boxes[red_current[3]].style = red_btn_without_ani;
+                boxes[red_current[3]].style.animation = "";
             }
 
             for (let h = 0; h <= 3; h++) {
                 if (!reds[h] && red_in[h] && !red_win[h]) {
-                    red_boxes[red_inside[h]].style = red_btn_without_ani;
+                    red_boxes[red_inside[h]].style.animation = "";
                 }
             }
 
@@ -830,7 +864,7 @@ function red_area(reed) {
                             for (let k = 0; k <= 3; k++) {
                                 if (!reds[k] && !red_win[k] && !red_in[k]) {
                                     // console.log(red_current[k]);
-                                    boxes[red_current[k]].style = red_btn_without_ani;
+                                    boxes[red_current[k]].style.animation = "";
                                 }
 
                                 if (git == k)
@@ -839,7 +873,7 @@ function red_area(reed) {
                                 else {
                                     if (!reds[k] && !red_win[k] && red_in[k]) {
                                         console.log(red_inside[k]);
-                                        red_boxes[red_inside[k]].style = red_btn_without_ani;
+                                        red_boxes[red_inside[k]].style.animation = "";
                                     }
                                 }
 
@@ -876,7 +910,7 @@ function red_area(reed) {
                                 green_turn = false;
                             }
                         }
-                        
+
                         else {
                             var gittiOnback = false;
                             for (var x = 0; x <= 3; x++) {
@@ -899,12 +933,12 @@ function red_area(reed) {
                                 for (let p = 0; p <= 3; p++) {
                                     if (!reds[p] && !red_win[p] && !red_in[p]) {
                                         // console.log(red_current[p]);
-                                        boxes[red_current[p]].style = red_btn_without_ani;
+                                        boxes[red_current[p]].style.animation = "";
                                     }
 
                                     if (!reds[p] && !red_win[p] && red_in[p]) {
                                         // console.log(red_current[p]);
-                                        red_boxes[red_inside[p]].style = red_btn_without_ani;
+                                        red_boxes[red_inside[p]].style.animation = "";
                                     }
                                 }
                             }
@@ -991,57 +1025,97 @@ function red_area(reed) {
                     }
 
                     else {
-                        var gittiback = true;
-                        for (let x = 0; x <= 3; x++) {
+                        var tur = false;
 
-                            if ((red_current[git] - 1) == blue_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
+                        if ((red_current[git] - 1) == 15) {
+                            tur = mutlicolor(15);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             }
+                        }
 
-                            else if ((red_current[git] - 1) == yellow_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
+                        else if ((red_current[git] - 1) == 28) {
+                            tur = mutlicolor(28);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
                             }
-
-                            else if ((red_current[git] - 1) == green_current[x]) {
-                                boxes[red_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
+                        }
+                        else if ((red_current[git] - 1) == 41) {
+                            tur = mutlicolor(41);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
                             }
+                        }
+                        else if ((red_current[git] - 1) == 2) {
+                            tur = mutlicolor(2);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
+                            }
+                        }
 
-                            else if (git == x)
-                                continue;
+                        else if ((red_current[git] - 1) == 10) {
+                            tur = mutlicolor(10);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
 
-                            else {
-                                if ((red_current[git] - 1) == red_current[x]) {
-                                    console.log("red_current[git]-1 = " + red_current[git] - 1);
-                                    console.log("red_current[x] = " + red_current[x]);
-                                    boxes[red_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
-                                    gittiback = true;
+                        else if ((red_current[git] - 1) == 23) {
+                            tur = mutlicolor(23);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((red_current[git] - 1) == 36) {
+                            tur = mutlicolor(36);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((red_current[git] - 1) == 49) {
+                            tur = mutlicolor(49);
+                            if (tur == false) {
+                                boxes[red_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else {
+
+                            for (let x = 0; x <= 3; x++) {
+
+                                if ((red_current[git] - 1) == blue_current[x]) {
+                                    boxes[red_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
                                     break;
-                                } else {
-                                    gittiback = false;
+                                }
+
+                                else if ((red_current[git] - 1) == yellow_current[x]) {
+                                    boxes[red_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if ((red_current[git] - 1) == green_current[x]) {
+                                    boxes[red_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if (git == x)
+                                    continue;
+
+                                else {
+                                    if ((red_current[git] - 1) == red_current[x]) {
+                                        console.log("red_current[git]-1 = " + red_current[git] - 1);
+                                        console.log("red_current[x] = " + red_current[x]);
+                                        boxes[red_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
+                                        break;
+                                    } else {
+                                        boxes[red_current[git] - 1].style = "background-color:transparent;";
+                                    }
                                 }
                             }
                         }
 
-                        if (!gittiback) {
-
-                            if ((red_current[git] - 1) == 15)
-                                boxes[red_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
-                            else if ((red_current[git] - 1) == 28)
-                                boxes[red_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
-                            else if ((red_current[git] - 1) == 41)
-                                boxes[red_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
-                            else if ((red_current[git] - 1) == 2)
-                                boxes[red_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
-                            else {
-                                boxes[red_current[git] - 1].style = "background-color:transparent;";
-                            }
-                        }
 
                         boxes[red_current[git]].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
                     }
@@ -1054,7 +1128,7 @@ function red_area(reed) {
 
                     if (count >= num) {
 
-                        if (red_in[git] == false && red_current[git] != 15 && red_current[git] != 28 && red_current[git] != 41 && red_current[git] != 2) {
+                        if (red_in[git] == false && red_current[git] != 15 && red_current[git] != 28 && red_current[git] != 41 && red_current[git] != 2 && red_current[git] != 10 && red_current[git] != 49 && red_current[git] != 36 && red_current[git] != 23 ) {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
 
@@ -1081,8 +1155,8 @@ function red_area(reed) {
                             }
                         }
 
-                        else if ((red_in[git] == false) && (red_current[git] == 15 || red_current[git] == 28 || red_current[git] == 41 || red_current[git] == 2)) {
-                            mutlicolor("redP", red_current[git]);
+                        else if ((red_in[git] == false) && (red_current[git] == 15 || red_current[git] == 28 || red_current[git] == 41 || red_current[git] == 2 || red_current[git] == 10 || red_current[git] == 23 || red_current[git] == 36 || red_current[git] == 49)) {
+                            mutlicolor(red_current[git]);
                         }
 
                         if (num != 6) {
@@ -1142,8 +1216,6 @@ function blue_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                else if (num == 3)
-                    num = 6;
 
                 btn.textContent = num;
 
@@ -1165,29 +1237,37 @@ function blue_area() {
                         blue_circle[0].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[0] && !blue_win[0])
-                            boxes[blue_current[0]].style = blue_btn_animation;
+                        if (!blue_in[0] && !blue_win[0]){
+                            boxes[blue_current[0]].style.animation = blue_an;
+                            boxes[blue_current[0]].style.zIndex = "50";
+                        }
                     }
                     if (blues[1] && !blue_win[1]) {
                         blue_circle[1].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[1] && !blue_win[1])
-                            boxes[blue_current[1]].style = blue_btn_animation;
+                        if (!blue_in[1] && !blue_win[1]){
+                            boxes[blue_current[1]].style.animation = blue_an;
+                            boxes[blue_current[1]].style.zIndex = "50";
+                        }
                     }
                     if (blues[2] && !blue_win[2]) {
                         blue_circle[2].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[2] && !blue_win[2])
-                            boxes[blue_current[2]].style = blue_btn_animation;
+                        if (!blue_in[2] && !blue_win[2]){
+                            boxes[blue_current[2]].style.animation = blue_an;
+                            boxes[blue_current[2]].style.zIndex = "50";
+                        }
                     }
                     if (blues[3] && !blue_win[3]) {
                         blue_circle[3].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[3] && !blue_win[3])
-                            boxes[blue_current[3]].style = blue_btn_animation;
+                        if (!blue_in[3] && !blue_win[3]){
+                            boxes[blue_current[3]].style.animation = blue_an;
+                            boxes[blue_current[3]].style.zIndex = "50";
+                        }
                     }
                 }
 
@@ -1197,19 +1277,23 @@ function blue_area() {
                     btn.style = "animation:none;";
 
                     if (!blues[0] && !blue_in[0]) {
-                        boxes[blue_current[0]].style = blue_btn_animation;
+                        boxes[blue_current[0]].style.animation = blue_an;
+                        boxes[blue_current[0]].style.zIndex = "50";
                     }
 
                     if (!blues[1] && !blue_in[1]) {
-                        boxes[blue_current[1]].style = blue_btn_animation;
+                        boxes[blue_current[1]].style.animation = blue_an;
+                        boxes[blue_current[1]].style.zIndex = "50";
                     }
 
                     if (!blues[2] && !blue_in[2]) {
-                        boxes[blue_current[2]].style = blue_btn_animation;
+                        boxes[blue_current[2]].style.animation = blue_an;
+                        boxes[blue_current[2]].style.zIndex = "50";
                     }
 
                     if (!blues[3] && !blue_in[3]) {
-                        boxes[blue_current[3]].style = blue_btn_animation;
+                        boxes[blue_current[3]].style.animation = blue_an;
+                        boxes[blue_current[3]].style.zIndex = "50";
                     }
 
                     if (num == 1) {
@@ -1440,7 +1524,7 @@ function blue_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!blues[h] && blue_in[h] && !blue_win[h]) {
-                                                blue_boxes[blue_inside[h]].style = blue_btn_without_ani;
+                                                blue_boxes[blue_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -1463,7 +1547,7 @@ function blue_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!blues[h] && blue_in[h] && !blue_win[h]) {
-                                                blue_boxes[blue_inside[h]].style = blue_btn_without_ani;
+                                                blue_boxes[blue_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -1486,7 +1570,7 @@ function blue_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!blues[h] && blue_in[h] && !blue_win[h]) {
-                                                blue_boxes[blue_inside[h]].style = blue_btn_without_ani;
+                                                blue_boxes[blue_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -1509,7 +1593,7 @@ function blue_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!blues[h] && blue_in[h] && !blue_win[h]) {
-                                                blue_boxes[blue_inside[h]].style = blue_btn_without_ani;
+                                                blue_boxes[blue_inside[h]].style.animation = "";
                                             }
                                         }
                                     }
@@ -1663,7 +1747,7 @@ function blue_area() {
             blue_circle[0].style = "animation: none";
         } else {
             if (!blue_in[0] && !blue_win[0])
-                boxes[blue_current[0]].style = blue_btn_without_ani;
+                boxes[blue_current[0]].style.animation = "";
         }
 
         if (blues[1] && !blue_win[1]) {
@@ -1671,7 +1755,7 @@ function blue_area() {
         }
         else {
             if (!blue_in[1] && !blue_win[1])
-                boxes[blue_current[1]].style = blue_btn_without_ani;
+                boxes[blue_current[1]].style.animation = "";
         }
 
         if (blues[2] && !blue_win[2]) {
@@ -1679,7 +1763,7 @@ function blue_area() {
         }
         else {
             if (!blue_in[2] && !blue_win[2])
-                boxes[blue_current[2]].style = blue_btn_without_ani;
+                boxes[blue_current[2]].style.animation = "";
         }
 
         if (blues[3] && !blue_win[3]) {
@@ -1687,7 +1771,7 @@ function blue_area() {
         }
         else {
             if (!blue_in[3] && !blue_win[3])
-                boxes[blue_current[3]].style = blue_btn_without_ani;
+                boxes[blue_current[3]].style.animation = "";
         }
 
         blue_btn.style = blue_animation;
@@ -1699,21 +1783,21 @@ function blue_area() {
 
             btn.style = "animation: none;";
             if (!blues[0] && !blue_in[0]) {
-                boxes[blue_current[0]].style = blue_btn_without_ani;
+                boxes[blue_current[0]].style.animation = "";
             }
             if (!blues[1] && !blue_in[1]) {
-                boxes[blue_current[1]].style = blue_btn_without_ani;
+                boxes[blue_current[1]].style.animation = "";
             }
             if (!blues[2] && !blue_in[2]) {
-                boxes[blue_current[2]].style = blue_btn_without_ani;
+                boxes[blue_current[2]].style.animation = "";
             }
             if (!blues[3] && !blue_in[3]) {
-                boxes[blue_current[3]].style = blue_btn_without_ani;
+                boxes[blue_current[3]].style.animation = "";
             }
 
             for (let h = 0; h <= 3; h++) {
                 if (!blues[h] && blue_in[h] && !blue_win[h]) {
-                    blue_boxes[blue_inside[h]].style = blue_btn_without_ani;
+                    blue_boxes[blue_inside[h]].style.animation = "";
                 }
             }
 
@@ -1794,7 +1878,7 @@ function blue_area() {
                             for (let k = 0; k <= 3; k++) {
                                 if (!blues[k] && !blue_win[k] && !blue_in[k]) {
                                     // console.log(blue_current[k]);
-                                    boxes[blue_current[k]].style = blue_btn_without_ani;
+                                    boxes[blue_current[k]].style.animation = "";
                                 }
 
                                 if (git == k)
@@ -1803,7 +1887,7 @@ function blue_area() {
                                 else {
                                     if (!blues[k] && !blue_win[k] && blue_in[k]) {
                                         console.log(blue_inside[k]);
-                                        blue_boxes[blue_inside[k]].style = blue_btn_without_ani;
+                                        blue_boxes[blue_inside[k]].style.animation = "";
                                     }
                                 }
 
@@ -1869,12 +1953,12 @@ function blue_area() {
                                 for (let p = 0; p <= 3; p++) {
                                     if (!blues[p] && !blue_win[p] && !blue_in[p]) {
                                         // console.log(blue_current[p]);
-                                        boxes[blue_current[p]].style = blue_btn_without_ani;
+                                        boxes[blue_current[p]].style.animation = "";
                                     }
 
                                     if (!blues[p] && !blue_win[p] && blue_in[p]) {
                                         // console.log(blue_current[p]);
-                                        blue_boxes[blue_inside[p]].style = blue_btn_without_ani;
+                                        blue_boxes[blue_inside[p]].style.animation = "";
                                     }
                                 }
                             }
@@ -1883,56 +1967,94 @@ function blue_area() {
 
                     else {
 
-                        var gittiback = true;
-                        for (let x = 0; x <= 3; x++) {
+                        var tur = false;
 
-                            if ((blue_current[git] - 1) == red_current[x]) {
-                                boxes[blue_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((blue_current[git] - 1) == yellow_current[x]) {
-                                boxes[blue_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((blue_current[git] - 1) == green_current[x]) {
-                                boxes[blue_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if (git == x)
-                                continue;
-                            else {
-                                if ((blue_current[git] - 1) == blue_current[x]) {
-                                    console.log("blue_current[git]-1 = " + blue_current[git] - 1);
-                                    console.log("blue_current[x] = " + blue_current[x]);
-                                    boxes[blue_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
-                                    gittiback = true;
-                                    break;
-                                }
-
-                                else {
-                                    gittiback = false;
-                                }
+                        if ((blue_current[git] - 1) == 15) {
+                            tur = mutlicolor(15);
+                            if (tur == false) {
+                                boxes[blue_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             }
                         }
 
-                        if (!gittiback) {
-
-                            if ((blue_current[git] - 1) == 15)
-                                boxes[blue_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
-                            else if ((blue_current[git] - 1) == 28)
+                        else if ((blue_current[git] - 1) == 28) {
+                            tur = mutlicolor(28);
+                            if (tur == false) {
                                 boxes[blue_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
-                            else if ((blue_current[git] - 1) == 41)
+                            }
+                        }
+                        else if ((blue_current[git] - 1) == 41) {
+                            tur = mutlicolor(41);
+                            if (tur == false) {
                                 boxes[blue_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
-                            else if ((blue_current[git] - 1) == 2)
+                            }
+                        }
+                        else if ((blue_current[git] - 1) == 2) {
+                            tur = mutlicolor(2);
+                            if (tur == false) {
                                 boxes[blue_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
-                            else {
+                            }
+                        }
+
+                        else if ((blue_current[git] - 1) == 10) {
+                            tur = mutlicolor(10);
+                            if (tur == false) {
                                 boxes[blue_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((blue_current[git] - 1) == 23) {
+                            tur = mutlicolor(23);
+                            if (tur == false) {
+                                boxes[blue_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((blue_current[git] - 1) == 36) {
+                            tur = mutlicolor(36);
+                            if (tur == false) {
+                                boxes[blue_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((blue_current[git] - 1) == 49) {
+                            tur = mutlicolor(49);
+                            if (tur == false) {
+                                boxes[blue_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else {
+
+                            for (let x = 0; x <= 3; x++) {
+
+                                if ((blue_current[git] - 1) == red_current[x]) {
+                                    boxes[blue_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if ((blue_current[git] - 1) == yellow_current[x]) {
+                                    boxes[blue_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if ((blue_current[git] - 1) == green_current[x]) {
+                                    boxes[blue_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if (git == x)
+                                    continue;
+
+                                else {
+                                    if ((blue_current[git] - 1) == blue_current[x]) {
+                                        console.log("blue_current[git]-1 = " + blue_current[git] - 1);
+                                        console.log("blue_current[x] = " + blue_current[x]);
+                                        boxes[blue_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
+                                        break;
+                                    } else {
+                                        boxes[blue_current[git] - 1].style = "background-color:transparent;";
+                                    }
+                                }
                             }
                         }
 
@@ -1945,7 +2067,7 @@ function blue_area() {
                     count++;
 
                     if (count >= num) {
-                        if (blue_in[git] == false && blue_current[git] != 15 && blue_current[git] != 28 && blue_current[git] != 41 && blue_current[git] != 2) {
+                        if (blue_in[git] == false && blue_current[git] != 15 && blue_current[git] != 28 && blue_current[git] != 41 && blue_current[git] != 2 && blue_current[git] != 10 && blue_current[git] != 23 && blue_current[git] != 36 && blue_current[git] != 49) {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
                                 if (blue_current[git] == red_current[x]) {
@@ -1975,8 +2097,8 @@ function blue_area() {
                             }
                         }
 
-                        else if ((blue_in[git] == false) && (blue_current[git] == 15 || blue_current[git] == 28 || blue_current[git] == 41 || blue_current[git] == 2)) {
-                            mutlicolor("blueP", blue_current[git]);
+                        else if ((blue_in[git] == false) && (blue_current[git] == 15 || blue_current[git] == 28 || blue_current[git] == 41 || blue_current[git] == 2 || blue_current[git] == 10 || blue_current[git] == 23 || blue_current[git] == 36 || blue_current[git] == 49)) {
+                            mutlicolor(blue_current[git]);
                         }
 
                         if (num != 6) {
@@ -2027,8 +2149,6 @@ function yellow_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                else if (num == 3)
-                    num = 6;
 
                 btn.textContent = num;
 
@@ -2050,29 +2170,37 @@ function yellow_area() {
                         yellow_circle[0].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[0] && !yellow_win[0])
-                            boxes[yellow_current[0]].style = yellow_btn_animation;
+                        if (!yellow_in[0] && !yellow_win[0]){
+                            boxes[yellow_current[0]].style.animation = yellow_an;
+                            boxes[yellow_current[0]].style.zIndex = "50";
+                        }
                     }
                     if (yellows[1] && !yellow_win[1]) {
                         yellow_circle[1].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[1] && !yellow_win[1])
-                            boxes[yellow_current[1]].style = yellow_btn_animation;
+                        if (!yellow_in[1] && !yellow_win[1]){
+                            boxes[yellow_current[1]].style.animation = yellow_an;
+                            boxes[yellow_current[1]].style.zIndex = "50";
+                        }
                     }
                     if (yellows[2] && !yellow_win[2]) {
                         yellow_circle[2].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[2] && !yellow_win[2])
-                            boxes[yellow_current[2]].style = yellow_btn_animation;
+                        if (!yellow_in[2] && !yellow_win[2]){
+                            boxes[yellow_current[2]].style.animation = yellow_an;
+                            boxes[yellow_current[2]].style.zIndex = "50";
+                        }
                     }
                     if (yellows[3] && !yellow_win[3]) {
                         yellow_circle[3].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[3] && !yellow_win[3])
-                            boxes[yellow_current[3]].style = yellow_btn_animation;
+                        if (!yellow_in[3] && !yellow_win[3]){
+                            boxes[yellow_current[3]].style.animation = yellow_an;
+                            boxes[yellow_current[3]].style.zIndex = "50";
+                        }
                     }
                 }
 
@@ -2082,19 +2210,23 @@ function yellow_area() {
                     btn.style = "animation:none;";
 
                     if (!yellows[0] && !yellow_in[0]) {
-                        boxes[yellow_current[0]].style = yellow_btn_animation;
+                        boxes[yellow_current[0]].style.animation = yellow_an;
+                        boxes[yellow_current[0]].style.zIndex = "50";
                     }
 
                     if (!yellows[1] && !yellow_in[1]) {
-                        boxes[yellow_current[1]].style = yellow_btn_animation;
+                        boxes[yellow_current[1]].style.animation = yellow_an;
+                        boxes[yellow_current[1]].style.zIndex = "50";
                     }
 
                     if (!yellows[2] && !yellow_in[2]) {
-                        boxes[yellow_current[2]].style = yellow_btn_animation;
+                        boxes[yellow_current[2]].style.animation = yellow_an;
+                        boxes[yellow_current[2]].style.zIndex = "50";
                     }
 
                     if (!yellows[3] && !yellow_in[3]) {
-                        boxes[yellow_current[3]].style = yellow_btn_animation;
+                        boxes[yellow_current[3]].style.animation = yellow_an;
+                        boxes[yellow_current[3]].style.zIndex = "50";
                     }
 
                     if (num == 1) {
@@ -2316,7 +2448,7 @@ function yellow_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!yellows[h] && yellow_in[h] && !yellow_win[h]) {
-                                                yellow_boxes[yellow_inside[h]].style = yellow_btn_without_ani;
+                                                yellow_boxes[yellow_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -2339,7 +2471,7 @@ function yellow_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!yellows[h] && yellow_in[h] && !yellow_win[h]) {
-                                                yellow_boxes[yellow_inside[h]].style = yellow_btn_without_ani;
+                                                yellow_boxes[yellow_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -2362,7 +2494,7 @@ function yellow_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!yellows[h] && yellow_in[h] && !yellow_win[h]) {
-                                                yellow_boxes[yellow_inside[h]].style = yellow_btn_without_ani;
+                                                yellow_boxes[yellow_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -2385,7 +2517,7 @@ function yellow_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!yellows[h] && yellow_in[h] && !yellow_win[h]) {
-                                                yellow_boxes[yellow_inside[h]].style = yellow_btn_without_ani;
+                                                yellow_boxes[yellow_inside[h]].style.animation = "";
                                             }
                                         }
                                     }
@@ -2539,7 +2671,7 @@ function yellow_area() {
             yellow_circle[0].style = "animation: none";
         } else {
             if (!yellow_in[0] && !yellow_win[0])
-                boxes[yellow_current[0]].style = yellow_btn_without_ani;
+                boxes[yellow_current[0]].style.animation = "";
         }
 
         if (yellows[1] && !yellow_win[1]) {
@@ -2547,7 +2679,7 @@ function yellow_area() {
         }
         else {
             if (!yellow_in[1] && !yellow_win[1])
-                boxes[yellow_current[1]].style = yellow_btn_without_ani;
+                boxes[yellow_current[1]].style.animation = "";
         }
 
         if (yellows[2] && !yellow_win[2]) {
@@ -2555,7 +2687,7 @@ function yellow_area() {
         }
         else {
             if (!yellow_in[2] && !yellow_win[2])
-                boxes[yellow_current[2]].style = yellow_btn_without_ani;
+                boxes[yellow_current[2]].style.animation = "";
         }
 
         if (yellows[3] && !yellow_win[3]) {
@@ -2563,7 +2695,7 @@ function yellow_area() {
         }
         else {
             if (!yellow_in[3] && !yellow_win[3])
-                boxes[yellow_current[3]].style = yellow_btn_without_ani;
+                boxes[yellow_current[3]].style.animation = "";
         }
 
         yellow_btn.style = yellow_animation;
@@ -2575,21 +2707,21 @@ function yellow_area() {
 
             btn.style = "animation: none;";
             if (!yellows[0] && !yellow_in[0]) {
-                boxes[yellow_current[0]].style = yellow_btn_without_ani;
+                boxes[yellow_current[0]].style.animation = "";
             }
             if (!yellows[1] && !yellow_in[1]) {
-                boxes[yellow_current[1]].style = yellow_btn_without_ani;
+                boxes[yellow_current[1]].style.animation = "";
             }
             if (!yellows[2] && !yellow_in[2]) {
-                boxes[yellow_current[2]].style = yellow_btn_without_ani;
+                boxes[yellow_current[2]].style.animation = "";
             }
             if (!yellows[3] && !yellow_in[3]) {
-                boxes[yellow_current[3]].style = yellow_btn_without_ani;
+                boxes[yellow_current[3]].style.animation = "";
             }
 
             for (let h = 0; h <= 3; h++) {
                 if (!yellows[h] && yellow_in[h] && !yellow_win[h]) {
-                    yellow_boxes[yellow_inside[h]].style = yellow_btn_without_ani;
+                    yellow_boxes[yellow_inside[h]].style.animation = "";
                 }
             }
 
@@ -2641,7 +2773,7 @@ function yellow_area() {
                             for (let k = 0; k <= 3; k++) {
                                 if (!yellows[k] && !yellow_win[k] && !yellow_in[k]) {
                                     // console.log(yellow_current[k]);
-                                    boxes[yellow_current[k]].style = yellow_btn_without_ani;
+                                    boxes[yellow_current[k]].style.animation = "";
                                 }
 
                                 if (git == k)
@@ -2650,7 +2782,7 @@ function yellow_area() {
                                 else {
                                     if (!yellows[k] && !yellow_win[k] && yellow_in[k]) {
                                         console.log(yellow_inside[k]);
-                                        yellow_boxes[yellow_inside[k]].style = yellow_btn_without_ani;
+                                        yellow_boxes[yellow_inside[k]].style.animation = "";
                                     }
                                 }
 
@@ -2709,12 +2841,12 @@ function yellow_area() {
                                 for (let p = 0; p <= 3; p++) {
                                     if (!yellows[p] && !yellow_win[p] && !yellow_in[p]) {
                                         // console.log(yellow_current[p]);
-                                        boxes[yellow_current[p]].style = yellow_btn_without_ani;
+                                        boxes[yellow_current[p]].style.animation = "";
                                     }
 
                                     if (!yellows[p] && !yellow_win[p] && yellow_in[p]) {
                                         // console.log(yellow_current[p]);
-                                        yellow_boxes[yellow_inside[p]].style = yellow_btn_without_ani;
+                                        yellow_boxes[yellow_inside[p]].style.animation = "";
                                     }
                                 }
                             }
@@ -2801,56 +2933,94 @@ function yellow_area() {
                     }
 
                     else {
-                        var gittiback = true;
-                        for (let x = 0; x <= 3; x++) {
+                        var tur = false;
 
-                            if ((yellow_current[git] - 1) == blue_current[x]) {
-                                boxes[yellow_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((yellow_current[git] - 1) == green_current[x]) {
-                                boxes[yellow_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((yellow_current[git] - 1) == red_current[x]) {
-                                boxes[yellow_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-
-                            else if (git == x)
-                                continue;
-
-                            else {
-                                if ((yellow_current[git] - 1) == yellow_current[x]) {
-                                    console.log("yellow_current[git]-1 = " + yellow_current[git] - 1);
-                                    console.log("yellow_current[x] = " + yellow_current[x]);
-                                    boxes[yellow_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
-                                    gittiback = true;
-                                    break;
-                                } else {
-                                    gittiback = false;
-                                }
+                        if ((yellow_current[git] - 1) == 15) {
+                            tur = mutlicolor(15);
+                            if (tur == false) {
+                                boxes[yellow_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             }
                         }
 
-                        if (!gittiback) {
-
-                            if ((yellow_current[git] - 1) == 15)
-                                boxes[yellow_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
-                            else if ((yellow_current[git] - 1) == 28)
+                        else if ((yellow_current[git] - 1) == 28) {
+                            tur = mutlicolor(28);
+                            if (tur == false) {
                                 boxes[yellow_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
-                            else if ((yellow_current[git] - 1) == 41)
+                            }
+                        }
+                        else if ((yellow_current[git] - 1) == 41) {
+                            tur = mutlicolor(41);
+                            if (tur == false) {
                                 boxes[yellow_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
-                            else if ((yellow_current[git] - 1) == 2)
+                            }
+                        }
+                        else if ((yellow_current[git] - 1) == 2) {
+                            tur = mutlicolor(2);
+                            if (tur == false) {
                                 boxes[yellow_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
-                            else {
+                            }
+                        }
+
+                        else if ((yellow_current[git] - 1) == 10) {
+                            tur = mutlicolor(10);
+                            if (tur == false) {
                                 boxes[yellow_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((yellow_current[git] - 1) == 23) {
+                            tur = mutlicolor(23);
+                            if (tur == false) {
+                                boxes[yellow_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((yellow_current[git] - 1) == 36) {
+                            tur = mutlicolor(36);
+                            if (tur == false) {
+                                boxes[yellow_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((yellow_current[git] - 1) == 49) {
+                            tur = mutlicolor(49);
+                            if (tur == false) {
+                                boxes[yellow_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else {
+
+                            for (let x = 0; x <= 3; x++) {
+
+                                if ((yellow_current[git] - 1) == red_current[x]) {
+                                    boxes[yellow_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if ((yellow_current[git] - 1) == blue_current[x]) {
+                                    boxes[yellow_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if ((yellow_current[git] - 1) == green_current[x]) {
+                                    boxes[yellow_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if (git == x)
+                                    continue;
+
+                                else {
+                                    if ((yellow_current[git] - 1) == yellow_current[x]) {
+                                        console.log("yellow_current[git]-1 = " + yellow_current[git] - 1);
+                                        console.log("yellow_current[x] = " + yellow_current[x]);
+                                        boxes[yellow_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
+                                        break;
+                                    } else {
+                                        boxes[yellow_current[git] - 1].style = "background-color:transparent;";
+                                    }
+                                }
                             }
                         }
 
@@ -2864,7 +3034,7 @@ function yellow_area() {
                     count++;
 
                     if (count >= num) {
-                        if (yellow_in[git] == false && yellow_current[git] != 15 && yellow_current[git] != 28 && yellow_current[git] != 41 && yellow_current[git] != 2) {
+                        if (yellow_in[git] == false && yellow_current[git] != 15 && yellow_current[git] != 28 && yellow_current[git] != 41 && yellow_current[git] != 2 && yellow_current[git] != 10 && yellow_current[git] != 23 && yellow_current[git] != 36 && yellow_current[git] != 49) {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
                                 if (yellow_current[git] == blue_current[x]) {
@@ -2892,8 +3062,8 @@ function yellow_area() {
                             }
                         }
 
-                        else if ((yellow_in[git] == false) && (yellow_current[git] == 15 || yellow_current[git] == 28 || yellow_current[git] == 41 || yellow_current[git] == 2)) {
-                            mutlicolor("yellowP", yellow_current[git]);
+                        else if ((yellow_in[git] == false) && (yellow_current[git] == 15 || yellow_current[git] == 28 || yellow_current[git] == 41 || yellow_current[git] == 2 || yellow_current[git] == 10 || yellow_current[git] == 23 || yellow_current[git] == 36 || yellow_current[git] == 49)) {
+                            mutlicolor(yellow_current[git]);
                         }
 
                         if (num != 6) {
@@ -2931,8 +3101,6 @@ function green_area() {
                 num = Math.round(Math.random() * 6);
                 if (num == 0)
                     num = 6;
-                else if (num == 3)
-                    num = 6;
 
                 btn.textContent = num;
 
@@ -2954,29 +3122,37 @@ function green_area() {
                         green_circle[0].style = green_animation;
                     }
                     else {
-                        if (!green_in[0] && !green_win[0])
-                            boxes[green_current[0]].style = green_btn_animation;
+                        if (!green_in[0] && !green_win[0]){
+                            boxes[green_current[0]].style.animation = green_an;
+                            boxes[green_current[0]].style.zIndex = "50";
+                        }
                     }
                     if (greens[1] && !green_win[1]) {
                         green_circle[1].style = green_animation;
                     }
                     else {
-                        if (!green_in[1] && !green_win[1])
-                            boxes[green_current[1]].style = green_btn_animation;
+                        if (!green_in[1] && !green_win[1]){
+                            boxes[green_current[1]].style.animation = green_an;
+                            boxes[green_current[1]].style.zIndex = "50";
+                        }
                     }
                     if (greens[2] && !green_win[2]) {
                         green_circle[2].style = green_animation;
                     }
                     else {
-                        if (!green_in[2] && !green_win[2])
-                            boxes[green_current[2]].style = green_btn_animation;
+                        if (!green_in[2] && !green_win[2]){
+                            boxes[green_current[2]].style.animation = green_an;
+                            boxes[green_current[2]].style.zIndex = "50";
+                        }
                     }
                     if (greens[3] && !green_win[3]) {
                         green_circle[3].style = green_animation;
                     }
                     else {
-                        if (!green_in[3] && !green_win[3])
-                            boxes[green_current[3]].style = green_btn_animation;
+                        if (!green_in[3] && !green_win[3]){
+                            boxes[green_current[3]].style.animation = green_an;
+                            boxes[green_current[3]].style.zIndex = "50";
+                        }
                     }
                 }
 
@@ -2986,19 +3162,23 @@ function green_area() {
                     btn.style = "animation:none;";
 
                     if (!greens[0] && !green_in[0]) {
-                        boxes[green_current[0]].style = green_btn_animation;
+                        boxes[green_current[0]].style.animation = green_an;
+                        boxes[green_current[0]].style.zIndex = "50";
                     }
 
                     if (!greens[1] && !green_in[1]) {
-                        boxes[green_current[1]].style = green_btn_animation;
+                        boxes[green_current[1]].style.animation = green_an;
+                        boxes[green_current[1]].style.zIndex = "50";
                     }
 
                     if (!greens[2] && !green_in[2]) {
-                        boxes[green_current[2]].style = green_btn_animation;
+                        boxes[green_current[2]].style.animation = green_an;
+                        boxes[green_current[2]].style.zIndex = "50";
                     }
 
                     if (!greens[3] && !green_in[3]) {
-                        boxes[green_current[3]].style = green_btn_animation;
+                        boxes[green_current[3]].style.animation = green_an;
+                        boxes[green_current[3]].style.zIndex = "50";
                     }
 
                     if (num == 1) {
@@ -3220,7 +3400,7 @@ function green_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!greens[h] && green_in[h] && !green_win[h]) {
-                                                green_boxes[green_inside[h]].style = green_btn_without_ani;
+                                                green_boxes[green_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -3243,7 +3423,7 @@ function green_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!greens[h] && green_in[h] && !green_win[h]) {
-                                                green_boxes[green_inside[h]].style = green_btn_without_ani;
+                                                green_boxes[green_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -3266,7 +3446,7 @@ function green_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!greens[h] && green_in[h] && !green_win[h]) {
-                                                green_boxes[green_inside[h]].style = green_btn_without_ani;
+                                                green_boxes[green_inside[h]].style.animation = "";
                                             }
                                         }
 
@@ -3289,7 +3469,7 @@ function green_area() {
                                         btn.style = "animation: none;";
                                         for (let h = 0; h <= 3; h++) {
                                             if (!greens[h] && green_in[h] && !green_win[h]) {
-                                                green_boxes[green_inside[h]].style = green_btn_without_ani;
+                                                green_boxes[green_inside[h]].style.animation = "";
                                             }
                                         }
                                     }
@@ -3443,7 +3623,7 @@ function green_area() {
             green_circle[0].style = "animation: none";
         } else {
             if (!green_in[0] && !green_win[0])
-                boxes[green_current[0]].style = green_btn_without_ani;
+                boxes[green_current[0]].style.animation = "";
         }
 
         if (greens[1] && !green_win[1]) {
@@ -3451,7 +3631,7 @@ function green_area() {
         }
         else {
             if (!green_in[1] && !green_win[1])
-                boxes[green_current[1]].style = green_btn_without_ani;
+                boxes[green_current[1]].style.animation = "";
         }
 
         if (greens[2] && !green_win[2]) {
@@ -3459,7 +3639,7 @@ function green_area() {
         }
         else {
             if (!green_in[2] && !green_win[2])
-                boxes[green_current[2]].style = green_btn_without_ani;
+                boxes[green_current[2]].style.animation = "";
         }
 
         if (greens[3] && !green_win[3]) {
@@ -3467,7 +3647,7 @@ function green_area() {
         }
         else {
             if (!green_in[3] && !green_win[3])
-                boxes[green_current[3]].style = green_btn_without_ani;
+                boxes[green_current[3]].style.animation = "";
         }
 
         green_btn.style = green_animation;
@@ -3479,21 +3659,21 @@ function green_area() {
 
             btn.style = "animation: none;";
             if (!greens[0] && !green_in[0]) {
-                boxes[green_current[0]].style = green_btn_without_ani;
+                boxes[green_current[0]].style.animation = "";
             }
             if (!greens[1] && !green_in[1]) {
-                boxes[green_current[1]].style = green_btn_without_ani;
+                boxes[green_current[1]].style.animation = "";
             }
             if (!greens[2] && !green_in[2]) {
-                boxes[green_current[2]].style = green_btn_without_ani;
+                boxes[green_current[2]].style.animation = "";
             }
             if (!greens[3] && !green_in[3]) {
-                boxes[green_current[3]].style = green_btn_without_ani;
+                boxes[green_current[3]].style.animation = "";
             }
 
             for (let h = 0; h <= 3; h++) {
                 if (!greens[h] && green_in[h] && !green_win[h]) {
-                    green_boxes[green_inside[h]].style = green_btn_without_ani;
+                    green_boxes[green_inside[h]].style.animation = "";
                 }
             }
 
@@ -3544,7 +3724,7 @@ function green_area() {
                             for (let k = 0; k <= 3; k++) {
                                 if (!greens[k] && !green_win[k] && !green_in[k]) {
                                     // console.log(green_current[k]);
-                                    boxes[green_current[k]].style = green_btn_without_ani;
+                                    boxes[green_current[k]].style.animation = "";
                                 }
 
                                 if (git == k)
@@ -3553,7 +3733,7 @@ function green_area() {
                                 else {
                                     if (!greens[k] && !green_win[k] && green_in[k]) {
                                         console.log(green_inside[k]);
-                                        green_boxes[green_inside[k]].style = green_btn_without_ani;
+                                        green_boxes[green_inside[k]].style.animation = "";
                                     }
                                 }
 
@@ -3612,12 +3792,12 @@ function green_area() {
                                 for (let p = 0; p <= 3; p++) {
                                     if (!greens[p] && !green_win[p] && !green_in[p]) {
                                         // console.log(green_current[p]);
-                                        boxes[green_current[p]].style = green_btn_without_ani;
+                                        boxes[green_current[p]].style.animation = "";
                                     }
 
                                     if (!greens[p] && !green_win[p] && green_in[p]) {
                                         // console.log(green_current[p]);
-                                        green_boxes[green_inside[p]].style = green_btn_without_ani;
+                                        green_boxes[green_inside[p]].style.animation = "";
                                     }
                                 }
                             }
@@ -3704,55 +3884,94 @@ function green_area() {
                     }
 
                     else {
-                        var gittiback = true;
-                        for (let x = 0; x <= 3; x++) {
+                        var tur = false;
 
-                            if ((green_current[git] - 1) == blue_current[x]) {
-                                boxes[green_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((green_current[git] - 1) == yellow_current[x]) {
-                                boxes[green_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if ((green_current[git] - 1) == red_current[x]) {
-                                boxes[green_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
-                                gittiback = true;
-                                break;
-                            }
-
-                            else if (git == x)
-                                continue;
-
-                            else {
-                                if ((green_current[git] - 1) == green_current[x]) {
-                                    console.log("green_current[git]-1 = " + green_current[git] - 1);
-                                    console.log("green_current[x] = " + green_current[x]);
-                                    boxes[green_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
-                                    gittiback = true;
-                                    break;
-                                } else {
-                                    gittiback = false;
-                                }
+                        if ((green_current[git] - 1) == 15) {
+                            tur = mutlicolor(15);
+                            if (tur == false) {
+                                boxes[green_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
                             }
                         }
 
-                        if (!gittiback) {
-
-                            if ((green_current[git] - 1) == 15)
-                                boxes[green_current[git] - 1].style = "background-color:rgb(247, 40, 40);";
-                            else if ((green_current[git] - 1) == 28)
+                        else if ((green_current[git] - 1) == 28) {
+                            tur = mutlicolor(28);
+                            if (tur == false) {
                                 boxes[green_current[git] - 1].style = "background-color:rgb(65, 173, 65);";
-                            else if ((green_current[git] - 1) == 41)
+                            }
+                        }
+                        else if ((green_current[git] - 1) == 41) {
+                            tur = mutlicolor(41);
+                            if (tur == false) {
                                 boxes[green_current[git] - 1].style = "background-color:rgb(241, 241, 115);";
-                            else if ((green_current[git] - 1) == 2)
+                            }
+                        }
+                        else if ((green_current[git] - 1) == 2) {
+                            tur = mutlicolor(2);
+                            if (tur == false) {
                                 boxes[green_current[git] - 1].style = "background-color:rgb(75, 75, 228);";
-                            else {
+                            }
+                        }
+
+                        else if ((green_current[git] - 1) == 10) {
+                            tur = mutlicolor(10);
+                            if (tur == false) {
                                 boxes[green_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((green_current[git] - 1) == 23) {
+                            tur = mutlicolor(23);
+                            if (tur == false) {
+                                boxes[green_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((green_current[git] - 1) == 36) {
+                            tur = mutlicolor(36);
+                            if (tur == false) {
+                                boxes[green_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else if ((green_current[git] - 1) == 49) {
+                            tur = mutlicolor(49);
+                            if (tur == false) {
+                                boxes[green_current[git] - 1].style = "background-color:transparent;";
+                            }
+                        }
+
+                        else {
+
+                            for (let x = 0; x <= 3; x++) {
+
+                                if ((green_current[git] - 1) == red_current[x]) {
+                                    boxes[green_current[git] - 1].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if ((green_current[git] - 1) == blue_current[x]) {
+                                    boxes[green_current[git] - 1].style = "background-color:rgb(75, 75, 228); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if ((green_current[git] - 1) == yellow_current[x]) {
+                                    boxes[green_current[git] - 1].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
+                                    break;
+                                }
+
+                                else if (git == x)
+                                    continue;
+
+                                else {
+                                    if ((green_current[git] - 1) == green_current[x]) {
+                                        console.log("green_current[git]-1 = " + green_current[git] - 1);
+                                        console.log("green_current[x] = " + green_current[x]);
+                                        boxes[green_current[git] - 1].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
+                                        break;
+                                    } else {
+                                        boxes[green_current[git] - 1].style = "background-color:transparent;";
+                                    }
+                                }
                             }
                         }
 
@@ -3766,7 +3985,7 @@ function green_area() {
                     count++;
 
                     if (count >= num) {
-                        if (green_in[git] == false && green_current[git] != 15 && green_current[git] != 28 && green_current[git] != 41 && green_current[git] != 2) {
+                        if (green_in[git] == false && green_current[git] != 15 && green_current[git] != 28 && green_current[git] != 41 && green_current[git] != 2 && green_current[git] != 10 && green_current[git] != 23 && green_current[git] != 36 && green_current[git] != 49) {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
 
@@ -3796,8 +4015,8 @@ function green_area() {
                             }
                         }
 
-                        else if ((green_in[git] == false) && (green_current[git] == 15 || green_current[git] == 28 || green_current[git] == 41 || green_current[git] == 2)) {
-                            mutlicolor("greenP", green_current[git]);
+                        else if ((green_in[git] == false) && (green_current[git] == 15 || green_current[git] == 28 || green_current[git] == 41 || green_current[git] == 2 || green_current[git] == 10 || green_current[git] == 23 || green_current[git] == 36 || green_current[git] == 49)) {
+                            mutlicolor(green_current[git]);
                         }
 
                         if (num != 6) {
@@ -4391,38 +4610,35 @@ function red_cut(val, blockrun) {
 
 // multi color on boxes
 
-function mutlicolor(player_type, pos) {
-   var red_p = false, blue_p = false, yellow_p = false, green_p = false;
-   var colorcount = 0; 
-//    alert("ok");
-    switch (player_type) {
-        case "redP": red_p = true;
-                    break;
+function mutlicolor(pos) {
+    var red_p = false, blue_p = false, yellow_p = false, green_p = false;
+    var colorcount = 0;
+    //    alert("ok");
+    // switch (player_type) {
+    //     case "redP": red_p = true;
+    //                 break;
 
-        case "blueP": blue_p = true;
-                    break;
+    //     case "blueP": blue_p = true;
+    //                 break;
 
-        case "yellowP": yellow_p = true;
-                    break;
+    //     case "yellowP": yellow_p = true;
+    //                 break;
 
-        case "greenP": green_p = true;
-                    break;
-    }
+    //     case "greenP": green_p = true;
+    //                 break;
+    // }
 
     var obj = [red_p, blue_p, yellow_p, green_p];
-    var colo = ["red", "blue", "yellow", "green"];
-    var curr = [red_current,  blue_current, yellow_current, green_current];
+    var colo = ["rgb(247, 40, 40)", "rgb(75, 75, 228)", "rgb(241, 241, 115)", "rgb(65, 173, 65)"];
+    var curr = [red_current, blue_current, yellow_current, green_current];
     var true_colors3 = [" ", " ", " "];
     var true_colors2 = [" ", " "];
+    var true_colors1 = [" "];
 
-    for(let len=0; len<=3; len++)
-    {
-        if(obj[len] == false)
-        {
-            for(let r=0; r<=3; r++)
-            {
-                if(curr[len][r] == pos)
-                {
+    for (let len = 0; len <= 3; len++) {
+        if (obj[len] == false) {
+            for (let r = 0; r <= 3; r++) {
+                if (curr[len][r] == pos) {
                     obj[len] = true;
                     console.log(true);
                     colorcount++;
@@ -4433,51 +4649,66 @@ function mutlicolor(player_type, pos) {
         }
     }
 
-    if(colorcount == 3)
-    {
+    if (colorcount == 4) {
         boxes[pos].style = "background: linear-gradient(180deg, red 25%, rgb(237, 84, 7,0) 0%), linear-gradient(180deg, yellow 50%, rgb(62, 152, 62,0) 0%),linear-gradient(180deg, blue 75%, rgba(57, 237, 7) 50%);";
+
+        return true;
     }
 
-    else if(colorcount == 2)
-    {
+    else if (colorcount == 3) {
 
-        for(let c=0; c<=3; c++)
-        {
-            if(obj[c])
-            {
-                for(let l=0; l<=2; l++)
-                {
-                    if(true_colors3[l] == " ")
-                    {
+        for (let c = 0; c <= 3; c++) {
+            if (obj[c]) {
+                for (let l = 0; l <= 2; l++) {
+                    if (true_colors3[l] == " ") {
                         true_colors3[l] = colo[c];
                         break;
                     }
                 }
             }
         }
-        
-        boxes[pos].style = "background: linear-gradient(180deg, "+true_colors3[0]+" 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, "+true_colors3[1]+" 66%, "+true_colors3[2]+" 66%);";
+
+        boxes[pos].style = "background: linear-gradient(180deg, " + true_colors3[0] + " 33%, rgb(237, 84, 7,0) 33%), linear-gradient(180deg, " + true_colors3[1] + " 66%, " + true_colors3[2] + " 66%);";
+
+        return true;
     }
 
-    else if(colorcount == 1)
-    {
+    else if (colorcount == 2) {
 
-        for(let c=0; c<=3; c++)
-        {
-            if(obj[c])
-            {
-                for(let l=0; l<=1; l++)
-                {
-                    if(true_colors2[l] == " ")
-                    {
+        for (let c = 0; c <= 3; c++) {
+            if (obj[c]) {
+                for (let l = 0; l <= 1; l++) {
+                    if (true_colors2[l] == " ") {
                         true_colors2[l] = colo[c];
                         break;
                     }
                 }
             }
         }
-        
-        boxes[pos].style = "background: linear-gradient(180deg, "+true_colors2[0]+" 50%, "+true_colors2[1]+" 0%);";
+
+        boxes[pos].style = "background: linear-gradient(180deg, " + true_colors2[0] + " 50%, " + true_colors2[1] + " 0%);";
+        return true;
+    }
+
+    else if (colorcount == 1) {
+
+        for (let c = 0; c <= 3; c++) {
+            if (obj[c]) {
+                for (let l = 0; l < 1; l++) {
+                    if (true_colors1[l] == " ") {
+                        true_colors1[l] = colo[c];
+                        break;
+                    }
+                }
+            }
+        }
+
+        boxes[pos].style = "background: " + true_colors1[0] + "; box-shadow: 2px 4px 2px 5px inset;";
+        return true;
+    }
+
+    else {
+        return false;
     }
 
 }
