@@ -1,3 +1,4 @@
+let btn_click = 0;
 let red_btn;
 let blue_btn;
 let yellow_btn;
@@ -161,11 +162,21 @@ function game_start() {
     gitti_run_s.gittirunplay();
 }
 
+
+const run_again = () => {
+    setTimeout(() => {
+        btn_click = 0;
+    }, 350);
+}
+
+
 function red() {
 
-    if (red_turn) {
+    if (red_turn && btn_click == 0) {
+        btn_click++;
         red_player.red_rotate(red_btn);
         dice.diceplay();
+        run_again();
     }
     // red_player.red_rotate(red_btn);
     // dice.diceplay();
@@ -176,9 +187,12 @@ function red() {
 
 function blue() {
 
-    if (blue_turn) {
+    if (blue_turn && btn_click == 0) {
+        btn_click++;
         blue_player.blue_rotate(blue_btn);
         dice.diceplay();
+        run_again();
+
     }
     // blue_player.blue_rotate(blue_btn);
     // dice.diceplay();
@@ -188,9 +202,11 @@ function blue() {
 
 function yellow() {
 
-    if (yellow_turn) {
+    if (yellow_turn && btn_click == 0) {
+        btn_click++;
         yellow_player.yellow_rotate(yellow_btn);
         dice.diceplay();
+        run_again();
     }
 
     // yellow_player.yellow_rotate(yellow_btn);
@@ -201,9 +217,11 @@ function yellow() {
 
 function green() {
 
-    if (green_turn) {
+    if (green_turn && btn_click == 0) {
+        btn_click++;
         green_player.green_rotate(green_btn);
         dice.diceplay();
+        run_again();
     }
 
     // green_player.green_rotate(green_btn);
@@ -246,8 +264,8 @@ function red_area(reed) {
                         red_circle[0].style = red_animation;
                     }
                     else {
-                        if (!red_in[0] && !red_win[0]){
-                           
+                        if (!red_in[0] && !red_win[0]) {
+
                             boxes[red_current[0]].style.animation = red_an;
                             boxes[red_current[0]].style.zIndex = "50";
                         }
@@ -256,7 +274,7 @@ function red_area(reed) {
                         red_circle[1].style = red_animation;
                     }
                     else {
-                        if (!red_in[1] && !red_win[1]){
+                        if (!red_in[1] && !red_win[1]) {
                             boxes[red_current[1]].style.animation = red_an;
                             boxes[red_current[1]].style.zIndex = "50";
                         }
@@ -265,7 +283,7 @@ function red_area(reed) {
                         red_circle[2].style = red_animation;
                     }
                     else {
-                        if (!red_in[2] && !red_win[2]){
+                        if (!red_in[2] && !red_win[2]) {
                             boxes[red_current[2]].style.animation = red_an;
                             boxes[red_current[2]].style.zIndex = "50";
                         }
@@ -274,7 +292,7 @@ function red_area(reed) {
                         red_circle[3].style = red_animation;
                     }
                     else {
-                        if (!red_in[3] && !red_win[3]){
+                        if (!red_in[3] && !red_win[3]) {
                             boxes[red_current[3]].style.animation = red_an;
                             boxes[red_current[3]].style.zIndex = "50";
                         }
@@ -480,6 +498,21 @@ function red_area(reed) {
                         }
 
                         let click = 0;
+
+                        red_circle[0].addEventListener("click", () => {
+                            if (click == 0 && !run && !red_win[0] && num == 6) {
+                                red_circle[0].style = "background-color:transparent;";
+                                boxes[red_start].style = "background-color:rgb(247, 40, 40); box-shadow: 2px 4px 2px 5px inset;";
+                                reds[0] = false;
+                                click++;
+                                run = true;
+                                red_current[0] = red_start;
+
+                                red_player.animation1(btn);
+
+                            }
+                        });
+
                         red_circle[1].addEventListener("click", () => {
                             if (click == 0 && !run && !red_win[1] && num == 6) {
                                 red_circle[1].style = "background-color:transparent;";
@@ -1128,7 +1161,7 @@ function red_area(reed) {
 
                     if (count >= num) {
 
-                        if (red_in[git] == false && red_current[git] != 15 && red_current[git] != 28 && red_current[git] != 41 && red_current[git] != 2 && red_current[git] != 10 && red_current[git] != 49 && red_current[git] != 36 && red_current[git] != 23 ) {
+                        if (red_in[git] == false && red_current[git] != 15 && red_current[git] != 28 && red_current[git] != 41 && red_current[git] != 2 && red_current[git] != 10 && red_current[git] != 49 && red_current[git] != 36 && red_current[git] != 23) {
                             for (let x = 0; x <= 3; x++) {
                                 var blockrun = false;
 
@@ -1237,7 +1270,7 @@ function blue_area() {
                         blue_circle[0].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[0] && !blue_win[0]){
+                        if (!blue_in[0] && !blue_win[0]) {
                             boxes[blue_current[0]].style.animation = blue_an;
                             boxes[blue_current[0]].style.zIndex = "50";
                         }
@@ -1246,7 +1279,7 @@ function blue_area() {
                         blue_circle[1].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[1] && !blue_win[1]){
+                        if (!blue_in[1] && !blue_win[1]) {
                             boxes[blue_current[1]].style.animation = blue_an;
                             boxes[blue_current[1]].style.zIndex = "50";
                         }
@@ -1255,7 +1288,7 @@ function blue_area() {
                         blue_circle[2].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[2] && !blue_win[2]){
+                        if (!blue_in[2] && !blue_win[2]) {
                             boxes[blue_current[2]].style.animation = blue_an;
                             boxes[blue_current[2]].style.zIndex = "50";
                         }
@@ -1264,7 +1297,7 @@ function blue_area() {
                         blue_circle[3].style = blue_animation;
                     }
                     else {
-                        if (!blue_in[3] && !blue_win[3]){
+                        if (!blue_in[3] && !blue_win[3]) {
                             boxes[blue_current[3]].style.animation = blue_an;
                             boxes[blue_current[3]].style.zIndex = "50";
                         }
@@ -2170,7 +2203,7 @@ function yellow_area() {
                         yellow_circle[0].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[0] && !yellow_win[0]){
+                        if (!yellow_in[0] && !yellow_win[0]) {
                             boxes[yellow_current[0]].style.animation = yellow_an;
                             boxes[yellow_current[0]].style.zIndex = "50";
                         }
@@ -2179,7 +2212,7 @@ function yellow_area() {
                         yellow_circle[1].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[1] && !yellow_win[1]){
+                        if (!yellow_in[1] && !yellow_win[1]) {
                             boxes[yellow_current[1]].style.animation = yellow_an;
                             boxes[yellow_current[1]].style.zIndex = "50";
                         }
@@ -2188,7 +2221,7 @@ function yellow_area() {
                         yellow_circle[2].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[2] && !yellow_win[2]){
+                        if (!yellow_in[2] && !yellow_win[2]) {
                             boxes[yellow_current[2]].style.animation = yellow_an;
                             boxes[yellow_current[2]].style.zIndex = "50";
                         }
@@ -2197,7 +2230,7 @@ function yellow_area() {
                         yellow_circle[3].style = yellow_animation;
                     }
                     else {
-                        if (!yellow_in[3] && !yellow_win[3]){
+                        if (!yellow_in[3] && !yellow_win[3]) {
                             boxes[yellow_current[3]].style.animation = yellow_an;
                             boxes[yellow_current[3]].style.zIndex = "50";
                         }
@@ -2383,6 +2416,21 @@ function yellow_area() {
                         }
 
                         let click = 0;
+
+                        yellow_circle[0].addEventListener("click", () => {
+                            if (click == 0 && !run && !yellow_win[0] && num == 6) {
+                                yellow_circle[0].style = "background-color:transparent;";
+                                boxes[yellow_start].style = "background-color:rgb(241, 241, 115); box-shadow: 2px 4px 2px 5px inset;";
+                                yellows[0] = false;
+                                click++;
+                                run = true;
+                                yellow_current[0] = yellow_start;
+
+                                yellow_player.animation1(btn);
+
+                            }
+                        });
+
                         yellow_circle[1].addEventListener("click", () => {
                             if (click == 0 && !run && !yellow_win[1] && num == 6) {
                                 yellow_circle[1].style = "background-color:transparent;";
@@ -3122,7 +3170,7 @@ function green_area() {
                         green_circle[0].style = green_animation;
                     }
                     else {
-                        if (!green_in[0] && !green_win[0]){
+                        if (!green_in[0] && !green_win[0]) {
                             boxes[green_current[0]].style.animation = green_an;
                             boxes[green_current[0]].style.zIndex = "50";
                         }
@@ -3131,7 +3179,7 @@ function green_area() {
                         green_circle[1].style = green_animation;
                     }
                     else {
-                        if (!green_in[1] && !green_win[1]){
+                        if (!green_in[1] && !green_win[1]) {
                             boxes[green_current[1]].style.animation = green_an;
                             boxes[green_current[1]].style.zIndex = "50";
                         }
@@ -3140,7 +3188,7 @@ function green_area() {
                         green_circle[2].style = green_animation;
                     }
                     else {
-                        if (!green_in[2] && !green_win[2]){
+                        if (!green_in[2] && !green_win[2]) {
                             boxes[green_current[2]].style.animation = green_an;
                             boxes[green_current[2]].style.zIndex = "50";
                         }
@@ -3149,7 +3197,7 @@ function green_area() {
                         green_circle[3].style = green_animation;
                     }
                     else {
-                        if (!green_in[3] && !green_win[3]){
+                        if (!green_in[3] && !green_win[3]) {
                             boxes[green_current[3]].style.animation = green_an;
                             boxes[green_current[3]].style.zIndex = "50";
                         }
@@ -3335,6 +3383,21 @@ function green_area() {
                         }
 
                         let click = 0;
+
+                        green_circle[0].addEventListener("click", () => {
+                            if (click == 0 && !run && !green_win[0] && num == 6) {
+                                green_circle[0].style = "background-color:transparent;";
+                                boxes[green_start].style = "background-color:rgb(65, 173, 65); box-shadow: 2px 4px 2px 5px inset;";
+                                greens[0] = false;
+                                click++;
+                                run = true;
+                                green_current[0] = green_start;
+
+                                green_player.animation1(btn);
+
+                            }
+                        });
+
                         green_circle[1].addEventListener("click", () => {
                             if (click == 0 && !run && !green_win[1] && num == 6) {
                                 green_circle[1].style = "background-color:transparent;";
